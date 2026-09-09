@@ -2150,63 +2150,59 @@ function findDominant(scores) {
    FINISH
 ========================================= */
 
-function finishAssessment() {
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwQjCyn00rsMQqzPldkNCUetSRK9au6bGCcvnHAww13Eu5sc-zql3sFCJkT0887eaKTbw/exec";
 
-
-    const raw =
-        calculateScores();
-
-
-    const scores =
-        calculatePercentage(
-            raw
-        );
-
-
-    const dominant =
-        findDominant(
-            scores
-        );
-
+async function finishAssessment() {
+    const raw = calculateScores();
+    const scores = calculatePercentage(raw);
+    const dominant = findDominant(scores);
 
     const result = {
-
         rawScores: raw,
-
         scores: scores,
-
-        dominantStyle:
-            dominant,
-
-        totalQuestions:
-            30,
-
-        completedAt:
-            new Date().toISOString()
-
+        dominantStyle: dominant,
+        totalQuestions: 30,
+        completedAt: new Date().toISOString()
     };
 
+    localStorage.setItem("vassAssessmentResult", JSON.stringify(result));
+    localStorage.setItem("vassAnswers", JSON.stringify(answers));
 
-    localStorage.setItem(
-        "vassAssessmentResult",
-        JSON.stringify(
-            result
-        )
-    );
+    const data = {
+        studentId: localStorage.getItem("studentId") || "",
+        name: localStorage.getItem("studentName") || "",
+        programme: localStorage.getItem("studentProgramme") || "",
+        gender: localStorage.getItem("studentGender") || "",
+        visual: scores.visual,
+        audio: scores.audio,
+        interpersonal: scores.interpersonal,
+        intrapersonal: scores.intrapersonal,
+        dominantStyle: dominant
+    };
 
+    nextBtn.disabled = true;
+    previousBtn.disabled = true;
+    nextBtn.textContent = "Saving...";
+    message.textContent = "Saving your assessment result...";
 
-    localStorage.setItem(
-        "vassAnswers",
-        JSON.stringify(
-            answers
-        )
-    );
+    try {
+        await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(data)
+        });
+    } catch (error) {
+        console.error("Google Sheets error:", error);
+    }
 
+    message.textContent = "Assessment completed successfully.";
 
-    window.location.href =
-        "dashboard.html";
-
+    setTimeout(function () {
+        window.location.href = "dashboard.html";
+    }, 700);
 }
+
 
 
 /* =========================================
