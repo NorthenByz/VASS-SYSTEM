@@ -2,116 +2,1351 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>VASS Assessment</title>
 
-    <link rel="stylesheet" href="css/assessment.css">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            min-height: 100vh;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at 10% 15%,
+                    rgba(59,130,246,.30),
+                    transparent 28%
+                ),
+
+                radial-gradient(
+                    circle at 90% 85%,
+                    rgba(124,58,237,.28),
+                    transparent 30%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #06154f 0%,
+                    #102b8c 48%,
+                    #2563eb 100%
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           GLOW
+        ========================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            top: -180px;
+            left: -150px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(59,130,246,.20);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 420px;
+            height: 420px;
+
+            right: -160px;
+            bottom: -180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139,92,246,.22);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .assessment-container {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            max-width: 1180px;
+
+            margin: 0 auto;
+
+            padding: 35px 25px 45px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .assessment-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            margin-bottom: 25px;
+        }
+
+
+        .assessment-header h1 {
+
+            margin: 0;
+
+            font-size: 28px;
+
+            font-weight: 700;
+
+            color: #ffffff;
+        }
+
+
+        .assessment-header p {
+
+            margin: 5px 0 0;
+
+            color:
+                rgba(255,255,255,.65);
+
+            font-size: 13px;
+        }
+
+
+        .question-counter {
+
+            white-space: nowrap;
+
+            padding: 10px 18px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(255,255,255,.10);
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            color:
+                rgba(255,255,255,.82);
+
+            font-size: 13px;
+
+            font-weight: 600;
+        }
+
+
+        .question-counter span {
+
+            color: #ffffff;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress-section {
+
+            margin-bottom: 24px;
+        }
+
+
+        .progress-info {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 12px;
+
+            color:
+                rgba(255,255,255,.65);
+        }
+
+
+        #progressPercent {
+
+            color: #ffffff;
+
+            font-weight: 600;
+        }
+
+
+        .progress-bar {
+
+            width: 100%;
+
+            height: 8px;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            background:
+                rgba(255,255,255,.12);
+        }
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            width: 3%;
+
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #38bdf8,
+                    #3b82f6,
+                    #8b5cf6
+                );
+
+            transition:
+                width .35s ease;
+        }
+
+
+        /* =========================================
+           QUESTION WRAPPER
+        ========================================= */
+
+        .question-wrapper {
+
+            padding: 35px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.13),
+                    rgba(255,255,255,.055)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.16);
+
+            box-shadow:
+                0 30px 75px
+                rgba(0,0,0,.28),
+
+                inset 0 1px 0
+                rgba(255,255,255,.12);
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            transition:
+                border-color .3s ease;
+        }
+
+
+        /* =========================================
+           CATEGORY
+        ========================================= */
+
+        .category-section {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 16px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .category-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            flex: 0 0 58px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 18px;
+
+            background:
+                rgba(59,130,246,.18);
+
+            border:
+                1px solid
+                rgba(96,165,250,.25);
+
+            font-size: 28px;
+        }
+
+
+        .category-badge {
+
+            display: inline-block;
+
+            padding: 6px 13px;
+
+            border-radius: 50px;
+
+            background:
+                rgba(59,130,246,.18);
+
+            border:
+                1px solid
+                rgba(96,165,250,.25);
+
+            color: #ffffff;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1px;
+        }
+
+
+        #categoryDescription {
+
+            margin: 5px 0 0;
+
+            color:
+                rgba(255,255,255,.58);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================
+           CATEGORY COLOURS
+        ========================================= */
+
+        .question-wrapper.audio .category-icon {
+
+            background:
+                rgba(139,92,246,.18);
+
+            border-color:
+                rgba(167,139,250,.28);
+        }
+
+
+        .question-wrapper.audio .category-badge {
+
+            background:
+                rgba(139,92,246,.18);
+
+            border-color:
+                rgba(167,139,250,.28);
+        }
+
+
+        .question-wrapper.interpersonal .category-icon {
+
+            background:
+                rgba(236,72,153,.18);
+
+            border-color:
+                rgba(244,114,182,.28);
+        }
+
+
+        .question-wrapper.interpersonal .category-badge {
+
+            background:
+                rgba(236,72,153,.18);
+
+            border-color:
+                rgba(244,114,182,.28);
+        }
+
+
+        .question-wrapper.intrapersonal .category-icon {
+
+            background:
+                rgba(34,197,94,.18);
+
+            border-color:
+                rgba(74,222,128,.28);
+        }
+
+
+        .question-wrapper.intrapersonal .category-badge {
+
+            background:
+                rgba(34,197,94,.18);
+
+            border-color:
+                rgba(74,222,128,.28);
+        }
+
+
+        /* =========================================
+           QUESTION BOX
+        ========================================= */
+
+        .question-box {
+
+            padding: 34px 35px;
+
+            margin-bottom: 25px;
+
+            border-radius: 24px;
+
+            background:
+                rgba(5,20,70,.42);
+
+            border:
+                1px solid
+                rgba(255,255,255,.09);
+
+            text-align: center;
+        }
+
+
+        .question-label {
+
+            display: inline-block;
+
+            margin-bottom: 18px;
+
+            color:
+                rgba(255,255,255,.48);
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            letter-spacing: 1.7px;
+        }
+
+
+        .question-label span {
+
+            color: #ffffff;
+        }
+
+
+        #questionText {
+
+            margin: 0 auto;
+
+            max-width: 850px;
+
+            color: #ffffff;
+
+            font-size:
+                clamp(22px, 3vw, 34px);
+
+            font-weight: 500;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================
+           ANSWERS
+        ========================================= */
+
+        .answers-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(5, 1fr);
+
+            gap: 12px;
+        }
+
+
+        .answer-card {
+
+            min-height: 125px;
+
+            padding: 18px 10px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            color: #ffffff;
+
+            background:
+                rgba(255,255,255,.06);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                all .25s ease;
+        }
+
+
+        .answer-number {
+
+            width: 32px;
+
+            height: 32px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255,255,255,.10);
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .answer-card:hover {
+
+            transform:
+                translateY(-4px);
+
+            background:
+                rgba(255,255,255,.11);
+
+            border-color:
+                rgba(255,255,255,.25);
+
+            box-shadow:
+                0 12px 28px
+                rgba(0,0,0,.18);
+        }
+
+
+        /* ANSWER COLOURS */
+
+        .answer-card.strongly-disagree {
+
+            border-color:
+                rgba(239,68,68,.30);
+        }
+
+
+        .answer-card.strongly-disagree:hover,
+        .answer-card.strongly-disagree.selected {
+
+            background:
+                rgba(239,68,68,.25);
+
+            border-color:
+                rgba(248,113,113,.75);
+
+            box-shadow:
+                0 0 25px
+                rgba(239,68,68,.20);
+        }
+
+
+        .answer-card.disagree {
+
+            border-color:
+                rgba(249,115,22,.30);
+        }
+
+
+        .answer-card.disagree:hover,
+        .answer-card.disagree.selected {
+
+            background:
+                rgba(249,115,22,.25);
+
+            border-color:
+                rgba(251,146,60,.75);
+
+            box-shadow:
+                0 0 25px
+                rgba(249,115,22,.20);
+        }
+
+
+        .answer-card.neutral {
+
+            border-color:
+                rgba(148,163,184,.30);
+        }
+
+
+        .answer-card.neutral:hover,
+        .answer-card.neutral.selected {
+
+            background:
+                rgba(148,163,184,.22);
+
+            border-color:
+                rgba(203,213,225,.70);
+
+            box-shadow:
+                0 0 25px
+                rgba(148,163,184,.18);
+        }
+
+
+        .answer-card.agree {
+
+            border-color:
+                rgba(59,130,246,.35);
+        }
+
+
+        .answer-card.agree:hover,
+        .answer-card.agree.selected {
+
+            background:
+                rgba(59,130,246,.25);
+
+            border-color:
+                rgba(96,165,250,.75);
+
+            box-shadow:
+                0 0 25px
+                rgba(59,130,246,.22);
+        }
+
+
+        .answer-card.strongly-agree {
+
+            border-color:
+                rgba(34,197,94,.30);
+        }
+
+
+        .answer-card.strongly-agree:hover,
+        .answer-card.strongly-agree.selected {
+
+            background:
+                rgba(34,197,94,.24);
+
+            border-color:
+                rgba(74,222,128,.75);
+
+            box-shadow:
+                0 0 25px
+                rgba(34,197,94,.20);
+        }
+
+
+        .answer-card.selected {
+
+            transform:
+                translateY(-3px) scale(1.01);
+
+            color: #ffffff;
+        }
+
+
+        /* =========================================
+           NAVIGATION
+        ========================================= */
+
+        .navigation {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-top: 25px;
+        }
+
+
+        .nav-btn {
+
+            min-width: 145px;
+
+            min-height: 48px;
+
+            padding: 12px 22px;
+
+            border-radius: 50px;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition:
+                all .25s ease;
+        }
+
+
+        .previous-btn {
+
+            color:
+                rgba(255,255,255,.75);
+
+            background:
+                rgba(255,255,255,.07);
+
+            border:
+                1px solid
+                rgba(255,255,255,.15);
+        }
+
+
+        .previous-btn:hover:not(:disabled) {
+
+            background:
+                rgba(255,255,255,.13);
+
+            color: #ffffff;
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .previous-btn:disabled {
+
+            opacity: .35;
+
+            cursor: not-allowed;
+        }
+
+
+        .next-btn {
+
+            color: #1450b8;
+
+            background: #ffffff;
+
+            border:
+                1px solid #ffffff;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,.18);
+        }
+
+
+        .next-btn:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 15px 30px
+                rgba(0,0,0,.25);
+        }
+
+
+        /* =========================================
+           MESSAGE
+        ========================================= */
+
+        .message {
+
+            min-height: 25px;
+
+            margin-top: 14px;
+
+            text-align: center;
+
+            color:
+                #fca5a5;
+
+            font-size: 12px;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .assessment-container {
+
+                padding:
+                    25px 18px 35px;
+            }
+
+
+            .question-wrapper {
+
+                padding: 28px 22px;
+            }
+
+
+            .answers-container {
+
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+
+            .answer-card {
+
+                min-height: 105px;
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            .assessment-container {
+
+                padding:
+                    18px 12px 30px;
+            }
+
+
+            .assessment-header {
+
+                align-items: flex-start;
+
+                margin-bottom: 20px;
+            }
+
+
+            .assessment-header h1 {
+
+                font-size: 22px;
+            }
+
+
+            .assessment-header p {
+
+                font-size: 11px;
+            }
+
+
+            .question-counter {
+
+                padding:
+                    8px 11px;
+
+                font-size: 10px;
+            }
+
+
+            .progress-section {
+
+                margin-bottom: 18px;
+            }
+
+
+            .progress-info {
+
+                font-size: 10px;
+            }
+
+
+            .progress-bar {
+
+                height: 7px;
+            }
+
+
+            .question-wrapper {
+
+                padding: 20px 14px;
+
+                border-radius: 23px;
+            }
+
+
+            .category-section {
+
+                gap: 11px;
+
+                margin-bottom: 18px;
+            }
+
+
+            .category-icon {
+
+                width: 48px;
+
+                height: 48px;
+
+                flex-basis: 48px;
+
+                border-radius: 15px;
+
+                font-size: 23px;
+            }
+
+
+            .category-badge {
+
+                padding:
+                    5px 10px;
+
+                font-size: 9px;
+            }
+
+
+            #categoryDescription {
+
+                font-size: 10px;
+
+                margin-top: 4px;
+            }
+
+
+            .question-box {
+
+                padding:
+                    25px 14px;
+
+                margin-bottom: 18px;
+
+                border-radius: 18px;
+            }
+
+
+            .question-label {
+
+                margin-bottom: 14px;
+
+                font-size: 9px;
+            }
+
+
+            #questionText {
+
+                font-size: 20px;
+
+                line-height: 1.5;
+            }
+
+
+            .answers-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+                gap: 9px;
+            }
+
+
+            .answer-card {
+
+                min-height: 90px;
+
+                padding:
+                    13px 8px;
+
+                border-radius: 15px;
+
+                font-size: 10px;
+
+                gap: 7px;
+            }
+
+
+            .answer-number {
+
+                width: 27px;
+
+                height: 27px;
+
+                font-size: 10px;
+            }
+
+
+            .navigation {
+
+                margin-top: 17px;
+
+                gap: 8px;
+            }
+
+
+            .nav-btn {
+
+                min-width: 0;
+
+                width: 50%;
+
+                min-height: 46px;
+
+                padding:
+                    10px 12px;
+
+                font-size: 11px;
+            }
+
+
+            .message {
+
+                font-size: 10px;
+
+                margin-top: 10px;
+            }
+        }
+
+
+        /* =========================================
+           VERY SMALL PHONE
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .assessment-header h1 {
+
+                font-size: 20px;
+            }
+
+
+            .assessment-header p {
+
+                font-size: 10px;
+            }
+
+
+            .question-counter {
+
+                font-size: 9px;
+
+                padding:
+                    7px 9px;
+            }
+
+
+            #questionText {
+
+                font-size: 18px;
+            }
+
+
+            .answer-card {
+
+                min-height: 82px;
+
+                font-size: 9px;
+            }
+
+
+            .nav-btn {
+
+                font-size: 10px;
+            }
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
+
 <div class="assessment-container">
 
-    <!-- HEADER -->
+
+    <!-- ================= HEADER ================= -->
+
     <header class="assessment-header">
 
         <div>
-            <h1>Learning Journey</h1>
-            <p>Discover Your Learning Preference</p>
+
+            <h1>
+                Learning Journey
+            </h1>
+
+            <p>
+                Discover Your Learning Preference
+            </p>
+
         </div>
 
+
         <div class="question-counter">
-            Question <span id="currentQuestion">1</span> of 30
+
+            Question
+            <span id="currentQuestion">1</span>
+            of 30
+
         </div>
 
     </header>
 
 
-    <!-- PROGRESS -->
+    <!-- ================= PROGRESS ================= -->
+
     <div class="progress-section">
 
         <div class="progress-info">
-            <span>Your Progress</span>
-            <span id="progressPercent">3%</span>
+
+            <span>
+                Your Progress
+            </span>
+
+            <span id="progressPercent">
+                3%
+            </span>
+
         </div>
 
+
         <div class="progress-bar">
-            <div id="progressFill" class="progress-fill"></div>
+
+            <div
+                id="progressFill"
+                class="progress-fill">
+            </div>
+
         </div>
 
     </div>
 
 
-    <!-- QUESTION -->
-    <main class="question-wrapper visual" id="questionWrapper">
+    <!-- ================= QUESTION ================= -->
+
+    <main
+        class="question-wrapper visual"
+        id="questionWrapper">
+
 
         <!-- CATEGORY -->
+
         <div class="category-section">
 
-            <div class="category-icon" id="categoryIcon">
+
+            <div
+                class="category-icon"
+                id="categoryIcon">
+
                 🎥
+
             </div>
+
 
             <div>
 
-                <div class="category-badge" id="categoryName">
+                <div
+                    class="category-badge"
+                    id="categoryName">
+
                     VISUAL
+
                 </div>
 
-                <p id="categoryDescription">
+
+                <p
+                    id="categoryDescription">
+
                     See • Observe • Imagine
+
                 </p>
 
             </div>
+
 
         </div>
 
 
         <!-- QUESTION BOX -->
+
         <div class="question-box">
 
             <span class="question-label">
-                QUESTION <span id="questionNumber">01</span>
+
+                QUESTION
+                <span id="questionNumber">
+                    01
+                </span>
+
             </span>
 
+
             <h2 id="questionText">
-                Saya mudah faham apabila pengajaran diselitkan dengan tontonan video.
+
+                Saya mudah faham apabila pengajaran
+                diselitkan dengan tontonan video.
+
             </h2>
 
         </div>
 
 
         <!-- ANSWERS -->
-        <div class="answers-container" id="answersContainer">
+
+        <div
+            class="answers-container"
+            id="answersContainer">
 
         </div>
+
 
     </main>
 
 
-    <!-- NAVIGATION -->
+    <!-- ================= NAVIGATION ================= -->
+
     <div class="navigation">
+
 
         <button
             id="previousBtn"
             class="nav-btn previous-btn"
             disabled>
+
             ← Previous
+
         </button>
+
 
         <button
             id="nextBtn"
             class="nav-btn next-btn">
+
             Next →
+
         </button>
+
 
     </div>
 
 
     <!-- MESSAGE -->
-    <div id="message" class="message"></div>
+
+    <div
+        id="message"
+        class="message">
+
+    </div>
+
 
 </div>
 
@@ -422,43 +1657,69 @@ let answers = {};
 ========================================= */
 
 const wrapper =
-    document.getElementById("questionWrapper");
+    document.getElementById(
+        "questionWrapper"
+    );
 
 const currentQuestion =
-    document.getElementById("currentQuestion");
+    document.getElementById(
+        "currentQuestion"
+    );
 
 const questionNumber =
-    document.getElementById("questionNumber");
+    document.getElementById(
+        "questionNumber"
+    );
 
 const questionText =
-    document.getElementById("questionText");
+    document.getElementById(
+        "questionText"
+    );
 
 const categoryIcon =
-    document.getElementById("categoryIcon");
+    document.getElementById(
+        "categoryIcon"
+    );
 
 const categoryName =
-    document.getElementById("categoryName");
+    document.getElementById(
+        "categoryName"
+    );
 
 const categoryDescription =
-    document.getElementById("categoryDescription");
+    document.getElementById(
+        "categoryDescription"
+    );
 
 const answersContainer =
-    document.getElementById("answersContainer");
+    document.getElementById(
+        "answersContainer"
+    );
 
 const progressFill =
-    document.getElementById("progressFill");
+    document.getElementById(
+        "progressFill"
+    );
 
 const progressPercent =
-    document.getElementById("progressPercent");
+    document.getElementById(
+        "progressPercent"
+    );
 
 const previousBtn =
-    document.getElementById("previousBtn");
+    document.getElementById(
+        "previousBtn"
+    );
 
 const nextBtn =
-    document.getElementById("nextBtn");
+    document.getElementById(
+        "nextBtn"
+    );
 
 const message =
-    document.getElementById("message");
+    document.getElementById(
+        "message"
+    );
 
 
 /* =========================================
@@ -467,28 +1728,37 @@ const message =
 
 function loadQuestion() {
 
-    const q = questions[current];
+    const q =
+        questions[current];
+
 
     currentQuestion.textContent =
         q.id;
 
+
     questionNumber.textContent =
         String(q.id).padStart(2, "0");
+
 
     questionText.textContent =
         q.text;
 
+
     categoryIcon.textContent =
         q.icon;
+
 
     categoryName.textContent =
         q.name;
 
+
     categoryDescription.textContent =
         q.description;
 
+
     wrapper.className =
-        "question-wrapper " + q.category;
+        "question-wrapper " +
+        q.category;
 
 
     /* Progress */
@@ -496,8 +1766,10 @@ function loadQuestion() {
     const progress =
         (q.id / questions.length) * 100;
 
+
     progressFill.style.width =
         progress + "%";
+
 
     progressPercent.textContent =
         Math.round(progress) + "%";
@@ -511,7 +1783,9 @@ function loadQuestion() {
 
     /* Next */
 
-    if (current === questions.length - 1) {
+    if (
+        current === questions.length - 1
+    ) {
 
         nextBtn.textContent =
             "Finish ✓";
@@ -527,6 +1801,7 @@ function loadQuestion() {
     /* Answers */
 
     renderAnswers(q);
+
 
     message.textContent = "";
 }
@@ -578,22 +1853,35 @@ function renderAnswers(q) {
 
     options.forEach(function(option) {
 
+
         const button =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
+
 
         button.type = "button";
 
+
         button.className =
-            "answer-card " + option.className;
+            "answer-card " +
+            option.className;
+
 
         button.innerHTML = `
+
             <span class="answer-number">
+
                 ${option.value}
+
             </span>
 
             <span>
+
                 ${option.text}
+
             </span>
+
         `;
 
 
@@ -604,7 +1892,9 @@ function renderAnswers(q) {
             option.value
         ) {
 
-            button.classList.add("selected");
+            button.classList.add(
+                "selected"
+            );
 
         }
 
@@ -615,19 +1905,24 @@ function renderAnswers(q) {
             "click",
             function() {
 
+
                 answers[q.id] =
                     option.value;
 
 
                 document
-                    .querySelectorAll(".answer-card")
-                    .forEach(function(item) {
+                    .querySelectorAll(
+                        ".answer-card"
+                    )
+                    .forEach(
+                        function(item) {
 
-                        item.classList.remove(
-                            "selected"
-                        );
+                            item.classList.remove(
+                                "selected"
+                            );
 
-                    });
+                        }
+                    );
 
 
                 button.classList.add(
@@ -637,19 +1932,25 @@ function renderAnswers(q) {
 
                 localStorage.setItem(
                     "vassAnswers",
-                    JSON.stringify(answers)
+                    JSON.stringify(
+                        answers
+                    )
                 );
 
 
-                message.textContent = "";
+                message.textContent =
+                    "";
 
             }
         );
 
 
-        answersContainer.appendChild(button);
+        answersContainer.appendChild(
+            button
+        );
 
     });
+
 }
 
 
@@ -660,6 +1961,7 @@ function renderAnswers(q) {
 nextBtn.addEventListener(
     "click",
     function() {
+
 
         const q =
             questions[current];
@@ -710,9 +2012,15 @@ previousBtn.addEventListener(
     "click",
     function() {
 
-        if (current === 0) {
+
+        if (
+            current === 0
+        ) {
+
             return;
+
         }
+
 
         current--;
 
@@ -741,19 +2049,24 @@ function calculateScores() {
     };
 
 
-    questions.forEach(function(q) {
+    questions.forEach(
+        function(q) {
 
-        if (
-            answers[q.id] !==
-            undefined
-        ) {
 
-            raw[q.category] +=
-                Number(answers[q.id]);
+            if (
+                answers[q.id] !==
+                undefined
+            ) {
+
+                raw[q.category] +=
+                    Number(
+                        answers[q.id]
+                    );
+
+            }
 
         }
-
-    });
+    );
 
 
     return raw;
@@ -802,12 +2115,14 @@ function findDominant(scores) {
     let dominant =
         "visual";
 
+
     let highest =
         scores.visual;
 
 
     Object.keys(scores).forEach(
         function(category) {
+
 
             if (
                 scores[category] >
@@ -816,6 +2131,7 @@ function findDominant(scores) {
 
                 highest =
                     scores[category];
+
 
                 dominant =
                     category;
@@ -836,16 +2152,21 @@ function findDominant(scores) {
 
 function finishAssessment() {
 
+
     const raw =
         calculateScores();
 
 
     const scores =
-        calculatePercentage(raw);
+        calculatePercentage(
+            raw
+        );
 
 
     const dominant =
-        findDominant(scores);
+        findDominant(
+            scores
+        );
 
 
     const result = {
@@ -868,18 +2189,23 @@ function finishAssessment() {
 
     localStorage.setItem(
         "vassAssessmentResult",
-        JSON.stringify(result)
+        JSON.stringify(
+            result
+        )
     );
 
 
     localStorage.setItem(
         "vassAnswers",
-        JSON.stringify(answers)
+        JSON.stringify(
+            answers
+        )
     );
 
 
     window.location.href =
         "dashboard.html";
+
 }
 
 
@@ -891,5 +2217,7 @@ loadQuestion();
 
 </script>
 
+
 </body>
+
 </html>
