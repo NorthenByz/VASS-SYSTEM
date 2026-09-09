@@ -5,33 +5,599 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Let's Get Started | VASS</title>
 
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+
     <!-- Bootstrap -->
+
     <link
         href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
         rel="stylesheet">
 
+
     <!-- Bootstrap Icons -->
+
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="css/student.css">
+
+    <style>
+
+        /* =========================================
+           RESET
+        ========================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        /* =========================================
+           BODY
+        ========================================= */
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            min-height: 100vh;
+
+            color: #ffffff;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(59,130,246,.30),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(124,58,237,.28),
+                    transparent 32%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #06154f 0%,
+                    #102b8c 48%,
+                    #2563eb 100%
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        /* =========================================
+           BACKGROUND GLOW
+        ========================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            top: -180px;
+            left: -150px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(59,130,246,.25);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            right: -150px;
+            bottom: -180px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(139,92,246,.25);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* =========================================
+           CONTAINER
+        ========================================= */
+
+        .student-container {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 40px 20px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        /* =========================================
+           CARD
+        ========================================= */
+
+        .student-card {
+
+            width: 100%;
+
+            max-width: 700px;
+
+            padding: 50px 60px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.15),
+                    rgba(255,255,255,.06)
+                );
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            box-shadow:
+
+                0 30px 80px
+                rgba(0,0,0,.35),
+
+                inset 0 1px 0
+                rgba(255,255,255,.15);
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* =========================================
+           PROGRESS
+        ========================================= */
+
+        .progress-text {
+
+            text-align: center;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(255,255,255,.75);
+
+            margin-bottom: 28px;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        .student-logo {
+
+            width: 95px;
+
+            height: 95px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin: 0 auto 25px;
+
+            filter:
+                drop-shadow(
+                    0 12px 20px
+                    rgba(0,0,0,.35)
+                );
+        }
+
+
+        /* =========================================
+           TITLE
+        ========================================= */
+
+        .student-card h1 {
+
+            text-align: center;
+
+            color: #ffffff !important;
+
+            font-size:
+                clamp(32px, 5vw, 48px);
+
+            font-weight: 700;
+
+            line-height: 1.15;
+
+            margin: 0 0 12px;
+
+            text-shadow:
+                0 5px 20px
+                rgba(0,0,0,.20);
+        }
+
+
+        .student-card > p {
+
+            text-align: center;
+
+            color:
+                rgba(255,255,255,.78) !important;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+
+            margin: 0 auto 35px;
+
+            max-width: 520px;
+        }
+
+
+        /* =========================================
+           FORM
+        ========================================= */
+
+        .student-card .form-label {
+
+            display: block;
+
+            color: #ffffff !important;
+
+            font-size: 13px;
+
+            font-weight: 600;
+
+            margin-bottom: 8px;
+        }
+
+
+        .student-card .form-control,
+        .student-card .form-select {
+
+            width: 100%;
+
+            min-height: 52px;
+
+            border-radius: 14px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+            background:
+                rgba(255,255,255,.10) !important;
+
+            color: #ffffff !important;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 13px;
+
+            padding: 12px 16px;
+
+            box-shadow: none;
+
+            outline: none;
+        }
+
+
+        .student-card .form-control::placeholder {
+
+            color:
+                rgba(255,255,255,.48) !important;
+        }
+
+
+        .student-card .form-control:focus,
+        .student-card .form-select:focus {
+
+            border-color:
+                rgba(96,165,250,.75);
+
+            background:
+                rgba(255,255,255,.13) !important;
+
+            color: #ffffff !important;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(59,130,246,.18);
+        }
+
+
+        /* =========================================
+           SELECT
+        ========================================= */
+
+        .student-card .form-select {
+
+            appearance: auto;
+
+            -webkit-appearance: auto;
+        }
+
+
+        .student-card .form-select option {
+
+            color: #111827;
+
+            background: #ffffff;
+        }
+
+
+        /* =========================================
+           BUTTON
+        ========================================= */
+
+        .student-card button[type="submit"] {
+
+            width: 100%;
+
+            min-height: 54px;
+
+            border: none;
+
+            border-radius: 50px;
+
+            background: #ffffff !important;
+
+            color: #1450b8 !important;
+
+            font-family:
+                "Poppins",
+                sans-serif;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            box-shadow:
+                0 12px 30px
+                rgba(0,0,0,.22);
+
+            transition:
+                all .3s ease;
+        }
+
+
+        .student-card button[type="submit"]:hover {
+
+            transform:
+                translateY(-3px);
+
+            background: #ffffff !important;
+
+            color: #0f4db8 !important;
+
+            box-shadow:
+                0 17px 35px
+                rgba(0,0,0,.30);
+        }
+
+
+        .student-card button[type="submit"]:active {
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 576px) {
+
+            .student-container {
+
+                padding: 18px 12px;
+
+                align-items: flex-start;
+            }
+
+
+            .student-card {
+
+                width: 100%;
+
+                max-width: 100%;
+
+                margin-top: 10px;
+
+                padding: 32px 18px;
+
+                border-radius: 24px;
+            }
+
+
+            .progress-text {
+
+                font-size: 12px;
+
+                letter-spacing: 1.6px;
+
+                margin-bottom: 22px;
+            }
+
+
+            .student-logo {
+
+                width: 82px;
+
+                height: 82px;
+
+                margin-bottom: 22px;
+            }
+
+
+            .student-card h1 {
+
+                font-size: 34px;
+
+                line-height: 1.15;
+
+                margin-bottom: 12px;
+            }
+
+
+            .student-card > p {
+
+                font-size: 12px;
+
+                line-height: 1.7;
+
+                margin-bottom: 28px;
+            }
+
+
+            .student-card .form-label {
+
+                font-size: 12px;
+
+                margin-bottom: 7px;
+            }
+
+
+            .student-card .form-control,
+            .student-card .form-select {
+
+                min-height: 50px;
+
+                border-radius: 13px;
+
+                font-size: 12px;
+
+                padding:
+                    11px 14px;
+            }
+
+
+            .student-card .mb-3 {
+
+                margin-bottom: 17px !important;
+            }
+
+
+            .student-card .mb-4 {
+
+                margin-bottom: 22px !important;
+            }
+
+
+            .student-card button[type="submit"] {
+
+                min-height: 52px;
+
+                font-size: 14px;
+            }
+        }
+
+
+        /* =========================================
+           SMALL PHONE
+        ========================================= */
+
+        @media (max-width: 380px) {
+
+            .student-card {
+
+                padding: 28px 15px;
+            }
+
+
+            .student-logo {
+
+                width: 75px;
+
+                height: 75px;
+            }
+
+
+            .student-card h1 {
+
+                font-size: 30px;
+            }
+
+
+            .student-card > p {
+
+                font-size: 11px;
+            }
+        }
+
+    </style>
 
 </head>
 
@@ -45,10 +611,16 @@
     <div class="student-card">
 
 
+        <!-- PROGRESS -->
+
         <div class="progress-text">
-            Step 2 of 3
+
+            STEP 2 OF 3
+
         </div>
 
+
+        <!-- LOGO -->
 
         <img
             src="assets/images/logo.png"
@@ -56,14 +628,20 @@
             alt="VASS Logo">
 
 
+        <!-- TITLE -->
+
         <h1>
+
             Let's Get Started
+
         </h1>
 
 
         <p>
+
             Before beginning your learning journey,
             tell us a little about yourself.
+
         </p>
 
 
@@ -76,9 +654,14 @@
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label
+                    for="fullName"
+                    class="form-label">
+
                     Full Name
+
                 </label>
+
 
                 <input
                     type="text"
@@ -94,9 +677,14 @@
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label
+                    for="studentId"
+                    class="form-label">
+
                     Student ID
+
                 </label>
+
 
                 <input
                     type="text"
@@ -108,13 +696,18 @@
             </div>
 
 
-            <!-- PROGRAMME / CLASS -->
+            <!-- PROGRAMME -->
 
             <div class="mb-3">
 
-                <label class="form-label">
+                <label
+                    for="programme"
+                    class="form-label">
+
                     Programme / Class
+
                 </label>
+
 
                 <input
                     type="text"
@@ -130,25 +723,41 @@
 
             <div class="mb-4">
 
-                <label class="form-label">
+                <label
+                    for="gender"
+                    class="form-label">
+
                     Gender
+
                 </label>
+
 
                 <select
                     id="gender"
                     class="form-select"
                     required>
 
-                    <option value="" selected disabled>
+                    <option
+                        value=""
+                        selected
+                        disabled>
+
                         Select Gender
+
                     </option>
+
 
                     <option value="Male">
+
                         Male
+
                     </option>
 
+
                     <option value="Female">
+
                         Female
+
                     </option>
 
                 </select>
@@ -156,11 +765,11 @@
             </div>
 
 
-            <!-- CONTINUE BUTTON -->
+            <!-- CONTINUE -->
 
             <button
                 type="submit"
-                class="btn btn-light w-100">
+                class="btn">
 
                 Continue →
 
@@ -168,6 +777,7 @@
 
 
         </form>
+
 
     </div>
 
@@ -185,13 +795,12 @@ document
         event.preventDefault();
 
 
-        // Get values
-
         const fullName =
             document
             .getElementById("fullName")
             .value
             .trim();
+
 
         const studentId =
             document
@@ -199,19 +808,19 @@ document
             .value
             .trim();
 
+
         const programme =
             document
             .getElementById("programme")
             .value
             .trim();
 
+
         const gender =
             document
             .getElementById("gender")
             .value;
 
-
-        // Check all fields
 
         if (
             fullName === "" ||
@@ -220,37 +829,38 @@ document
             gender === ""
         ) {
 
-            alert("Please complete all student information before continuing.");
+            alert(
+                "Please complete all student information before continuing."
+            );
 
             return;
 
         }
 
 
-        // Save student information
-
         localStorage.setItem(
             "studentName",
             fullName
         );
+
 
         localStorage.setItem(
             "studentId",
             studentId
         );
 
+
         localStorage.setItem(
             "studentProgramme",
             programme
         );
+
 
         localStorage.setItem(
             "studentGender",
             gender
         );
 
-
-        // Go to assessment
 
         window.location.href =
             "assessment.html";
