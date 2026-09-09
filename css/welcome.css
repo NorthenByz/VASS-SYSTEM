@@ -38,6 +38,7 @@ body{
 
 }
 
+
 /* ================= Background Glow ================= */
 
 body::before{
@@ -64,6 +65,7 @@ body::before{
 
 }
 
+
 /* ================= Container ================= */
 
 .welcome-container{
@@ -77,6 +79,7 @@ body::before{
     align-items:center;
 
 }
+
 
 /* ================= Card ================= */
 
@@ -95,6 +98,7 @@ body::before{
     background:rgba(255,255,255,.10);
 
     backdrop-filter:blur(22px);
+
     -webkit-backdrop-filter:blur(22px);
 
     border:1px solid rgba(255,255,255,.18);
@@ -106,6 +110,7 @@ body::before{
     animation:fadeUp .8s ease;
 
 }
+
 
 /* ================= Progress ================= */
 
@@ -125,6 +130,7 @@ body::before{
 
 }
 
+
 /* ================= Logo ================= */
 
 .welcome-logo{
@@ -133,11 +139,14 @@ body::before{
 
     margin-bottom:25px;
 
-    filter:drop-shadow(0 0 20px rgba(255,255,255,.45));
+    filter:drop-shadow(
+        0 0 20px rgba(255,255,255,.45)
+    );
 
     animation:float 3s ease-in-out infinite;
 
 }
+
 
 /* ================= Badge ================= */
 
@@ -151,6 +160,7 @@ body::before{
 
 }
 
+
 /* ================= Text ================= */
 
 .welcome-card h1{
@@ -163,6 +173,8 @@ body::before{
 
     margin-bottom:10px;
 
+    line-height:1.2;
+
 }
 
 .welcome-card h4{
@@ -174,6 +186,8 @@ body::before{
     font-weight:500;
 
     margin-bottom:25px;
+
+    line-height:1.4;
 
 }
 
@@ -190,6 +204,7 @@ body::before{
     margin:0 auto 45px;
 
 }
+
 
 /* ================= Info ================= */
 
@@ -229,7 +244,8 @@ body::before{
 
     background:rgba(255,255,255,.15);
 
-    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
 
 }
 
@@ -238,6 +254,8 @@ body::before{
     font-size:42px;
 
     margin-bottom:15px;
+
+    color:#fff;
 
 }
 
@@ -259,6 +277,7 @@ body::before{
 
 }
 
+
 /* ================= Alert ================= */
 
 .alert{
@@ -273,7 +292,10 @@ body::before{
 
     backdrop-filter:blur(10px);
 
+    -webkit-backdrop-filter:blur(10px);
+
 }
+
 
 /* ================= Button ================= */
 
@@ -285,15 +307,19 @@ body::before{
 
     transition:.35s;
 
+    border-radius:50px;
+
 }
 
 .btn:hover{
 
     transform:translateY(-5px);
 
-    box-shadow:0 15px 35px rgba(255,255,255,.30);
+    box-shadow:
+        0 15px 35px rgba(255,255,255,.30);
 
 }
+
 
 /* ================= Footer ================= */
 
@@ -306,6 +332,7 @@ body::before{
     margin-top:40px;
 
 }
+
 
 /* ================= Animation ================= */
 
@@ -373,49 +400,244 @@ body::before{
 
 }
 
-/* ================= Responsive ================= */
 
-@media(max-width:768px){
+/* ================= Tablet ================= */
+
+@media(max-width:992px){
 
     body{
 
-        padding:20px;
+        padding:25px;
 
     }
 
     .welcome-card{
 
-        padding:40px 25px;
+        padding:50px 40px;
 
     }
 
     .welcome-card h1{
 
-        font-size:38px;
+        font-size:46px;
 
     }
 
     .welcome-card h4{
 
-        font-size:18px;
+        font-size:20px;
 
     }
 
     .welcome-card p{
 
-        font-size:17px;
+        font-size:18px;
+
+    }
+
+}
+
+
+/* ================= Mobile ================= */
+
+@media(max-width:768px){
+
+    body{
+
+        min-height:100vh;
+
+        padding:15px;
+
+        align-items:center;
+
+    }
+
+    .welcome-container{
+
+        width:100%;
+
+    }
+
+    .welcome-card{
+
+        width:100%;
+
+        padding:35px 20px;
+
+        border-radius:24px;
+
+    }
+
+    .progress-text{
+
+        font-size:12px;
+
+        margin-bottom:20px;
+
+        letter-spacing:.7px;
 
     }
 
     .welcome-logo{
 
-        width:90px;
+        width:85px;
+
+        margin-bottom:20px;
+
+    }
+
+    .badge{
+
+        font-size:12px;
+
+        margin-bottom:18px;
+
+    }
+
+    .welcome-card h1{
+
+        font-size:32px;
+
+        line-height:1.2;
+
+        margin-bottom:12px;
+
+    }
+
+    .welcome-card h4{
+
+        font-size:17px;
+
+        line-height:1.4;
+
+        margin-bottom:20px;
+
+    }
+
+    .welcome-card p{
+
+        font-size:15px;
+
+        line-height:1.7;
+
+        margin-bottom:30px;
+
+    }
+
+    .info-box{
+
+        gap:12px;
+
+        margin-bottom:25px;
 
     }
 
     .info-item{
 
         width:100%;
+
+        padding:20px;
+
+        border-radius:18px;
+
+    }
+
+    .info-item h3{
+
+        font-size:34px;
+
+        margin-bottom:8px;
+
+    }
+
+    .info-item h5{
+
+        font-size:16px;
+
+    }
+
+    .info-item span{
+
+        font-size:14px;
+
+    }
+
+    .alert{
+
+        font-size:13px;
+
+        line-height:1.6;
+
+        padding:15px;
+
+    }
+
+    .btn{
+
+        width:100%;
+
+        padding:13px 20px;
+
+        font-size:16px;
+
+    }
+
+    .welcome-footer{
+
+        font-size:12px;
+
+        margin-top:25px;
+
+    }
+
+}
+
+
+/* ================= Small Phone ================= */
+
+@media(max-width:400px){
+
+    body{
+
+        padding:10px;
+
+    }
+
+    .welcome-card{
+
+        padding:28px 16px;
+
+        border-radius:20px;
+
+    }
+
+    .welcome-logo{
+
+        width:75px;
+
+    }
+
+    .welcome-card h1{
+
+        font-size:28px;
+
+    }
+
+    .welcome-card h4{
+
+        font-size:15px;
+
+    }
+
+    .welcome-card p{
+
+        font-size:14px;
+
+    }
+
+    .info-item{
+
+        padding:18px;
 
     }
 
