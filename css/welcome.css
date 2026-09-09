@@ -1,644 +1,565 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
+/* =========================================
+   VASS WELCOME PAGE
+   ========================================= */
+
+* {
+    box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
 }
 
-body{
+body {
+    font-family: "Poppins", sans-serif;
+    color: #ffffff;
 
-    min-height:100vh;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(59, 130, 246, 0.28), transparent 30%),
+        radial-gradient(circle at 85% 75%, rgba(139, 92, 246, 0.25), transparent 32%),
+        linear-gradient(135deg, #06154f 0%, #102b8c 48%, #2563eb 100%);
 
-    display:flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
 
-    justify-content:center;
 
-    align-items:center;
+/* =========================================
+   BACKGROUND GLOW
+   ========================================= */
 
-    padding:30px;
+body::before {
+    content: "";
+    position: fixed;
+    width: 380px;
+    height: 380px;
 
-    overflow-x:hidden;
+    top: -150px;
+    left: -120px;
 
-    background:linear-gradient(
+    background: rgba(59, 130, 246, 0.22);
+    filter: blur(90px);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    width: 400px;
+    height: 400px;
+
+    right: -150px;
+    bottom: -160px;
+
+    background: rgba(124, 58, 237, 0.22);
+    filter: blur(100px);
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.welcome-container {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 20px;
+}
+
+
+/* =========================================
+   WELCOME CARD
+   ========================================= */
+
+.welcome-card {
+    width: 100%;
+    max-width: 900px;
+
+    padding: 55px 70px;
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.14),
+            rgba(255, 255, 255, 0.06)
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+
+/* =========================================
+   STEP
+   ========================================= */
+
+.progress-text {
+    font-size: 14px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    margin-bottom: 28px;
+}
+
+
+/* =========================================
+   LOGO
+   ========================================= */
+
+.welcome-logo {
+    width: 105px;
+    height: 105px;
+
+    object-fit: contain;
+
+    display: block;
+    margin: 0 auto 22px;
+
+    filter:
+        drop-shadow(0 12px 20px rgba(0, 0, 0, 0.30));
+}
+
+
+/* =========================================
+   BADGE
+   ========================================= */
+
+.welcome-card .badge {
+    display: inline-block;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+
+    padding: 11px 24px !important;
+
+    background: linear-gradient(
         135deg,
-        #081B5E 0%,
-        #1D4ED8 50%,
-        #4F7BFF 100%
-    );
+        #1677ff,
+        #2563eb
+    ) !important;
 
-    background-size:300% 300%;
-
-    animation:bgMove 12s ease infinite;
-
-    position:relative;
-
-}
-
-
-/* ================= Background Glow ================= */
-
-body::before{
-
-    content:"";
-
-    position:fixed;
-
-    width:600px;
-    height:600px;
-
-    top:-220px;
-    right:-180px;
-
-    background:#4F7BFF;
-
-    border-radius:50%;
-
-    filter:blur(180px);
-
-    opacity:.18;
-
-    z-index:-1;
-
-}
-
-
-/* ================= Container ================= */
-
-.welcome-container{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-/* ================= Card ================= */
-
-.welcome-card{
-
-    width:900px;
-
-    max-width:100%;
-
-    padding:60px;
-
-    text-align:center;
-
-    border-radius:30px;
-
-    background:rgba(255,255,255,.10);
-
-    backdrop-filter:blur(22px);
-
-    -webkit-backdrop-filter:blur(22px);
-
-    border:1px solid rgba(255,255,255,.18);
+    color: #ffffff !important;
 
     box-shadow:
-        0 20px 60px rgba(0,0,0,.35),
-        inset 0 1px 0 rgba(255,255,255,.18);
-
-    animation:fadeUp .8s ease;
-
+        0 10px 25px rgba(37, 99, 235, 0.28);
 }
 
 
-/* ================= Progress ================= */
+/* =========================================
+   TITLE
+   ========================================= */
 
-.progress-text{
+.welcome-card h1 {
+    margin-top: 25px;
+    margin-bottom: 8px;
 
-    color:rgba(255,255,255,.65);
+    font-size: clamp(36px, 5vw, 58px);
 
-    font-size:15px;
+    line-height: 1.1;
 
-    font-weight:600;
+    font-weight: 700;
 
-    margin-bottom:25px;
+    color: #ffffff;
 
-    letter-spacing:1px;
-
-    text-transform:uppercase;
-
+    text-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.18);
 }
 
 
-/* ================= Logo ================= */
+.welcome-card h4 {
+    margin-bottom: 18px;
 
-.welcome-logo{
+    font-size: clamp(18px, 2.5vw, 24px);
 
-    width:110px;
+    font-weight: 500;
 
-    margin-bottom:25px;
-
-    filter:drop-shadow(
-        0 0 20px rgba(255,255,255,.45)
-    );
-
-    animation:float 3s ease-in-out infinite;
-
+    color: rgba(255, 255, 255, 0.88);
 }
 
 
-/* ================= Badge ================= */
+.welcome-card > p {
+    max-width: 680px;
 
-.badge{
+    margin: 0 auto;
 
-    font-size:14px;
+    font-size: 16px;
 
-    font-weight:500;
+    line-height: 1.8;
 
-    margin-bottom:25px;
-
+    color: rgba(255, 255, 255, 0.76);
 }
 
 
-/* ================= Text ================= */
+/* =========================================
+   INFO BOX
+   ========================================= */
 
-.welcome-card h1{
+.info-box {
+    margin-top: 35px;
 
-    color:#fff;
+    display: grid;
 
-    font-size:52px;
+    grid-template-columns: repeat(3, 1fr);
 
-    font-weight:700;
-
-    margin-bottom:10px;
-
-    line-height:1.2;
-
-}
-
-.welcome-card h4{
-
-    color:rgba(255,255,255,.75);
-
-    font-size:22px;
-
-    font-weight:500;
-
-    margin-bottom:25px;
-
-    line-height:1.4;
-
-}
-
-.welcome-card p{
-
-    color:#fff;
-
-    font-size:19px;
-
-    line-height:1.8;
-
-    max-width:680px;
-
-    margin:0 auto 45px;
-
+    gap: 16px;
 }
 
 
-/* ================= Info ================= */
+.info-item {
+    padding: 22px 15px;
 
-.info-box{
+    border-radius: 20px;
 
-    display:flex;
+    background: rgba(255, 255, 255, 0.075);
 
-    justify-content:center;
+    border: 1px solid rgba(255, 255, 255, 0.11);
 
-    gap:20px;
-
-    flex-wrap:wrap;
-
-    margin-bottom:35px;
-
+    transition: 0.3s ease;
 }
 
-.info-item{
 
-    width:190px;
+.info-item:hover {
+    transform: translateY(-4px);
 
-    padding:25px;
+    background: rgba(255, 255, 255, 0.12);
 
-    border-radius:22px;
-
-    background:rgba(255,255,255,.08);
-
-    border:1px solid rgba(255,255,255,.15);
-
-    transition:.35s;
-
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.info-item:hover{
 
-    transform:translateY(-8px);
+.info-item h3 {
+    margin: 0 0 8px;
 
-    background:rgba(255,255,255,.15);
+    font-size: 28px;
+}
+
+
+.info-item h5 {
+    margin: 0 0 6px;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    color: #ffffff;
+}
+
+
+.info-item span {
+    font-size: 12px;
+
+    color: rgba(255, 255, 255, 0.68);
+}
+
+
+/* =========================================
+   NOTICE
+   ========================================= */
+
+.welcome-card .alert {
+    margin-top: 30px !important;
+
+    padding: 20px 24px;
+
+    border-radius: 18px;
+
+    border: 1px solid rgba(96, 165, 250, 0.25);
+
+    background: rgba(37, 99, 235, 0.15);
+
+    color: rgba(255, 255, 255, 0.82);
+
+    text-align: left;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+.welcome-card .alert strong {
+    color: #ffffff;
+}
+
+
+/* =========================================
+   BUTTON
+   ========================================= */
+
+.welcome-card .btn {
+    border: none;
+
+    color: #1450b8;
+
+    background: #ffffff;
+
+    font-size: 15px;
+
+    padding: 13px 32px !important;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,.25);
+        0 12px 30px rgba(0, 0, 0, 0.20);
 
-}
-
-.info-item h3{
-
-    font-size:42px;
-
-    margin-bottom:15px;
-
-    color:#fff;
-
-}
-
-.info-item h5{
-
-    color:#fff;
-
-    font-size:18px;
-
-    margin-bottom:8px;
-
-}
-
-.info-item span{
-
-    color:rgba(255,255,255,.75);
-
-    font-size:16px;
-
+    transition: all 0.3s ease;
 }
 
 
-/* ================= Alert ================= */
+.welcome-card .btn:hover {
+    transform: translateY(-3px);
 
-.alert{
+    background: #ffffff;
 
-    border:none;
-
-    border-radius:18px;
-
-    background:rgba(255,255,255,.10);
-
-    color:#fff;
-
-    backdrop-filter:blur(10px);
-
-    -webkit-backdrop-filter:blur(10px);
-
-}
-
-
-/* ================= Button ================= */
-
-.btn{
-
-    padding:15px 45px;
-
-    font-size:18px;
-
-    transition:.35s;
-
-    border-radius:50px;
-
-}
-
-.btn:hover{
-
-    transform:translateY(-5px);
+    color: #0f4db8;
 
     box-shadow:
-        0 15px 35px rgba(255,255,255,.30);
-
+        0 16px 35px rgba(0, 0, 0, 0.28);
 }
 
 
-/* ================= Footer ================= */
+/* =========================================
+   FOOTER
+   ========================================= */
 
-.welcome-footer{
+.welcome-footer {
+    margin-top: 35px !important;
 
-    color:rgba(255,255,255,.55);
+    font-size: 12px;
 
-    font-size:14px;
+    color: rgba(255, 255, 255, 0.48);
 
-    margin-top:40px;
-
+    letter-spacing: 0.3px;
 }
 
 
-/* ================= Animation ================= */
+/* =========================================
+   TABLET
+   ========================================= */
 
-@keyframes float{
+@media (max-width: 768px) {
 
-    0%{
-
-        transform:translateY(0);
-
+    .welcome-container {
+        padding: 30px 15px;
     }
 
-    50%{
+    .welcome-card {
+        padding: 40px 28px;
 
-        transform:translateY(-10px);
-
+        border-radius: 26px;
     }
 
-    100%{
-
-        transform:translateY(0);
-
+    .welcome-logo {
+        width: 90px;
+        height: 90px;
     }
 
-}
-
-@keyframes bgMove{
-
-    0%{
-
-        background-position:0% 50%;
-
+    .welcome-card h1 {
+        font-size: 40px;
     }
 
-    50%{
-
-        background-position:100% 50%;
-
+    .welcome-card h4 {
+        font-size: 20px;
     }
 
-    100%{
-
-        background-position:0% 50%;
-
+    .welcome-card > p {
+        font-size: 14px;
     }
 
-}
-
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-
-        transform:translateY(40px);
-
+    .info-box {
+        gap: 10px;
     }
 
-    to{
-
-        opacity:1;
-
-        transform:translateY(0);
-
+    .info-item {
+        padding: 18px 10px;
     }
-
 }
 
 
-/* ================= Tablet ================= */
+/* =========================================
+   MOBILE
+   ========================================= */
 
-@media(max-width:992px){
+@media (max-width: 576px) {
 
-    body{
-
-        padding:25px;
-
+    body {
+        min-height: 100vh;
     }
 
-    .welcome-card{
+    .welcome-container {
+        min-height: 100vh;
 
-        padding:50px 40px;
-
+        padding: 18px 12px;
     }
 
-    .welcome-card h1{
+    .welcome-card {
+        width: 100%;
 
-        font-size:46px;
+        padding: 32px 18px;
 
+        border-radius: 24px;
     }
 
-    .welcome-card h4{
+    .progress-text {
+        font-size: 12px;
 
-        font-size:20px;
+        letter-spacing: 1.6px;
 
+        margin-bottom: 22px;
     }
 
-    .welcome-card p{
+    .welcome-logo {
+        width: 82px;
+        height: 82px;
 
-        font-size:18px;
-
+        margin-bottom: 18px;
     }
 
+    .welcome-card .badge {
+        font-size: 11px;
+
+        padding: 9px 17px !important;
+    }
+
+    .welcome-card h1 {
+        margin-top: 22px;
+
+        font-size: 36px;
+
+        line-height: 1.12;
+    }
+
+    .welcome-card h4 {
+        font-size: 17px;
+
+        margin-bottom: 14px;
+    }
+
+    .welcome-card > p {
+        font-size: 13px;
+
+        line-height: 1.7;
+    }
+
+    .info-box {
+        grid-template-columns: 1fr;
+
+        gap: 10px;
+
+        margin-top: 25px;
+    }
+
+    .info-item {
+        display: flex;
+
+        align-items: center;
+
+        text-align: left;
+
+        padding: 14px 16px;
+
+        border-radius: 16px;
+    }
+
+    .info-item h3 {
+        width: 45px;
+
+        margin: 0 12px 0 0;
+
+        font-size: 25px;
+
+        text-align: center;
+    }
+
+    .info-item h5 {
+        margin: 0 0 2px;
+
+        font-size: 13px;
+    }
+
+    .info-item span {
+        font-size: 11px;
+    }
+
+    .welcome-card .alert {
+        font-size: 12px;
+
+        line-height: 1.65;
+
+        padding: 16px 17px;
+
+        margin-top: 22px !important;
+    }
+
+    .welcome-card .btn {
+        width: 100%;
+
+        font-size: 14px;
+
+        padding: 13px 20px !important;
+    }
+
+    .welcome-footer {
+        margin-top: 25px !important;
+
+        font-size: 10px;
+    }
 }
 
 
-/* ================= Mobile ================= */
+/* =========================================
+   VERY SMALL PHONE
+   ========================================= */
 
-@media(max-width:768px){
+@media (max-width: 380px) {
 
-    body{
-
-        min-height:100vh;
-
-        padding:15px;
-
-        align-items:center;
-
+    .welcome-card {
+        padding: 28px 15px;
     }
 
-    .welcome-container{
-
-        width:100%;
-
+    .welcome-card h1 {
+        font-size: 32px;
     }
 
-    .welcome-card{
-
-        width:100%;
-
-        padding:35px 20px;
-
-        border-radius:24px;
-
+    .welcome-card h4 {
+        font-size: 16px;
     }
 
-    .progress-text{
-
-        font-size:12px;
-
-        margin-bottom:20px;
-
-        letter-spacing:.7px;
-
+    .welcome-card > p {
+        font-size: 12px;
     }
 
-    .welcome-logo{
-
-        width:85px;
-
-        margin-bottom:20px;
-
+    .welcome-logo {
+        width: 75px;
+        height: 75px;
     }
-
-    .badge{
-
-        font-size:12px;
-
-        margin-bottom:18px;
-
-    }
-
-    .welcome-card h1{
-
-        font-size:32px;
-
-        line-height:1.2;
-
-        margin-bottom:12px;
-
-    }
-
-    .welcome-card h4{
-
-        font-size:17px;
-
-        line-height:1.4;
-
-        margin-bottom:20px;
-
-    }
-
-    .welcome-card p{
-
-        font-size:15px;
-
-        line-height:1.7;
-
-        margin-bottom:30px;
-
-    }
-
-    .info-box{
-
-        gap:12px;
-
-        margin-bottom:25px;
-
-    }
-
-    .info-item{
-
-        width:100%;
-
-        padding:20px;
-
-        border-radius:18px;
-
-    }
-
-    .info-item h3{
-
-        font-size:34px;
-
-        margin-bottom:8px;
-
-    }
-
-    .info-item h5{
-
-        font-size:16px;
-
-    }
-
-    .info-item span{
-
-        font-size:14px;
-
-    }
-
-    .alert{
-
-        font-size:13px;
-
-        line-height:1.6;
-
-        padding:15px;
-
-    }
-
-    .btn{
-
-        width:100%;
-
-        padding:13px 20px;
-
-        font-size:16px;
-
-    }
-
-    .welcome-footer{
-
-        font-size:12px;
-
-        margin-top:25px;
-
-    }
-
-}
-
-
-/* ================= Small Phone ================= */
-
-@media(max-width:400px){
-
-    body{
-
-        padding:10px;
-
-    }
-
-    .welcome-card{
-
-        padding:28px 16px;
-
-        border-radius:20px;
-
-    }
-
-    .welcome-logo{
-
-        width:75px;
-
-    }
-
-    .welcome-card h1{
-
-        font-size:28px;
-
-    }
-
-    .welcome-card h4{
-
-        font-size:15px;
-
-    }
-
-    .welcome-card p{
-
-        font-size:14px;
-
-    }
-
-    .info-item{
-
-        padding:18px;
-
-    }
-
 }
