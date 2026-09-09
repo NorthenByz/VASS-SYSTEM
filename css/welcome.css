@@ -1,0 +1,422 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    overflow-x:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #081B5E 0%,
+        #1D4ED8 50%,
+        #4F7BFF 100%
+    );
+
+    background-size:300% 300%;
+
+    animation:bgMove 12s ease infinite;
+
+    position:relative;
+
+}
+
+/* ================= Background Glow ================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:600px;
+    height:600px;
+
+    top:-220px;
+    right:-180px;
+
+    background:#4F7BFF;
+
+    border-radius:50%;
+
+    filter:blur(180px);
+
+    opacity:.18;
+
+    z-index:-1;
+
+}
+
+/* ================= Container ================= */
+
+.welcome-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* ================= Card ================= */
+
+.welcome-card{
+
+    width:900px;
+
+    max-width:100%;
+
+    padding:60px;
+
+    text-align:center;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+    animation:fadeUp .8s ease;
+
+}
+
+/* ================= Progress ================= */
+
+.progress-text{
+
+    color:rgba(255,255,255,.65);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+}
+
+/* ================= Logo ================= */
+
+.welcome-logo{
+
+    width:110px;
+
+    margin-bottom:25px;
+
+    filter:drop-shadow(0 0 20px rgba(255,255,255,.45));
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+/* ================= Badge ================= */
+
+.badge{
+
+    font-size:14px;
+
+    font-weight:500;
+
+    margin-bottom:25px;
+
+}
+
+/* ================= Text ================= */
+
+.welcome-card h1{
+
+    color:#fff;
+
+    font-size:52px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.welcome-card h4{
+
+    color:rgba(255,255,255,.75);
+
+    font-size:22px;
+
+    font-weight:500;
+
+    margin-bottom:25px;
+
+}
+
+.welcome-card p{
+
+    color:#fff;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    max-width:680px;
+
+    margin:0 auto 45px;
+
+}
+
+/* ================= Info ================= */
+
+.info-box{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+    margin-bottom:35px;
+
+}
+
+.info-item{
+
+    width:190px;
+
+    padding:25px;
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    transition:.35s;
+
+}
+
+.info-item:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.15);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.info-item h3{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.info-item h5{
+
+    color:#fff;
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+}
+
+.info-item span{
+
+    color:rgba(255,255,255,.75);
+
+    font-size:16px;
+
+}
+
+/* ================= Alert ================= */
+
+.alert{
+
+    border:none;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.10);
+
+    color:#fff;
+
+    backdrop-filter:blur(10px);
+
+}
+
+/* ================= Button ================= */
+
+.btn{
+
+    padding:15px 45px;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(255,255,255,.30);
+
+}
+
+/* ================= Footer ================= */
+
+.welcome-footer{
+
+    color:rgba(255,255,255,.55);
+
+    font-size:14px;
+
+    margin-top:40px;
+
+}
+
+/* ================= Animation ================= */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes bgMove{
+
+    0%{
+
+        background-position:0% 50%;
+
+    }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ================= Responsive ================= */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:20px;
+
+    }
+
+    .welcome-card{
+
+        padding:40px 25px;
+
+    }
+
+    .welcome-card h1{
+
+        font-size:38px;
+
+    }
+
+    .welcome-card h4{
+
+        font-size:18px;
+
+    }
+
+    .welcome-card p{
+
+        font-size:17px;
+
+    }
+
+    .welcome-logo{
+
+        width:90px;
+
+    }
+
+    .info-item{
+
+        width:100%;
+
+    }
+
+}

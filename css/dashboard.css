@@ -1,0 +1,1098 @@
+/* ==========================================
+   VASS DASHBOARD CSS
+   PART 1
+========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #030B2F 0%,
+        #081B5E 45%,
+        #2563EB 100%
+    );
+
+    background-size:300% 300%;
+
+    animation:bgMove 15s ease infinite;
+
+    overflow-x:hidden;
+
+    position:relative;
+
+    padding:40px;
+
+}
+
+/* ================= BACKGROUND GLOW ================= */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:700px;
+    height:700px;
+
+    top:-250px;
+    right:-250px;
+
+    border-radius:50%;
+
+    background:#4F7BFF;
+
+    filter:blur(220px);
+
+    opacity:.18;
+
+    z-index:-2;
+
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:650px;
+    height:650px;
+
+    left:-250px;
+    bottom:-250px;
+
+    border-radius:50%;
+
+    background:#7DD3FC;
+
+    filter:blur(220px);
+
+    opacity:.12;
+
+    z-index:-2;
+
+}
+
+/* ================= CONTAINER ================= */
+
+.dashboard-container{
+
+    width:1300px;
+
+    max-width:100%;
+
+    margin:auto;
+
+}
+
+/* ================= HEADER ================= */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:35px;
+
+}
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.logo{
+
+    width:70px;
+
+    filter:drop-shadow(
+        0 0 18px rgba(255,255,255,.35)
+    );
+
+}
+
+.logo-area h3{
+
+    color:#fff;
+
+    font-size:28px;
+
+    font-weight:700;
+
+    margin:0;
+
+}
+
+.logo-area span{
+
+    color:rgba(255,255,255,.75);
+
+    font-size:15px;
+
+}
+
+.user-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:12px 22px;
+
+    border-radius:60px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+}
+
+.user-avatar{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #60A5FA
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.user-avatar i{
+
+    color:white;
+
+    font-size:28px;
+
+}
+
+.user-area h6{
+
+    color:white;
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+.user-area span{
+
+    color:rgba(255,255,255,.70);
+
+    font-size:14px;
+
+}
+
+/* ================= HERO ================= */
+
+.hero-dashboard{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:55px;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:
+
+        0 25px 70px rgba(0,0,0,.35),
+
+        inset 0 1px 0 rgba(255,255,255,.12);
+
+    margin-bottom:35px;
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-badge{
+
+    display:inline-block;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #3B82F6
+    );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left h1{
+
+    color:white;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.hero-left h2{
+
+    color:#8CC8FF;
+
+    font-size:28px;
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.learning-style{
+
+    display:inline-block;
+
+    padding:12px 24px;
+
+    border-radius:50px;
+
+    background:rgba(79,123,255,.18);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:white;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+    margin-bottom:25px;
+
+}
+
+.hero-left p{
+
+    color:rgba(255,255,255,.82);
+
+    line-height:1.9;
+
+    font-size:18px;
+
+    max-width:620px;
+
+}
+
+/* ================= BUTTON ================= */
+
+.hero-buttons{
+
+    margin-top:35px;
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.hero-buttons .btn{
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+}
+
+.btn-primary{
+
+    background:linear-gradient(
+        135deg,
+        #2563EB,
+        #4F7BFF
+    );
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.btn-outline-light:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* ================= SCORE ================= */
+
+.hero-right{
+
+    width:320px;
+
+}
+
+.score-card{
+
+    background:rgba(255,255,255,.08);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    text-align:center;
+
+    border:1px solid rgba(255,255,255,.12);
+
+}
+
+.score-circle{
+
+    width:220px;
+
+    height:220px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:conic-gradient(
+
+        #4F7BFF 82%,
+
+        rgba(255,255,255,.10) 0
+
+    );
+
+    box-shadow:
+
+        0 0 35px rgba(79,123,255,.35);
+
+}
+
+.score-number{
+
+    font-size:52px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+.score-text{
+
+    color:#CFE7FF;
+
+    font-size:18px;
+
+}
+
+.score-status{
+
+    margin-top:25px;
+
+    color:#FFD966;
+
+    font-weight:600;
+
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes bgMove{
+
+    0%{
+
+        background-position:0% 50%;
+
+    }
+
+    50%{
+
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
+
+    }
+
+}
+/* ==========================================
+   QUICK SUMMARY
+========================================== */
+
+.summary-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+    margin-bottom:40px;
+
+}
+
+.summary-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.12);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+}
+
+.summary-card i{
+
+    font-size:42px;
+
+    color:#7CC7FF;
+
+    margin-bottom:18px;
+
+}
+
+.summary-card h4{
+
+    color:white;
+
+    font-size:18px;
+
+    margin-bottom:6px;
+
+}
+
+.summary-card span{
+
+    color:rgba(255,255,255,.70);
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+   SECTION TITLE
+========================================== */
+
+.section-title{
+
+    color:white;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+/* ==========================================
+   PROFILE SECTION
+========================================== */
+
+.profile-section{
+
+    margin-bottom:45px;
+
+}
+
+.profile-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+}
+
+.profile-card{
+
+    padding:30px;
+
+    border-radius:26px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    text-align:center;
+
+    transition:.35s;
+
+}
+
+.profile-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.30);
+
+}
+
+.profile-card .emoji{
+
+    font-size:56px;
+
+    display:block;
+
+    margin-bottom:15px;
+
+}
+
+.profile-card h4{
+
+    color:white;
+
+    margin-bottom:10px;
+
+}
+
+.profile-card h2{
+
+    color:white;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+/* ==========================================
+   MINI PROGRESS
+========================================== */
+
+.mini-progress{
+
+    width:100%;
+
+    height:12px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.12);
+
+    overflow:hidden;
+
+}
+
+.mini-fill{
+
+    height:100%;
+
+    border-radius:50px;
+
+}
+
+/* Individual Colour */
+
+.visual .mini-fill{
+
+    background:#3B82F6;
+
+}
+
+.auditory .mini-fill{
+
+    background:#8B5CF6;
+
+}
+
+.read .mini-fill{
+
+    background:#F59E0B;
+
+}
+
+.kinesthetic .mini-fill{
+
+    background:#22C55E;
+
+}
+
+/* Card Accent */
+
+.visual{
+
+    border-top:5px solid #3B82F6;
+
+}
+
+.auditory{
+
+    border-top:5px solid #8B5CF6;
+
+}
+
+.read{
+
+    border-top:5px solid #F59E0B;
+
+}
+
+.kinesthetic{
+
+    border-top:5px solid #22C55E;
+
+}
+/* ==========================================
+   LEARNING INSIGHTS
+========================================== */
+
+.insight-section{
+
+    margin-bottom:45px;
+
+}
+
+.insight-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+}
+
+.insight-card{
+
+    padding:30px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    transition:.35s;
+
+}
+
+.insight-card:hover{
+
+    transform:translateY(-8px);
+
+    background:rgba(255,255,255,.12);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.25);
+
+}
+
+.insight-card i{
+
+    font-size:40px;
+
+    color:#8CC8FF;
+
+    margin-bottom:20px;
+
+}
+
+.insight-card h4{
+
+    color:#fff;
+
+    margin-bottom:15px;
+
+    font-size:20px;
+
+}
+
+.insight-card p{
+
+    color:rgba(255,255,255,.75);
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+/* ==========================================
+   RECOMMENDATION
+========================================== */
+
+.recommendation-section{
+
+    margin-bottom:45px;
+
+}
+
+.recommend-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:22px;
+
+}
+
+.recommend-card{
+
+    padding:28px;
+
+    text-align:center;
+
+    border-radius:24px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+}
+
+.recommend-card:hover{
+
+    transform:translateY(-8px) scale(1.03);
+
+    background:rgba(255,255,255,.14);
+
+    box-shadow:0 18px 45px rgba(0,0,0,.30);
+
+}
+
+.recommend-card{
+
+    font-size:48px;
+
+}
+
+.recommend-card h5{
+
+    color:#fff;
+
+    margin-top:18px;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.dashboard-footer{
+
+    margin-top:60px;
+
+    padding:30px;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,.12);
+
+}
+
+.dashboard-footer p{
+
+    color:rgba(255,255,255,.60);
+
+    margin:0;
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+.summary-section{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.profile-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.recommend-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+.insight-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero-dashboard{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.hero-left p{
+
+margin:auto;
+
+}
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+}
+
+@media(max-width:768px){
+
+body{
+
+padding:20px;
+
+}
+
+.dashboard-header{
+
+flex-direction:column;
+
+gap:20px;
+
+}
+
+.logo-area{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.summary-section{
+
+grid-template-columns:1fr;
+
+}
+
+.profile-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.recommend-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.hero-left h1{
+
+font-size:36px;
+
+}
+
+.hero-left h2{
+
+font-size:22px;
+
+}
+
+.score-circle{
+
+width:180px;
+
+height:180px;
+
+}
+
+.score-number{
+
+font-size:42px;
+
+}
+
+.hero-buttons{
+
+flex-direction:column;
+
+}
+
+.hero-buttons .btn{
+
+width:100%;
+
+}
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#081B5E;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#3B82F6;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#60A5FA;
+
+}
+
+/* ==========================================
+   FADE ANIMATION
+========================================== */
+
+.hero-dashboard,
+.summary-card,
+.profile-card,
+.insight-card,
+.recommend-card{
+
+animation:fadeUp .8s ease;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}

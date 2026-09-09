@@ -1,0 +1,310 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+    overflow-x:hidden;
+
+    background:linear-gradient(
+        135deg,
+        #081B5E 0%,
+        #1D4ED8 50%,
+        #4F7BFF 100%
+    );
+
+    background-size:300% 300%;
+
+    animation:bgMove 12s ease infinite;
+
+    position:relative;
+
+}
+
+/* Background Glow */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+
+    width:600px;
+    height:600px;
+
+    top:-220px;
+    right:-180px;
+
+    background:#4F7BFF;
+
+    border-radius:50%;
+
+    filter:blur(180px);
+
+    opacity:.18;
+
+    z-index:-1;
+
+}
+
+/* Container */
+
+.student-container{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+/* Card */
+
+.student-card{
+
+    width:700px;
+
+    max-width:100%;
+
+    padding:55px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    background:rgba(255,255,255,.10);
+
+    backdrop-filter:blur(22px);
+    -webkit-backdrop-filter:blur(22px);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+    animation:fadeUp .8s ease;
+
+}
+
+/* Progress */
+
+.progress-text{
+
+    color:rgba(255,255,255,.65);
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+
+}
+
+/* Logo */
+
+.student-logo{
+
+    width:90px;
+
+    margin-bottom:20px;
+
+    animation:float 3s ease-in-out infinite;
+
+}
+
+/* Heading */
+
+.student-card h1{
+
+    color:#fff;
+
+    font-size:42px;
+
+    margin-bottom:12px;
+
+}
+
+.student-card p{
+
+    color:rgba(255,255,255,.75);
+
+    margin-bottom:35px;
+
+    font-size:18px;
+
+}
+
+/* Form */
+
+.form-label{
+
+    color:#fff;
+
+    font-weight:500;
+
+    text-align:left;
+
+    display:block;
+
+    margin-bottom:8px;
+
+}
+
+.form-control,
+.form-select{
+
+    height:55px;
+
+    border-radius:15px;
+
+    border:none;
+
+    background:rgba(255,255,255,.15);
+
+    color:#fff;
+
+    backdrop-filter:blur(10px);
+
+}
+
+.form-control::placeholder{
+
+    color:rgba(255,255,255,.60);
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    background:rgba(255,255,255,.20);
+
+    color:#fff;
+
+    box-shadow:0 0 0 .2rem rgba(79,123,255,.35);
+
+}
+
+.form-select option{
+
+    color:#000;
+
+}
+
+/* Button */
+
+.btn{
+
+    margin-top:20px;
+
+    padding:15px;
+
+    font-size:18px;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 35px rgba(255,255,255,.30);
+
+}
+
+/* Animation */
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+@keyframes bgMove{
+
+    0%{
+        background-position:0% 50%;
+    }
+
+    50%{
+        background-position:100% 50%;
+    }
+
+    100%{
+        background-position:0% 50%;
+    }
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+    .student-card{
+
+        padding:35px 25px;
+
+    }
+
+    .student-card h1{
+
+        font-size:34px;
+
+    }
+
+}
