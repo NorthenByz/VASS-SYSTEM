@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>VASS Assessment</title>
+
+    <link rel="stylesheet" href="css/assessment.css">
+</head>
+
+<body>
+
+<div class="assessment-container">
+
+    <!-- HEADER -->
+    <header class="assessment-header">
+
+        <div>
+            <h1>Learning Journey</h1>
+            <p>Discover Your Learning Preference</p>
+        </div>
+
+        <div class="question-counter">
+            Question <span id="currentQuestion">1</span> of 30
+        </div>
+
+    </header>
+
+
+    <!-- PROGRESS -->
+    <div class="progress-section">
+
+        <div class="progress-info">
+            <span>Your Progress</span>
+            <span id="progressPercent">3%</span>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progressFill" class="progress-fill"></div>
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION -->
+    <main class="question-wrapper visual" id="questionWrapper">
+
+        <!-- CATEGORY -->
+        <div class="category-section">
+
+            <div class="category-icon" id="categoryIcon">
+                🎥
+            </div>
+
+            <div>
+
+                <div class="category-badge" id="categoryName">
+                    VISUAL
+                </div>
+
+                <p id="categoryDescription">
+                    See • Observe • Imagine
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- QUESTION BOX -->
+        <div class="question-box">
+
+            <span class="question-label">
+                QUESTION <span id="questionNumber">01</span>
+            </span>
+
+            <h2 id="questionText">
+                Saya mudah faham apabila pengajaran diselitkan dengan tontonan video.
+            </h2>
+
+        </div>
+
+
+        <!-- ANSWERS -->
+        <div class="answers-container" id="answersContainer">
+
+        </div>
+
+    </main>
+
+
+    <!-- NAVIGATION -->
+    <div class="navigation">
+
+        <button
+            id="previousBtn"
+            class="nav-btn previous-btn"
+            disabled>
+            ← Previous
+        </button>
+
+        <button
+            id="nextBtn"
+            class="nav-btn next-btn">
+            Next →
+        </button>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+    <div id="message" class="message"></div>
+
+</div>
+
+
+<script>
+
+/* =========================================
+   VASS 30-ITEM INSTRUMENT
+========================================= */
+
+const questions = [
+
+    /* VISUAL */
+
+    {
+        id: 1,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya mudah faham apabila pengajaran diselitkan dengan tontonan video."
+    },
+
+    {
+        id: 2,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Carta, rajah dan peta membantu saya memahami apa yang pensyarah sampaikan."
+    },
+
+    {
+        id: 3,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya mahir dan gemar membina grafik dan carta dari nota kuliah."
+    },
+
+    {
+        id: 4,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya dapat memahami dan mengikuti arahan dengan mudah di peta."
+    },
+
+    {
+        id: 5,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya seronok pada paparan aktiviti yang mempunyai perincian visual."
+    },
+
+    {
+        id: 6,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya belajar sesuatu dengan lebih baik sekiranya saya dapat melihatnya."
+    },
+
+    {
+        id: 7,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya boleh menggambarkan sesuatu visual dengan dari fikiran saya."
+    },
+
+    {
+        id: 8,
+        category: "visual",
+        name: "VISUAL",
+        icon: "🎥",
+        description: "See • Observe • Imagine",
+        text: "Saya lebih faham dengan melihat gambar berbentuk grafik daripada membaca penerangan."
+    },
+
+
+    /* AUDIO */
+
+    {
+        id: 9,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya lebih suka belajar dengan mendengar kuliah daripada membaca nota."
+    },
+
+    {
+        id: 10,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya memerlukan arahan lisan untuk sesuatu tugasan."
+    },
+
+    {
+        id: 11,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya dapat memahami dengan jelas arahan walaupun saya tidak dapat melihatnya."
+    },
+
+    {
+        id: 12,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya dapat mengenal pasti seseorang dengan suara mereka. (cth., di telefon)"
+    },
+
+    {
+        id: 13,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya dapat mengingati sesuatu perkara dengan baik hanya melalui kuliah yang merangkumi maklumat, penjelasan dan perbincangan."
+    },
+
+    {
+        id: 14,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya lebih suka mendengar ceramah atau ucapan yang baik daripada membaca tentang bahan yang sama dalam buku teks."
+    },
+
+    {
+        id: 15,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya berjaya dalam mata pelajaran akademik hanya dengan mendengar rakaman kuliah."
+    },
+
+    {
+        id: 16,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya lebih memahami arahan aktiviti secara lisan dari pensyarah daripada yang ditulis dalam portal."
+    },
+
+    {
+        id: 17,
+        category: "audio",
+        name: "AUDIO",
+        icon: "🎧",
+        description: "Listen • Discuss • Remember",
+        text: "Saya merasakan kuliah yang disampaikan oleh pensyarah lebih bermakna daripada buku rujukan yang saya baca."
+    },
+
+
+    /* INTERPERSONAL */
+
+    {
+        id: 18,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya belajar dengan lebih baik semasa kuliah dalam talian daripada belajar sendiri."
+    },
+
+    {
+        id: 19,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Perbincangan semasa kuliah dalam talian memberi saya lebih semangat."
+    },
+
+    {
+        id: 20,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya seronok melaksanakan aktiviti berkumpulan dalam portal yang disediakan."
+    },
+
+    {
+        id: 21,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya lebih banyak meluangkan masa belajar ketika bersama melaksanakan aktiviti berkumpulan."
+    },
+
+    {
+        id: 22,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya seronok bekerja dengan dua atau tiga rakan sekelas."
+    },
+
+    {
+        id: 23,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya memahami dengan lebih mudah sesuatu perkara apabila dilaksanakan secara perbincangan."
+    },
+
+    {
+        id: 24,
+        category: "interpersonal",
+        name: "INTERPERSONAL",
+        icon: "👥",
+        description: "Collaborate • Discuss • Share",
+        text: "Saya seronok membincangkan idea pembelajaran saya dengan rakan-rakan."
+    },
+
+
+    /* INTRAPERSONAL */
+
+    {
+        id: 25,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Saya lebih suka permainan dan aktiviti individu atau satu-satu."
+    },
+
+    {
+        id: 26,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Apabila saya belajar sendiri, saya ingat sesuatu perkara dengan lebih baik."
+    },
+
+    {
+        id: 27,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Saya suka menemui perkara sendiri daripada menjelaskan semuanya kepada saya."
+    },
+
+    {
+        id: 28,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Apabila saya bekerja sendiri, saya belajar dengan lebih baik."
+    },
+
+    {
+        id: 29,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Saya lebih suka mengusahakan projek sendiri."
+    },
+
+    {
+        id: 30,
+        category: "intrapersonal",
+        name: "INTRAPERSONAL",
+        icon: "🧠",
+        description: "Reflect • Explore • Learn",
+        text: "Saya lebih suka bekerja sendiri."
+    }
+
+];
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let current = 0;
+
+let answers = {};
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const wrapper =
+    document.getElementById("questionWrapper");
+
+const currentQuestion =
+    document.getElementById("currentQuestion");
+
+const questionNumber =
+    document.getElementById("questionNumber");
+
+const questionText =
+    document.getElementById("questionText");
+
+const categoryIcon =
+    document.getElementById("categoryIcon");
+
+const categoryName =
+    document.getElementById("categoryName");
+
+const categoryDescription =
+    document.getElementById("categoryDescription");
+
+const answersContainer =
+    document.getElementById("answersContainer");
+
+const progressFill =
+    document.getElementById("progressFill");
+
+const progressPercent =
+    document.getElementById("progressPercent");
+
+const previousBtn =
+    document.getElementById("previousBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+const message =
+    document.getElementById("message");
+
+
+/* =========================================
+   LOAD QUESTION
+========================================= */
+
+function loadQuestion() {
+
+    const q = questions[current];
+
+    currentQuestion.textContent =
+        q.id;
+
+    questionNumber.textContent =
+        String(q.id).padStart(2, "0");
+
+    questionText.textContent =
+        q.text;
+
+    categoryIcon.textContent =
+        q.icon;
+
+    categoryName.textContent =
+        q.name;
+
+    categoryDescription.textContent =
+        q.description;
+
+    wrapper.className =
+        "question-wrapper " + q.category;
+
+
+    /* Progress */
+
+    const progress =
+        (q.id / questions.length) * 100;
+
+    progressFill.style.width =
+        progress + "%";
+
+    progressPercent.textContent =
+        Math.round(progress) + "%";
+
+
+    /* Previous */
+
+    previousBtn.disabled =
+        current === 0;
+
+
+    /* Next */
+
+    if (current === questions.length - 1) {
+
+        nextBtn.textContent =
+            "Finish ✓";
+
+    } else {
+
+        nextBtn.textContent =
+            "Next →";
+
+    }
+
+
+    /* Answers */
+
+    renderAnswers(q);
+
+    message.textContent = "";
+}
+
+
+/* =========================================
+   RENDER ANSWERS
+========================================= */
+
+function renderAnswers(q) {
+
+    answersContainer.innerHTML = "";
+
+
+    const options = [
+
+        {
+            value: 1,
+            text: "Strongly Disagree",
+            className: "strongly-disagree"
+        },
+
+        {
+            value: 2,
+            text: "Disagree",
+            className: "disagree"
+        },
+
+        {
+            value: 3,
+            text: "Neutral",
+            className: "neutral"
+        },
+
+        {
+            value: 4,
+            text: "Agree",
+            className: "agree"
+        },
+
+        {
+            value: 5,
+            text: "Strongly Agree",
+            className: "strongly-agree"
+        }
+
+    ];
+
+
+    options.forEach(function(option) {
+
+        const button =
+            document.createElement("button");
+
+        button.type = "button";
+
+        button.className =
+            "answer-card " + option.className;
+
+        button.innerHTML = `
+            <span class="answer-number">
+                ${option.value}
+            </span>
+
+            <span>
+                ${option.text}
+            </span>
+        `;
+
+
+        /* Previously selected */
+
+        if (
+            answers[q.id] ===
+            option.value
+        ) {
+
+            button.classList.add("selected");
+
+        }
+
+
+        /* Click */
+
+        button.addEventListener(
+            "click",
+            function() {
+
+                answers[q.id] =
+                    option.value;
+
+
+                document
+                    .querySelectorAll(".answer-card")
+                    .forEach(function(item) {
+
+                        item.classList.remove(
+                            "selected"
+                        );
+
+                    });
+
+
+                button.classList.add(
+                    "selected"
+                );
+
+
+                localStorage.setItem(
+                    "vassAnswers",
+                    JSON.stringify(answers)
+                );
+
+
+                message.textContent = "";
+
+            }
+        );
+
+
+        answersContainer.appendChild(button);
+
+    });
+}
+
+
+/* =========================================
+   NEXT
+========================================= */
+
+nextBtn.addEventListener(
+    "click",
+    function() {
+
+        const q =
+            questions[current];
+
+
+        /* No answer */
+
+        if (
+            answers[q.id] ===
+            undefined
+        ) {
+
+            message.textContent =
+                "Please select an answer before continuing.";
+
+            return;
+
+        }
+
+
+        /* Finish */
+
+        if (
+            current ===
+            questions.length - 1
+        ) {
+
+            finishAssessment();
+
+            return;
+
+        }
+
+
+        current++;
+
+        loadQuestion();
+
+    }
+);
+
+
+/* =========================================
+   PREVIOUS
+========================================= */
+
+previousBtn.addEventListener(
+    "click",
+    function() {
+
+        if (current === 0) {
+            return;
+        }
+
+        current--;
+
+        loadQuestion();
+
+    }
+);
+
+
+/* =========================================
+   CALCULATE SCORE
+========================================= */
+
+function calculateScores() {
+
+    const raw = {
+
+        visual: 0,
+
+        audio: 0,
+
+        interpersonal: 0,
+
+        intrapersonal: 0
+
+    };
+
+
+    questions.forEach(function(q) {
+
+        if (
+            answers[q.id] !==
+            undefined
+        ) {
+
+            raw[q.category] +=
+                Number(answers[q.id]);
+
+        }
+
+    });
+
+
+    return raw;
+}
+
+
+/* =========================================
+   SCORE /100
+========================================= */
+
+function calculatePercentage(raw) {
+
+    return {
+
+        visual:
+            Math.round(
+                (raw.visual / 40) * 100
+            ),
+
+        audio:
+            Math.round(
+                (raw.audio / 45) * 100
+            ),
+
+        interpersonal:
+            Math.round(
+                (raw.interpersonal / 35) * 100
+            ),
+
+        intrapersonal:
+            Math.round(
+                (raw.intrapersonal / 30) * 100
+            )
+
+    };
+
+}
+
+
+/* =========================================
+   DOMINANT STYLE
+========================================= */
+
+function findDominant(scores) {
+
+    let dominant =
+        "visual";
+
+    let highest =
+        scores.visual;
+
+
+    Object.keys(scores).forEach(
+        function(category) {
+
+            if (
+                scores[category] >
+                highest
+            ) {
+
+                highest =
+                    scores[category];
+
+                dominant =
+                    category;
+
+            }
+
+        }
+    );
+
+
+    return dominant;
+}
+
+
+/* =========================================
+   FINISH
+========================================= */
+
+function finishAssessment() {
+
+    const raw =
+        calculateScores();
+
+
+    const scores =
+        calculatePercentage(raw);
+
+
+    const dominant =
+        findDominant(scores);
+
+
+    const result = {
+
+        rawScores: raw,
+
+        scores: scores,
+
+        dominantStyle:
+            dominant,
+
+        totalQuestions:
+            30,
+
+        completedAt:
+            new Date().toISOString()
+
+    };
+
+
+    localStorage.setItem(
+        "vassAssessmentResult",
+        JSON.stringify(result)
+    );
+
+
+    localStorage.setItem(
+        "vassAnswers",
+        JSON.stringify(answers)
+    );
+
+
+    window.location.href =
+        "dashboard.html";
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>

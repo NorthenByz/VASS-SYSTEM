@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | VASS Learning Analytics</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link rel="stylesheet"
+          href="css/dashboard.css">
+
+
+<style>
+    .student-info-section {
+        padding: 0 20px 45px;
+    }
+
+    .student-info-card {
+        max-width: 1150px;
+        margin: 0 auto;
+        padding: 24px 28px;
+        border-radius: 20px;
+        background: rgba(255,255,255,.07);
+        border: 1px solid rgba(255,255,255,.12);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        box-shadow: 0 15px 40px rgba(0,0,0,.12);
+    }
+
+    .student-info-heading {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 20px;
+    }
+
+    .student-info-icon {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 14px;
+        background: rgba(255,255,255,.10);
+        font-size: 20px;
+    }
+
+    .student-info-heading span {
+        font-size: 9px;
+        letter-spacing: 1.4px;
+        color: rgba(255,255,255,.55);
+        font-weight: 600;
+    }
+
+    .student-info-heading h3 {
+        margin: 2px 0 0;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .student-info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 12px;
+    }
+
+    .student-detail {
+        padding: 15px 16px;
+        border-radius: 13px;
+        background: rgba(255,255,255,.055);
+        border: 1px solid rgba(255,255,255,.07);
+    }
+
+    .student-detail span {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 9px;
+        color: rgba(255,255,255,.52);
+    }
+
+    .student-detail strong {
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        color: #fff;
+        overflow-wrap: anywhere;
+    }
+
+    @media (max-width: 768px) {
+        .student-info-grid {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .student-info-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+</head>
+
+
+<body>
+
+<div class="dashboard-container">
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="dashboard-header">
+
+    <div class="logo-area">
+
+        <img src="assets/images/logo.png"
+             alt="VASS Logo"
+             class="logo">
+
+        <div>
+
+            <h3>VASS Dashboard</h3>
+
+            <span>Learning Analytics System</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="user-area">
+
+        <div class="user-avatar">
+
+            <i class="bi bi-person-circle"></i>
+
+        </div>
+
+        <div>
+
+            <h6>Welcome Back</h6>
+
+            <span id="studentName">Student</span>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero-dashboard">
+
+    <div class="hero-left">
+
+        <span class="hero-badge">
+            🧠 VASS Learning Analytics
+        </span>
+
+
+        <h1>
+            Congratulations! 🎉
+        </h1>
+
+
+        <h2>
+            Your Dominant Learning Preference
+        </h2>
+
+
+        <div class="learning-style"
+             id="dominantStyle">
+
+            🎥 VISUAL
+
+        </div>
+
+
+        <p id="dominantDescription">
+
+            Based on your responses, your strongest learning preference
+            is Visual Learning.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button class="btn btn-primary" onclick="downloadReport()">
+
+                <i class="bi bi-file-earmark-arrow-down-fill"></i>
+
+                Download Report
+
+            </button>
+
+
+            <button class="btn btn-outline-light"
+                    onclick="retakeAssessment()">
+
+                <i class="bi bi-arrow-repeat"></i>
+
+                Retake Assessment
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-right">
+
+        <div class="score-card">
+
+            <div class="score-circle">
+
+                <div class="score-number"
+                     id="dominantScore">
+
+                    0%
+
+                </div>
+
+
+                <div class="score-text"
+                     id="dominantScoreLabel">
+
+                    Visual
+
+                </div>
+
+            </div>
+
+
+            <div class="score-status">
+
+                ⭐ Strongest Preference
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= QUICK SUMMARY ================= -->
+
+<section class="summary-section">
+
+    <div class="summary-card">
+
+        <i class="bi bi-patch-check-fill"></i>
+
+        <h4>Assessment</h4>
+
+        <span>Completed</span>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <i class="bi bi-clock-fill"></i>
+
+        <h4>Duration</h4>
+
+        <span>8 Minutes</span>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <i class="bi bi-bar-chart-fill"></i>
+
+        <h4>Items</h4>
+
+        <span>30 Questions</span>
+
+    </div>
+
+
+    <div class="summary-card">
+
+        <i class="bi bi-stars"></i>
+
+        <h4>Dominant</h4>
+
+        <span id="summaryDominant">
+
+            Visual
+
+        </span>
+
+    </div>
+
+</section>
+
+
+
+
+<!-- ================= STUDENT INFORMATION ================= -->
+<section class="student-info-section">
+    <div class="student-info-card">
+
+        <div class="student-info-heading">
+            <div class="student-info-icon">
+                <i class="bi bi-person-vcard-fill"></i>
+            </div>
+            <div>
+                <span>STUDENT PROFILE</span>
+                <h3>Your Information</h3>
+            </div>
+        </div>
+
+        <div class="student-info-grid">
+
+            <div class="student-detail">
+                <span>Full Name</span>
+                <strong id="profileStudentName">Student</strong>
+            </div>
+
+            <div class="student-detail">
+                <span>Student ID</span>
+                <strong id="profileStudentId">—</strong>
+            </div>
+
+            <div class="student-detail">
+                <span>Programme / Class</span>
+                <strong id="profileProgramme">—</strong>
+            </div>
+
+            <div class="student-detail">
+                <span>Gender</span>
+                <strong id="profileGender">—</strong>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= LEARNING PROFILE ================= -->
+
+<section class="profile-section">
+
+    <h2 class="section-title">
+
+        📊 Your Learning Profile
+
+    </h2>
+
+
+    <div class="profile-grid">
+
+
+        <!-- VISUAL -->
+
+        <div class="profile-card visual">
+
+            <span class="emoji">🎥</span>
+
+            <h4>Visual</h4>
+
+            <h2 id="visualScore">0%</h2>
+
+            <div class="mini-progress">
+
+                <div id="visualBar"
+                     class="mini-fill"
+                     style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- AUDIO -->
+
+        <div class="profile-card auditory">
+
+            <span class="emoji">🎧</span>
+
+            <h4>Audio</h4>
+
+            <h2 id="audioScore">0%</h2>
+
+            <div class="mini-progress">
+
+                <div id="audioBar"
+                     class="mini-fill"
+                     style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INTERPERSONAL -->
+
+        <div class="profile-card read">
+
+            <span class="emoji">👥</span>
+
+            <h4>Interpersonal</h4>
+
+            <h2 id="interpersonalScore">0%</h2>
+
+            <div class="mini-progress">
+
+                <div id="interpersonalBar"
+                     class="mini-fill"
+                     style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- INTRAPERSONAL -->
+
+        <div class="profile-card kinesthetic">
+
+            <span class="emoji">🧠</span>
+
+            <h4>Intrapersonal</h4>
+
+            <h2 id="intrapersonalScore">0%</h2>
+
+            <div class="mini-progress">
+
+                <div id="intrapersonalBar"
+                     class="mini-fill"
+                     style="width:0%">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= LEARNING INSIGHTS ================= -->
+
+<section class="insight-section">
+
+    <h2 class="section-title">
+
+        📈 Learning Insights
+
+    </h2>
+
+
+    <div class="insight-grid">
+
+
+        <div class="insight-card">
+
+            <i class="bi bi-lightbulb-fill"></i>
+
+            <h4>Strength</h4>
+
+            <p id="strengthText">
+
+                Your learning profile is being analysed.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="insight-card">
+
+            <i class="bi bi-eye-fill"></i>
+
+            <h4>Best Learning Method</h4>
+
+            <p id="methodText">
+
+                Personalised learning recommendations will appear here.
+
+            </p>
+
+        </div>
+
+
+
+        <div class="insight-card">
+
+            <i class="bi bi-arrow-up-circle-fill"></i>
+
+            <h4>Improvement</h4>
+
+            <p id="improvementText">
+
+                Explore other learning preferences to support your learning.
+
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= RECOMMENDATION ================= -->
+
+<section class="recommendation-section">
+
+    <h2 class="section-title">
+
+        ⭐ Personalised Recommendations
+
+    </h2>
+
+
+    <div class="recommend-grid">
+
+        <div class="recommend-card">
+
+            🎥
+
+            <h5>Visual Resources</h5>
+
+        </div>
+
+
+        <div class="recommend-card">
+
+            🎧
+
+            <h5>Audio Learning</h5>
+
+        </div>
+
+
+        <div class="recommend-card">
+
+            👥
+
+            <h5>Collaborative Learning</h5>
+
+        </div>
+
+
+        <div class="recommend-card">
+
+            🧠
+
+            <h5>Self-Directed Learning</h5>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        © 2026 VASS Learning Analytics System
+
+    </p>
+
+</footer>
+
+
+</div>
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+
+<!-- ================= DASHBOARD SCRIPT ================= -->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const savedResult = localStorage.getItem("vassAssessmentResult");
+
+    if (!savedResult) {
+        alert("No assessment result found.");
+        window.location.href = "assessment.html";
+        return;
+    }
+
+    const result = JSON.parse(savedResult);
+    const scores = result.scores || {};
+
+    const categoryInfo = {
+        visual: {
+            name: "Visual",
+            title: "🎥 VISUAL",
+            description: "You show a stronger preference for learning through visual representations such as videos, graphics, diagrams and visual information.",
+            strength: "You may understand information more effectively when concepts are presented visually.",
+            method: "Use videos, diagrams, charts, mind maps and other visual learning resources.",
+            improvement: "Try combining visual materials with discussion and explanation to support a more flexible learning experience."
+        },
+        audio: {
+            name: "Audio",
+            title: "🎧 AUDIO",
+            description: "You show a stronger preference for learning through listening, explanations, lectures and discussion.",
+            strength: "You may benefit from listening to explanations and discussing ideas.",
+            method: "Use recorded lectures, verbal explanations, discussions and audio resources.",
+            improvement: "Try combining listening with visual materials such as diagrams, charts and notes."
+        },
+        interpersonal: {
+            name: "Interpersonal",
+            title: "👥 INTERPERSONAL",
+            description: "You show a stronger preference for learning through interaction, collaboration and discussion with others.",
+            strength: "You may learn effectively through collaboration and exchanging ideas with others.",
+            method: "Use group discussions, collaborative activities, peer learning and teamwork.",
+            improvement: "Try including individual reflection and self-directed activities alongside group learning."
+        },
+        intrapersonal: {
+            name: "Intrapersonal",
+            title: "🧠 INTRAPERSONAL",
+            description: "You show a stronger preference for independent learning, reflection and self-directed exploration.",
+            strength: "You may benefit from opportunities to explore and understand concepts independently.",
+            method: "Use individual projects, self-study, reflection and self-directed learning activities.",
+            improvement: "Try combining independent study with discussion and collaborative activities."
+        }
+    };
+
+    const validScores = Object.entries(scores)
+        .filter(([key, value]) => categoryInfo[key] && Number.isFinite(Number(value)))
+        .map(([key, value]) => [key, Number(value)]);
+
+    if (validScores.length === 0) {
+        alert("Assessment scores are unavailable.");
+        window.location.href = "assessment.html";
+        return;
+    }
+
+    validScores.sort((a, b) => b[1] - a[1]);
+
+    const dominant = validScores[0][0];
+    const dominantScore = validScores[0][1];
+    const lowest = validScores[validScores.length - 1][0];
+    const lowestScore = validScores[validScores.length - 1][1];
+
+    const dominantInfo = categoryInfo[dominant];
+    const lowestInfo = categoryInfo[lowest];
+
+    const studentName = localStorage.getItem("studentName");
+    const studentNameElement = document.getElementById("studentName");
+
+    if (studentName && studentNameElement) {
+        studentNameElement.textContent = studentName;
+    }
+
+    const profileStudentName = document.getElementById("profileStudentName");
+    const profileStudentId = document.getElementById("profileStudentId");
+    const profileProgramme = document.getElementById("profileProgramme");
+    const profileGender = document.getElementById("profileGender");
+
+    const savedStudentId = localStorage.getItem("studentId");
+    const savedProgramme = localStorage.getItem("studentProgramme");
+    const savedGender = localStorage.getItem("studentGender");
+
+    if (profileStudentName && studentName) {
+        profileStudentName.textContent = studentName;
+    }
+
+    if (profileStudentId && savedStudentId) {
+        profileStudentId.textContent = savedStudentId;
+    }
+
+    if (profileProgramme && savedProgramme) {
+        profileProgramme.textContent = savedProgramme;
+    }
+
+    if (profileGender && savedGender) {
+        profileGender.textContent = savedGender;
+    }
+
+    document.getElementById("dominantStyle").textContent = dominantInfo.title;
+    document.getElementById("dominantDescription").textContent = dominantInfo.description;
+    document.getElementById("dominantScore").textContent = dominantScore + "%";
+    document.getElementById("dominantScoreLabel").textContent = dominantInfo.name;
+    document.getElementById("summaryDominant").textContent = dominantInfo.name;
+
+    updateScore("visual", scores.visual);
+    updateScore("audio", scores.audio);
+    updateScore("interpersonal", scores.interpersonal);
+    updateScore("intrapersonal", scores.intrapersonal);
+
+    function updateScore(type, value) {
+        const score = Number(value) || 0;
+        const scoreElement = document.getElementById(type + "Score");
+        const barElement = document.getElementById(type + "Bar");
+
+        if (scoreElement) scoreElement.textContent = score + "%";
+        if (barElement) barElement.style.width = score + "%";
+    }
+
+    document.getElementById("strengthText").innerHTML =
+        `<strong>${dominantInfo.name} (${dominantScore}%)</strong><br>${dominantInfo.strength}`;
+
+    document.getElementById("methodText").textContent =
+        dominantInfo.method;
+
+    document.getElementById("improvementText").innerHTML =
+        `<strong>${lowestInfo.name} (${lowestScore}%)</strong><br>${lowestInfo.improvement}`;
+});
+
+function retakeAssessment() {
+    localStorage.removeItem("vassAnswers");
+    localStorage.removeItem("vassAssessmentResult");
+    window.location.href = "assessment.html";
+}
+</script>
+
+
+
+// ==========================================
+// DOWNLOAD PDF REPORT
+// ==========================================
+
+async function downloadReport() {
+
+    if (!window.jspdf || !window.jspdf.jsPDF) {
+        alert("PDF library is still loading. Please try again.");
+        return;
+    }
+
+    const savedResult =
+        localStorage.getItem("vassAssessmentResult");
+
+    if (!savedResult) {
+        alert("No assessment result found.");
+        return;
+    }
+
+    const result = JSON.parse(savedResult);
+    const scores = result.scores || {};
+
+    const studentName =
+        localStorage.getItem("studentName") || "Student";
+
+    const studentId =
+        localStorage.getItem("studentId") || "—";
+
+    const programme =
+        localStorage.getItem("studentProgramme") || "—";
+
+    const gender =
+        localStorage.getItem("studentGender") || "—";
+
+    const dominant =
+        result.dominantStyle || "visual";
+
+    const names = {
+        visual: "Visual",
+        audio: "Audio",
+        interpersonal: "Interpersonal",
+        intrapersonal: "Intrapersonal"
+    };
+
+    const dominantName =
+        names[dominant] || dominant;
+
+    const { jsPDF } = window.jspdf;
+
+    const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4"
+    });
+
+    const pageWidth = doc.internal.pageSize.getWidth();
+
+    // Header
+    doc.setFillColor(20, 63, 170);
+    doc.rect(0, 0, pageWidth, 35, "F");
+
+    doc.setTextColor(255, 255, 255);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.text("VASS", 20, 15);
+
+    doc.setFontSize(10);
+    doc.setFont("helvetica", "normal");
+    doc.text("Learning Analytics System", 20, 23);
+    doc.text("Learning Preference Assessment Report", 20, 29);
+
+    let y = 48;
+
+    // Student Information
+    doc.setTextColor(25, 45, 90);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(15);
+    doc.text("Student Information", 20, y);
+
+    y += 9;
+
+    doc.setTextColor(70, 70, 70);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+
+    const studentRows = [
+        ["Full Name", studentName],
+        ["Student ID", studentId],
+        ["Programme / Class", programme],
+        ["Gender", gender]
+    ];
+
+    studentRows.forEach(([label, value]) => {
+        doc.setFont("helvetica", "bold");
+        doc.text(label + ":", 20, y);
+
+        doc.setFont("helvetica", "normal");
+        doc.text(String(value), 65, y);
+
+        y += 7;
+    });
+
+    // Dominant preference
+    y += 7;
+
+    doc.setFillColor(241, 246, 255);
+    doc.roundedRect(20, y, pageWidth - 40, 30, 4, 4, "F");
+
+    doc.setTextColor(25, 45, 90);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.text("DOMINANT LEARNING PREFERENCE", 27, y + 9);
+
+    doc.setFontSize(19);
+    doc.text(
+        dominantName,
+        27,
+        y + 20
+    );
+
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "normal");
+    doc.text(
+        String(scores[dominant] ?? 0) + "%",
+        pageWidth - 45,
+        y + 19
+    );
+
+    y += 42;
+
+    // Learning profile
+    doc.setTextColor(25, 45, 90);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(15);
+    doc.text("Learning Profile", 20, y);
+
+    y += 10;
+
+    const profileRows = [
+        ["Visual", scores.visual ?? 0],
+        ["Audio", scores.audio ?? 0],
+        ["Interpersonal", scores.interpersonal ?? 0],
+        ["Intrapersonal", scores.intrapersonal ?? 0]
+    ];
+
+    profileRows.forEach(([label, score]) => {
+
+        const numericScore = Number(score) || 0;
+
+        doc.setTextColor(60, 60, 60);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.text(label, 20, y);
+
+        doc.setFillColor(225, 231, 245);
+        doc.roundedRect(55, y - 4, 105, 5, 2, 2, "F");
+
+        doc.setFillColor(55, 105, 220);
+        doc.roundedRect(
+            55,
+            y - 4,
+            105 * Math.min(numericScore, 100) / 100,
+            5,
+            2,
+            2,
+            "F"
+        );
+
+        doc.setTextColor(40, 40, 40);
+        doc.setFont("helvetica", "bold");
+        doc.text(numericScore + "%", 170, y);
+
+        y += 11;
+    });
+
+    // Insights
+    y += 8;
+
+    doc.setTextColor(25, 45, 90);
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(15);
+    doc.text("Learning Insights", 20, y);
+
+    y += 9;
+
+    const info = {
+        visual: {
+            strength: "You may understand information more effectively when concepts are presented visually.",
+            method: "Use videos, diagrams, charts, mind maps and other visual learning resources."
+        },
+        audio: {
+            strength: "You may benefit from listening to explanations and discussing ideas.",
+            method: "Use recorded lectures, verbal explanations, discussions and audio resources."
+        },
+        interpersonal: {
+            strength: "You may learn effectively through collaboration and exchanging ideas with others.",
+            method: "Use group discussions, collaborative activities, peer learning and teamwork."
+        },
+        intrapersonal: {
+            strength: "You may benefit from opportunities to explore and understand concepts independently.",
+            method: "Use individual projects, self-study, reflection and self-directed learning activities."
+        }
+    };
+
+    const dominantInfo = info[dominant] || info.visual;
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(10);
+    doc.setTextColor(50, 50, 50);
+    doc.text("Strength", 20, y);
+
+    y += 6;
+
+    doc.setFont("helvetica", "normal");
+    const strengthLines =
+        doc.splitTextToSize(dominantInfo.strength, pageWidth - 40);
+
+    doc.text(strengthLines, 20, y);
+
+    y += strengthLines.length * 5 + 5;
+
+    doc.setFont("helvetica", "bold");
+    doc.text("Best Learning Method", 20, y);
+
+    y += 6;
+
+    doc.setFont("helvetica", "normal");
+    const methodLines =
+        doc.splitTextToSize(dominantInfo.method, pageWidth - 40);
+
+    doc.text(methodLines, 20, y);
+
+    y += methodLines.length * 5 + 12;
+
+    // Footer
+    doc.setDrawColor(210, 215, 225);
+    doc.line(20, 280, pageWidth - 20, 280);
+
+    doc.setFontSize(8);
+    doc.setTextColor(120, 120, 120);
+    doc.text(
+        "© 2026 VASS Learning System | Developed for Academic Research",
+        20,
+        287
+    );
+
+    // Safe filename
+    const safeName =
+        studentName.replace(/[^a-z0-9]/gi, "_");
+
+    doc.save(
+        "VASS_Learning_Report_" + safeName + ".pdf"
+    );
+}
+
+</body>
+
+</html>
