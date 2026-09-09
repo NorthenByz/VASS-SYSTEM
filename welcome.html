@@ -4,13 +4,19 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Welcome | VASS Learning System</title>
 
     <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
           rel="stylesheet">
@@ -19,57 +25,735 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
           rel="stylesheet">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="css/welcome.css">
+
+    <style>
+
+        /* ================================
+           RESET
+        ================================= */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+        }
+
+
+        /* ================================
+           BODY
+        ================================= */
+
+        body {
+
+            font-family: "Poppins", sans-serif;
+
+            color: #ffffff;
+
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 15% 20%,
+                    rgba(59,130,246,.30),
+                    transparent 30%
+                ),
+
+                radial-gradient(
+                    circle at 85% 80%,
+                    rgba(124,58,237,.28),
+                    transparent 32%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #06154f 0%,
+                    #102b8c 48%,
+                    #2563eb 100%
+                );
+
+            overflow-x: hidden;
+        }
+
+
+        /* ================================
+           BACKGROUND GLOW
+        ================================= */
+
+        body::before {
+
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            top: -180px;
+            left: -150px;
+
+            border-radius: 50%;
+
+            background: rgba(59,130,246,.25);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        body::after {
+
+            content: "";
+
+            position: fixed;
+
+            width: 400px;
+            height: 400px;
+
+            right: -150px;
+            bottom: -180px;
+
+            border-radius: 50%;
+
+            background: rgba(139,92,246,.25);
+
+            filter: blur(100px);
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+
+        /* ================================
+           CONTAINER
+        ================================= */
+
+        .welcome-container {
+
+            width: 100%;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            padding: 40px 20px;
+
+            position: relative;
+
+            z-index: 1;
+        }
+
+
+        /* ================================
+           CARD
+        ================================= */
+
+        .welcome-card {
+
+            width: 100%;
+
+            max-width: 900px;
+
+            padding: 55px 70px;
+
+            border-radius: 32px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255,255,255,.15),
+                    rgba(255,255,255,.06)
+                );
+
+            border: 1px solid rgba(255,255,255,.20);
+
+            box-shadow:
+
+                0 30px 80px
+                rgba(0,0,0,.35),
+
+                inset 0 1px 0
+                rgba(255,255,255,.15);
+
+            backdrop-filter: blur(22px);
+
+            -webkit-backdrop-filter: blur(22px);
+
+            text-align: center;
+
+            position: relative;
+
+            z-index: 2;
+        }
+
+
+        /* ================================
+           STEP
+        ================================= */
+
+        .progress-text {
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            letter-spacing: 2px;
+
+            color: rgba(255,255,255,.75);
+
+            margin-bottom: 28px;
+        }
+
+
+        /* ================================
+           LOGO
+        ================================= */
+
+        .welcome-logo {
+
+            width: 105px;
+
+            height: 105px;
+
+            object-fit: contain;
+
+            display: block;
+
+            margin: 0 auto 22px;
+
+            filter:
+                drop-shadow(
+                    0 12px 20px
+                    rgba(0,0,0,.35)
+                );
+        }
+
+
+        /* ================================
+           BADGE
+        ================================= */
+
+        .welcome-card .badge {
+
+            display: inline-block;
+
+            padding: 11px 24px !important;
+
+            border-radius: 50px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1677ff,
+                    #2563eb
+                ) !important;
+
+            color: #ffffff !important;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            box-shadow:
+                0 10px 25px
+                rgba(37,99,235,.30);
+        }
+
+
+        /* ================================
+           TITLE
+        ================================= */
+
+        .welcome-card h1 {
+
+            margin-top: 25px;
+
+            margin-bottom: 8px;
+
+            color: #ffffff !important;
+
+            font-size: clamp(
+                36px,
+                5vw,
+                58px
+            );
+
+            font-weight: 700;
+
+            line-height: 1.1;
+
+            text-shadow:
+                0 5px 20px
+                rgba(0,0,0,.20);
+        }
+
+
+        .welcome-card h4 {
+
+            margin-bottom: 18px;
+
+            color: rgba(255,255,255,.90) !important;
+
+            font-size: 23px;
+
+            font-weight: 500;
+        }
+
+
+        .welcome-card > p {
+
+            max-width: 680px;
+
+            margin: 0 auto;
+
+            color: rgba(255,255,255,.78) !important;
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+        /* ================================
+           INFO
+        ================================= */
+
+        .info-box {
+
+            margin-top: 35px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 16px;
+        }
+
+
+        .info-item {
+
+            padding: 22px 15px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.075);
+
+            border:
+                1px solid
+                rgba(255,255,255,.12);
+
+            transition: .3s ease;
+        }
+
+
+        .info-item h3 {
+
+            margin: 0 0 8px;
+
+            font-size: 28px;
+        }
+
+
+        .info-item h5 {
+
+            margin: 0 0 6px;
+
+            color: #ffffff !important;
+
+            font-size: 14px;
+
+            font-weight: 600;
+        }
+
+
+        .info-item span {
+
+            color:
+                rgba(255,255,255,.70) !important;
+
+            font-size: 12px;
+        }
+
+
+        /* ================================
+           ALERT
+        ================================= */
+
+        .welcome-card .alert {
+
+            margin-top: 30px !important;
+
+            padding: 20px 24px;
+
+            border-radius: 18px;
+
+            border:
+                1px solid
+                rgba(96,165,250,.25);
+
+            background:
+                rgba(37,99,235,.16);
+
+            color:
+                rgba(255,255,255,.84) !important;
+
+            text-align: left;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        .welcome-card .alert strong {
+
+            color: #ffffff !important;
+        }
+
+
+        /* ================================
+           BUTTON
+        ================================= */
+
+        .welcome-card .btn {
+
+            border: none;
+
+            color: #1450b8 !important;
+
+            background: #ffffff !important;
+
+            font-size: 15px;
+
+            padding: 13px 32px !important;
+
+            box-shadow:
+                0 12px 30px
+                rgba(0,0,0,.22);
+
+            transition: .3s ease;
+        }
+
+
+        .welcome-card .btn:hover {
+
+            transform: translateY(-3px);
+
+            background: #ffffff !important;
+
+            color: #0f4db8 !important;
+        }
+
+
+        /* ================================
+           FOOTER
+        ================================= */
+
+        .welcome-footer {
+
+            margin-top: 35px !important;
+
+            color:
+                rgba(255,255,255,.50) !important;
+
+            font-size: 12px;
+
+            letter-spacing: .3px;
+        }
+
+
+        /* ================================
+           MOBILE
+        ================================= */
+
+        @media (max-width: 576px) {
+
+            .welcome-container {
+
+                padding: 18px 12px;
+            }
+
+
+            .welcome-card {
+
+                width: 100%;
+
+                padding: 32px 18px;
+
+                border-radius: 25px;
+            }
+
+
+            .progress-text {
+
+                font-size: 12px;
+
+                letter-spacing: 1.6px;
+
+                margin-bottom: 22px;
+            }
+
+
+            .welcome-logo {
+
+                width: 82px;
+
+                height: 82px;
+
+                margin-bottom: 18px;
+            }
+
+
+            .welcome-card .badge {
+
+                font-size: 11px;
+
+                padding: 9px 17px !important;
+            }
+
+
+            .welcome-card h1 {
+
+                margin-top: 22px;
+
+                font-size: 36px;
+
+                line-height: 1.12;
+            }
+
+
+            .welcome-card h4 {
+
+                font-size: 17px;
+
+                margin-bottom: 14px;
+            }
+
+
+            .welcome-card > p {
+
+                font-size: 13px;
+
+                line-height: 1.7;
+            }
+
+
+            .info-box {
+
+                grid-template-columns: 1fr;
+
+                gap: 10px;
+
+                margin-top: 25px;
+            }
+
+
+            .info-item {
+
+                display: flex;
+
+                align-items: center;
+
+                text-align: left;
+
+                padding: 14px 16px;
+
+                border-radius: 16px;
+            }
+
+
+            .info-item h3 {
+
+                width: 45px;
+
+                margin: 0 12px 0 0;
+
+                font-size: 25px;
+
+                text-align: center;
+            }
+
+
+            .info-item h5 {
+
+                margin: 0 0 2px;
+
+                font-size: 13px;
+            }
+
+
+            .info-item span {
+
+                font-size: 11px;
+            }
+
+
+            .welcome-card .alert {
+
+                font-size: 12px;
+
+                line-height: 1.65;
+
+                padding: 16px 17px;
+
+                margin-top: 22px !important;
+            }
+
+
+            .welcome-card .btn {
+
+                width: 100%;
+
+                font-size: 14px;
+
+                padding: 13px 20px !important;
+            }
+
+
+            .welcome-footer {
+
+                margin-top: 25px !important;
+
+                font-size: 10px;
+            }
+        }
+
+
+        /* ================================
+           SMALL PHONE
+        ================================= */
+
+        @media (max-width: 380px) {
+
+            .welcome-card {
+
+                padding: 28px 15px;
+            }
+
+
+            .welcome-card h1 {
+
+                font-size: 32px;
+            }
+
+
+            .welcome-card h4 {
+
+                font-size: 16px;
+            }
+
+
+            .welcome-card > p {
+
+                font-size: 12px;
+            }
+
+
+            .welcome-logo {
+
+                width: 75px;
+
+                height: 75px;
+            }
+        }
+
+    </style>
 
 </head>
 
+
 <body>
+
 
 <div class="welcome-container">
 
+
     <div class="welcome-card">
 
-        <!-- Progress -->
+
+        <!-- STEP -->
+
         <div class="progress-text">
+
             STEP 1 OF 3
+
         </div>
 
-        <!-- Logo -->
+
+        <!-- LOGO -->
+
         <img src="assets/images/logo.png"
              class="welcome-logo"
              alt="VASS Logo">
 
-        <!-- Badge -->
-        <span class="badge bg-primary px-4 py-2 rounded-pill mb-3">
+
+        <!-- BADGE -->
+
+        <span class="badge">
+
             VASS Learning Analytics System
+
         </span>
 
-        <!-- Title -->
+
+        <!-- TITLE -->
+
         <h1>
+
             Welcome to VASS
+
         </h1>
 
+
         <h4>
+
             Learning Style Assessment
+
         </h4>
 
+
         <p>
+
             Welcome to Your Learning Journey
+
             <br>
+
             Discover how you learn best through a personalised learning experience.
+
         </p>
 
-        <!-- Information -->
+
+        <!-- INFORMATION -->
+
         <div class="info-box">
+
 
             <div class="info-item">
 
                 <h3>⏱</h3>
 
-                <h5>Duration</h5>
+                <div>
 
-                <span>8–10 Minutes</span>
+                    <h5>Duration</h5>
+
+                    <span>8–10 Minutes</span>
+
+                </div>
 
             </div>
 
@@ -78,9 +762,13 @@
 
                 <h3>📝</h3>
 
-                <h5>Questions</h5>
+                <div>
 
-                <span>30 Items</span>
+                    <h5>Questions</h5>
+
+                    <span>30 Items</span>
+
+                </div>
 
             </div>
 
@@ -89,17 +777,23 @@
 
                 <h3>🧠</h3>
 
-                <h5>Learning Preferences</h5>
+                <div>
 
-                <span>4 Categories</span>
+                    <h5>Learning Preferences</h5>
+
+                    <span>4 Categories</span>
+
+                </div>
 
             </div>
+
 
         </div>
 
 
-        <!-- Notice -->
-        <div class="alert alert-primary mt-4">
+        <!-- NOTICE -->
+
+        <div class="alert">
 
             <strong>Important:</strong>
 
@@ -117,21 +811,24 @@
         </div>
 
 
-        <!-- Button -->
+        <!-- BUTTON -->
+
         <a href="student-info.html"
-           class="btn btn-light btn-lg rounded-pill px-5 mt-3 fw-bold">
+           class="btn btn-light btn-lg rounded-pill fw-bold">
 
             Begin Your Journey →
 
         </a>
 
 
-        <!-- Footer -->
-        <div class="welcome-footer mt-5">
+        <!-- FOOTER -->
+
+        <div class="welcome-footer">
 
             VASS Learning Analytics System © 2026
 
         </div>
+
 
     </div>
 
@@ -139,6 +836,7 @@
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </body>
 
