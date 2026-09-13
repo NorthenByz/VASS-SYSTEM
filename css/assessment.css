@@ -1,53 +1,36 @@
-/* =====================================================
-   VASS ASSESSMENT
-===================================================== */
-
 * {
     box-sizing: border-box;
-}
-
-
-html {
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
 }
 
 
 body {
 
-    margin: 0;
+    font-family: "Poppins", sans-serif;
 
     min-height: 100vh;
 
-    font-family: "Poppins", sans-serif;
-
-    color: #ffffff;
-
     background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(82, 119, 255, 0.35),
-            transparent 35%
-        ),
         linear-gradient(
             135deg,
-            #071653 0%,
-            #102b86 45%,
-            #173d9e 100%
+            #07175f 0%,
+            #122c8f 50%,
+            #193aa5 100%
         );
+
+    color: white;
 
 }
 
 
+/* =========================================
+   TOP BAR
+========================================= */
 
-/* =====================================================
-   HEADER
-===================================================== */
-
-.top-header {
+.topbar {
 
     height: 85px;
-
-    padding: 0 5%;
 
     display: flex;
 
@@ -55,17 +38,15 @@ body {
 
     justify-content: space-between;
 
+    padding: 0 5.3%;
+
     background:
-        rgba(4, 20, 72, 0.85);
+        rgba(5, 19, 76, 0.88);
 
     border-bottom:
-        1px solid rgba(255,255,255,0.12);
-
-    backdrop-filter:
-        blur(12px);
+        1px solid rgba(255,255,255,0.15);
 
 }
-
 
 
 .brand {
@@ -79,109 +60,103 @@ body {
 }
 
 
+.brand-logo {
 
-.header-logo {
+    width: 45px;
 
-    width: 42px;
-
-    height: 42px;
+    height: 45px;
 
     object-fit: contain;
 
 }
 
 
+.brand-name {
 
-.brand-title {
-
-    font-size: 23px;
+    font-size: 24px;
 
     font-weight: 800;
 
-    letter-spacing: 1px;
-
+    line-height: 1;
 }
 
 
-
 .brand-subtitle {
-
-    margin-top: -3px;
 
     font-size: 11px;
 
     font-weight: 500;
 
-    color:
-        rgba(255,255,255,0.65);
+    color: rgba(255,255,255,0.65);
+
+    margin-top: 5px;
 
 }
 
 
-
-.step-counter {
+.step-text {
 
     font-size: 13px;
 
     font-weight: 700;
 
-    letter-spacing: 0.7px;
+    letter-spacing: 0.5px;
 
     color:
-        rgba(255,255,255,0.8);
+        rgba(255,255,255,0.75);
 
 }
 
 
-
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
+/* =========================================
+   MAIN
+========================================= */
 
 .assessment-container {
 
-    width: 100%;
+    width: 80%;
 
     max-width: 1100px;
 
     margin: 0 auto;
 
-    padding: 55px 30px 70px;
+    padding-top: 55px;
 
 }
 
 
-
-/* =====================================================
+/* =========================================
    PROGRESS
-===================================================== */
+========================================= */
 
-.progress-section {
+.progress-area {
 
     margin-bottom: 32px;
 
 }
 
 
+.progress-track {
 
-.progress {
+    width: 100%;
 
     height: 8px;
 
-    overflow: hidden;
+    border-radius: 20px;
 
     background:
         rgba(255,255,255,0.20);
 
-    border-radius: 20px;
+    overflow: hidden;
 
 }
-
 
 
 .progress-bar {
 
     height: 100%;
+
+    width: 6.25%;
 
     border-radius: 20px;
 
@@ -189,7 +164,7 @@ body {
         linear-gradient(
             90deg,
             #65a7ff,
-            #8b5cf6
+            #9b5cff
         );
 
     transition:
@@ -198,16 +173,13 @@ body {
 }
 
 
-
-.progress-label {
+.progress-info {
 
     display: flex;
 
     justify-content: flex-end;
 
-    gap: 5px;
-
-    margin-top: 8px;
+    margin-top: 9px;
 
     font-size: 12px;
 
@@ -219,44 +191,35 @@ body {
 }
 
 
-
-/* =====================================================
+/* =========================================
    QUESTION CARD
-===================================================== */
+========================================= */
 
 .question-card {
 
-    position: relative;
-
-    padding:
-        48px 50px 42px;
-
-    border-radius: 30px;
-
     background:
-        linear-gradient(
-            145deg,
-            rgba(75,101,174,0.72),
-            rgba(48,69,143,0.78)
-        );
+        rgba(91, 112, 178, 0.52);
 
     border:
         1px solid rgba(255,255,255,0.25);
 
-    box-shadow:
-        0 25px 60px
-        rgba(0,0,0,0.20);
+    border-radius: 28px;
 
-    backdrop-filter:
-        blur(15px);
+    padding:
+        48px 50px 35px;
+
+    text-align: center;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,0.18);
 
 }
 
 
-
-/* =====================================================
-   ICON
-===================================================== */
+/* =========================================
+   SECTION ICON
+========================================= */
 
 .section-icon {
 
@@ -264,7 +227,7 @@ body {
 
     height: 78px;
 
-    margin: 0 auto 18px;
+    margin: 0 auto 15px;
 
     display: flex;
 
@@ -272,115 +235,115 @@ body {
 
     justify-content: center;
 
-    border-radius: 23px;
-
-    font-size: 42px;
+    border-radius: 50%;
 
     background:
-        rgba(255,255,255,0.14);
+        rgba(255,255,255,0.95);
 
-    border:
-        1px solid
-        rgba(255,255,255,0.25);
+    font-size: 38px;
 
     box-shadow:
-        0 10px 30px
-        rgba(0,0,0,0.15);
+        0 8px 25px
+        rgba(0,0,0,0.20);
 
-    animation:
-        iconFloat 3s ease-in-out infinite;
-
-}
-
-
-
-@keyframes iconFloat {
-
-    0%,
-    100% {
-
-        transform:
-            translateY(0);
-
-    }
-
-    50% {
-
-        transform:
-            translateY(-5px);
-
-    }
+    transition:
+        transform 0.3s ease;
 
 }
 
 
+.section-icon:hover {
 
-/* =====================================================
-   QUESTION LABEL
-===================================================== */
+    transform:
+        scale(1.08)
+        rotate(3deg);
 
-.question-label {
+}
 
-    margin-bottom: 22px;
 
-    text-align: center;
+/* =========================================
+   SECTION NAME
+========================================= */
 
-    font-size: 13px;
+.section-name {
+
+    font-size: 12px;
 
     font-weight: 800;
 
-    letter-spacing: 1.5px;
+    letter-spacing: 2px;
 
     color:
-        #b9d0ff;
+        #b8ceff;
+
+    margin-bottom: 8px;
 
 }
 
 
+/* =========================================
+   QUESTION LABEL
+========================================= */
 
-/* =====================================================
-   QUESTION TEXT
-===================================================== */
+.question-label {
 
-.question-card h1 {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color:
+        rgba(255,255,255,0.75);
+
+    margin-bottom: 25px;
+
+}
+
+
+/* =========================================
+   QUESTION
+========================================= */
+
+#questionText {
 
     max-width: 850px;
 
     margin:
         0 auto 18px;
 
-    text-align: center;
-
-    font-size: 29px;
+    font-size: 28px;
 
     line-height: 1.45;
 
     font-weight: 700;
 
-    color: #ffffff;
+    color: white;
 
 }
 
 
+/* =========================================
+   INSTRUCTION
+========================================= */
 
 .instruction {
 
-    margin-bottom: 40px;
-
-    text-align: center;
-
     font-size: 14px;
 
+    font-weight: 400;
+
     color:
-        rgba(255,255,255,0.65);
+        rgba(255,255,255,0.70);
+
+    margin-bottom: 45px;
 
 }
 
 
-
-/* =====================================================
+/* =========================================
    LIKERT
-===================================================== */
+========================================= */
 
 .likert-container {
 
@@ -394,16 +357,23 @@ body {
 }
 
 
-
-/* =====================================================
-   LIKERT OPTION
-===================================================== */
-
 .likert-option {
 
     min-height: 145px;
 
-    padding: 20px 12px;
+    border: none;
+
+    border-radius: 20px;
+
+    background:
+        rgba(255,255,255,0.94);
+
+    color:
+        #101a36;
+
+    cursor: pointer;
+
+    padding: 20px 10px;
 
     display: flex;
 
@@ -413,27 +383,12 @@ body {
 
     justify-content: center;
 
-    gap: 14px;
-
-    border: none;
-
-    border-radius: 20px;
-
-    background:
-        #f8f9fc;
-
-    color:
-        #18213b;
-
-    cursor: pointer;
+    gap: 13px;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+        all 0.25s ease;
 
 }
-
 
 
 .likert-option:hover {
@@ -442,32 +397,51 @@ body {
         translateY(-5px);
 
     box-shadow:
-        0 15px 30px
+        0 12px 30px
         rgba(0,0,0,0.18);
 
 }
 
 
+.likert-option.selected {
+
+    background:
+        linear-gradient(
+            135deg,
+            #6ba8ff,
+            #865cf5
+        );
+
+    color: white;
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 30px
+        rgba(70,90,200,0.40);
+
+}
+
+
+/* NUMBER CIRCLE */
 
 .likert-number {
 
-    width: 51px;
+    width: 52px;
 
-    height: 51px;
+    height: 52px;
+
+    border:
+        2px solid #202020;
+
+    border-radius: 50%;
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
-
-    border-radius: 50%;
-
-    border:
-        2px solid #242424;
-
-    background:
-        transparent;
 
     font-size: 17px;
 
@@ -476,18 +450,17 @@ body {
 }
 
 
+.likert-option.selected
+.likert-number {
+
+    border-color: white;
+
+}
+
+
+/* TEXT */
 
 .likert-text {
-
-    min-height: 36px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    text-align: center;
 
     font-size: 12px;
 
@@ -495,86 +468,39 @@ body {
 
     font-weight: 600;
 
-}
-
-
-
-/* =====================================================
-   SELECTED
-===================================================== */
-
-.likert-option.selected {
-
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #dfe8ff
-        );
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 15px 35px
-        rgba(0,0,0,0.25);
+    text-align: center;
 
 }
 
 
-
-.likert-option.selected
-.likert-number {
-
-    background:
-        #1c4ed8;
-
-    border-color:
-        #1c4ed8;
-
-    color:
-        #ffffff;
-
-}
-
-
-
-/* =====================================================
+/* =========================================
    NAVIGATION
-===================================================== */
+========================================= */
 
 .navigation {
 
-    margin-top: 40px;
-
     display: flex;
-
-    justify-content: space-between;
 
     align-items: center;
 
-}
+    justify-content: space-between;
 
+    margin-top: 40px;
+
+}
 
 
 .nav-button {
 
-    min-width: 150px;
+    border: none;
 
-    height: 53px;
+    border-radius: 50px;
 
-    padding:
-        0 25px;
+    min-width: 120px;
 
-    display: flex;
+    height: 52px;
 
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    border-radius: 30px;
+    padding: 0 28px;
 
     font-family:
         "Poppins",
@@ -587,18 +513,17 @@ body {
     cursor: pointer;
 
     transition:
-        all 0.2s ease;
+        all 0.25s ease;
 
 }
 
 
-
 .back-button {
 
-    color: #ffffff;
+    color: white;
 
     background:
-        rgba(255,255,255,0.12);
+        rgba(255,255,255,0.10);
 
     border:
         1px solid
@@ -607,99 +532,62 @@ body {
 }
 
 
-
-.back-button:hover:not(:disabled) {
+.back-button:hover {
 
     background:
         rgba(255,255,255,0.20);
 
-    transform:
-        translateY(-2px);
-
 }
-
-
-
-.back-button:disabled {
-
-    opacity: 0.3;
-
-    cursor: not-allowed;
-
-}
-
 
 
 .next-button {
 
-    color: #172d79;
+    background: white;
 
-    background: #ffffff;
-
-    border:
-        1px solid #ffffff;
-
-    box-shadow:
-        0 8px 20px
-        rgba(0,0,0,0.15);
+    color: #152b82;
 
 }
 
 
-
-.next-button:hover:not(:disabled) {
+.next-button:hover {
 
     transform:
         translateY(-2px);
 
     box-shadow:
-        0 12px 25px
-        rgba(0,0,0,0.22);
+        0 8px 25px
+        rgba(0,0,0,0.20);
 
 }
 
 
-
-.next-button:disabled {
-
-    opacity: 0.7;
-
-    cursor:
-        wait;
-
-}
-
-
-
-/* =====================================================
+/* =========================================
    MOBILE
-===================================================== */
+========================================= */
 
 @media (max-width: 768px) {
 
+    .topbar {
 
-    .top-header {
+        height: 75px;
 
-        height: 72px;
-
-        padding:
-            0 18px;
+        padding: 0 20px;
 
     }
 
 
-    .header-logo {
+    .brand-logo {
 
-        width: 36px;
+        width: 40px;
 
-        height: 36px;
+        height: 40px;
 
     }
 
 
-    .brand-title {
+    .brand-name {
 
-        font-size: 19px;
+        font-size: 20px;
 
     }
 
@@ -711,7 +599,7 @@ body {
     }
 
 
-    .step-counter {
+    .step-text {
 
         font-size: 10px;
 
@@ -720,8 +608,9 @@ body {
 
     .assessment-container {
 
-        padding:
-            30px 15px 50px;
+        width: 92%;
+
+        padding-top: 30px;
 
     }
 
@@ -729,27 +618,25 @@ body {
     .question-card {
 
         padding:
-            35px 18px 30px;
+            35px 18px 25px;
 
-        border-radius: 25px;
+        border-radius: 24px;
 
     }
 
 
     .section-icon {
 
-        width: 65px;
+        width: 70px;
 
-        height: 65px;
+        height: 70px;
 
         font-size: 34px;
-
-        border-radius: 19px;
 
     }
 
 
-    .question-card h1 {
+    #questionText {
 
         font-size: 21px;
 
@@ -762,7 +649,7 @@ body {
 
         font-size: 12px;
 
-        margin-bottom: 25px;
+        margin-bottom: 28px;
 
     }
 
@@ -772,30 +659,29 @@ body {
         grid-template-columns:
             repeat(5, 1fr);
 
-        gap: 6px;
+        gap: 7px;
 
     }
 
 
     .likert-option {
 
-        min-height: 115px;
+        min-height: 125px;
 
-        padding:
-            12px 5px;
-
-        gap: 9px;
+        padding: 10px 4px;
 
         border-radius: 14px;
+
+        gap: 9px;
 
     }
 
 
     .likert-number {
 
-        width: 40px;
+        width: 42px;
 
-        height: 40px;
+        height: 42px;
 
         font-size: 14px;
 
@@ -818,12 +704,11 @@ body {
 
     .nav-button {
 
-        min-width: 110px;
+        min-width: 95px;
 
-        height: 48px;
+        height: 46px;
 
-        padding:
-            0 16px;
+        padding: 0 18px;
 
         font-size: 12px;
 
@@ -832,33 +717,20 @@ body {
 }
 
 
-
-/* =====================================================
-   VERY SMALL PHONE
-===================================================== */
-
-@media (max-width: 400px) {
-
-
-    .likert-container {
-
-        gap: 4px;
-
-    }
-
+@media (max-width: 430px) {
 
     .likert-option {
 
-        min-height: 105px;
+        min-height: 110px;
 
     }
 
 
     .likert-number {
 
-        width: 35px;
+        width: 36px;
 
-        height: 35px;
+        height: 36px;
 
     }
 
@@ -870,16 +742,9 @@ body {
     }
 
 
-    .question-card h1 {
+    #questionText {
 
         font-size: 19px;
-
-    }
-
-
-    .nav-button {
-
-        min-width: 95px;
 
     }
 
