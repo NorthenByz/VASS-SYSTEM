@@ -1,643 +1,2197 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>VASS Assessment</title>
+<meta charset="UTF-8">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+<title>Learning Journey | VASS</title>
 
-    <link rel="stylesheet" href="css/assessment.css">
-</head>
 
-<body>
+<!-- GOOGLE FONT -->
 
-<header class="topbar">
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-    <div class="brand">
 
-        <img
-            src="assets/images/logo.png"
-            alt="VASS Logo"
-            class="brand-logo"
-        >
+<!-- BOOTSTRAP ICONS -->
 
-        <div>
-            <div class="brand-name">VASS</div>
-            <div class="brand-subtitle">
-                Learning Analytics System
-            </div>
-        </div>
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    </div>
 
-    <div class="step-text" id="stepText">
-        STEP 1 OF 16
-    </div>
+<style>
 
-</header>
+/* =========================================================
+   RESET
+========================================================= */
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-<main class="assessment-container">
 
-    <!-- PROGRESS -->
+/* =========================================================
+   BODY
+========================================================= */
 
-    <div class="progress-area">
+body{
 
-        <div class="progress-track">
+    font-family:'Poppins',sans-serif;
 
-            <div
-                class="progress-bar"
-                id="progressBar">
-            </div>
+    min-height:100vh;
 
-        </div>
+    color:#ffffff;
 
-        <div class="progress-info">
-            <span id="questionCounter">
-                1 / 16 Questions
-            </span>
-        </div>
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(0,198,255,0.16),
+            transparent 32%
+        ),
 
-    </div>
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(91,72,255,0.18),
+            transparent 32%
+        ),
 
+        linear-gradient(
+            135deg,
+            #06152f 0%,
+            #0b2450 50%,
+            #07162f 100%
+        );
 
-    <!-- QUESTION CARD -->
+    padding:40px 20px;
 
-    <section class="question-card">
+}
 
-        <!-- SECTION ICON -->
 
-        <div
-            class="section-icon"
-            id="sectionIcon">
-            👁️
-        </div>
+/* =========================================================
+   CONTAINER
+========================================================= */
 
+.assessment-container{
 
-        <!-- SECTION NAME -->
+    width:100%;
 
-        <div
-            class="section-name"
-            id="sectionName">
-            VISUAL
-        </div>
+    max-width:1150px;
 
+    margin:auto;
 
-        <!-- QUESTION NUMBER -->
+}
 
-        <div
-            class="question-label"
-            id="questionLabel">
-            QUESTION 1
-        </div>
 
+/* =========================================================
+   HEADER
+========================================================= */
 
-        <!-- QUESTION -->
+.assessment-header{
 
-        <h1 id="questionText">
-            Saya lebih mudah memahami sesuatu apabila maklumat dipersembahkan dalam bentuk gambar, warna atau rajah.
-        </h1>
+    display:flex;
 
+    align-items:center;
 
-        <p class="instruction">
-            Pilih jawapan yang paling menggambarkan diri anda.
-        </p>
+    justify-content:space-between;
 
+    margin-bottom:30px;
 
-        <!-- LIKERT -->
+}
 
-        <div class="likert-container">
 
-            <button
-                class="likert-option"
-                data-value="1">
+.assessment-header h1{
 
-                <span class="likert-number">1</span>
+    font-size:32px;
 
-                <span class="likert-text">
-                    Sangat Tidak Setuju
-                </span>
+    font-weight:800;
 
-            </button>
+    line-height:1.2;
 
+}
 
-            <button
-                class="likert-option"
-                data-value="2">
 
-                <span class="likert-number">2</span>
+.assessment-header p{
 
-                <span class="likert-text">
-                    Tidak Setuju
-                </span>
+    margin-top:6px;
 
-            </button>
+    color:rgba(255,255,255,0.62);
 
+    font-size:14px;
 
-            <button
-                class="likert-option"
-                data-value="3">
+}
 
-                <span class="likert-number">3</span>
 
-                <span class="likert-text">
-                    Neutral
-                </span>
+.question-counter{
 
-            </button>
+    padding:12px 20px;
 
+    border-radius:15px;
 
-            <button
-                class="likert-option"
-                data-value="4">
+    background:
+        rgba(255,255,255,0.07);
 
-                <span class="likert-number">4</span>
+    border:
+        1px solid
+        rgba(255,255,255,0.14);
 
-                <span class="likert-text">
-                    Setuju
-                </span>
+    backdrop-filter:blur(15px);
 
-            </button>
+    font-size:14px;
 
+    font-weight:600;
 
-            <button
-                class="likert-option"
-                data-value="5">
+    white-space:nowrap;
 
-                <span class="likert-number">5</span>
+}
 
-                <span class="likert-text">
-                    Sangat Setuju
-                </span>
 
-            </button>
+/* =========================================================
+   PROGRESS
+========================================================= */
 
-        </div>
+.progress-section{
 
+    margin-bottom:25px;
 
-        <!-- NAVIGATION -->
+}
 
-        <div class="navigation">
 
-            <button
-                class="nav-button back-button"
-                id="backButton"
-                onclick="previousQuestion()">
+.progress-info{
 
-                ← Back
+    display:flex;
 
-            </button>
+    justify-content:space-between;
 
+    margin-bottom:9px;
 
-            <button
-                class="nav-button next-button"
-                id="nextButton"
-                onclick="nextQuestion()">
+    color:
+        rgba(255,255,255,0.68);
 
-                Next →
+    font-size:13px;
 
-            </button>
+}
 
-        </div>
 
-    </section>
+.progress-bar{
 
-</main>
+    width:100%;
 
+    height:8px;
 
-<script>
+    overflow:hidden;
 
-const questions = [
+    border-radius:20px;
 
-    /* ================= VISUAL ================= */
+    background:
+        rgba(255,255,255,0.10);
 
-    {
-        section: "VISUAL",
-        icon: "👁️",
-        question:
-        "Saya lebih mudah memahami sesuatu apabila maklumat dipersembahkan dalam bentuk gambar, warna atau rajah."
-    },
+}
 
-    {
-        section: "VISUAL",
-        icon: "👁️",
-        question:
-        "Saya suka menggunakan warna, simbol atau peta minda untuk membantu saya mengingati maklumat."
-    },
 
-    {
-        section: "VISUAL",
-        icon: "👁️",
-        question:
-        "Saya lebih mudah belajar apabila melihat contoh, ilustrasi atau demonstrasi visual."
-    },
+.progress-fill{
 
-    {
-        section: "VISUAL",
-        icon: "👁️",
-        question:
-        "Saya suka menyusun nota menggunakan gambar rajah, carta atau warna yang berbeza."
-    },
+    width:3.333%;
 
+    height:100%;
 
-    /* ================= AUDITORY ================= */
+    border-radius:20px;
 
-    {
-        section: "AUDITORY",
-        icon: "🔊",
-        question:
-        "Saya lebih mudah memahami sesuatu apabila penerangan diberikan secara lisan."
-    },
+    background:
+        linear-gradient(
+            90deg,
+            #00c6ff,
+            #4facfe
+        );
 
-    {
-        section: "AUDITORY",
-        icon: "🔊",
-        question:
-        "Saya suka berbincang dengan orang lain untuk memahami sesuatu perkara."
-    },
+    box-shadow:
+        0 0 15px
+        rgba(0,198,255,0.45);
 
-    {
-        section: "AUDITORY",
-        icon: "🔊",
-        question:
-        "Saya mudah mengingati maklumat yang saya dengar."
-    },
+    transition:
+        width .35s ease;
 
-    {
-        section: "AUDITORY",
-        icon: "🔊",
-        question:
-        "Saya suka mendengar penerangan atau rakaman audio ketika belajar."
-    },
+}
 
 
-    /* ================= INTERPERSONAL ================= */
+/* =========================================================
+   QUESTION CARD
+========================================================= */
 
-    {
-        section: "INTERPERSONAL",
-        icon: "🤝",
-        question:
-        "Saya suka belajar bersama rakan kerana perbincangan membantu saya memahami sesuatu."
-    },
+.question-wrapper{
 
-    {
-        section: "INTERPERSONAL",
-        icon: "🤝",
-        question:
-        "Saya berasa lebih yakin apabila dapat berkongsi idea dengan orang lain."
-    },
+    --category-color:#00c6ff;
 
-    {
-        section: "INTERPERSONAL",
-        icon: "🤝",
-        question:
-        "Saya suka melakukan aktiviti pembelajaran secara berkumpulan."
-    },
+    --category-glow:
+        rgba(0,198,255,.30);
 
-    {
-        section: "INTERPERSONAL",
-        icon: "🤝",
-        question:
-        "Saya mudah mendapat idea baharu apabila berinteraksi dengan orang lain."
-    },
+    padding:38px;
 
+    border-radius:28px;
 
-    /* ================= INTRAPERSONAL ================= */
+    background:
+        rgba(255,255,255,0.075);
 
-    {
-        section: "INTRAPERSONAL",
-        icon: "🧠",
-        question:
-        "Saya lebih suka belajar secara sendiri mengikut cara dan tempo saya."
-    },
+    border:
+        1px solid
+        rgba(255,255,255,0.13);
 
-    {
-        section: "INTRAPERSONAL",
-        icon: "🧠",
-        question:
-        "Saya suka mengambil masa untuk berfikir sebelum memberikan jawapan."
-    },
+    backdrop-filter:blur(22px);
 
-    {
-        section: "INTRAPERSONAL",
-        icon: "🧠",
-        question:
-        "Saya suka menilai sendiri kekuatan dan kelemahan saya dalam pembelajaran."
-    },
+    -webkit-backdrop-filter:blur(22px);
 
-    {
-        section: "INTRAPERSONAL",
-        icon: "🧠",
-        question:
-        "Saya lebih selesa membuat keputusan pembelajaran berdasarkan pertimbangan diri sendiri."
+    box-shadow:
+
+        0 25px 70px
+        rgba(0,0,0,.30),
+
+        0 0 40px
+        var(--category-glow);
+
+    transition:.35s ease;
+
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.category-section{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:30px;
+
+}
+
+
+.category-icon{
+
+    width:62px;
+
+    height:62px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-radius:18px;
+
+    color:
+        var(--category-color);
+
+    border:
+        1px solid
+        var(--category-color);
+
+    background:
+        rgba(255,255,255,.07);
+
+    box-shadow:
+        0 0 25px
+        var(--category-glow);
+
+    font-size:28px;
+
+}
+
+
+.category-badge{
+
+    color:
+        var(--category-color);
+
+    font-size:14px;
+
+    font-weight:800;
+
+    letter-spacing:1.4px;
+
+}
+
+
+.category-description{
+
+    margin-top:4px;
+
+    color:
+        rgba(255,255,255,.55);
+
+    font-size:12px;
+
+}
+
+
+/* =========================================================
+   QUESTION BOX
+========================================================= */
+
+.question-box{
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    border-radius:20px;
+
+    background:
+        rgba(0,0,0,.13);
+
+    border:
+        1px solid
+        rgba(255,255,255,.08);
+
+}
+
+
+.question-label{
+
+    display:block;
+
+    margin-bottom:14px;
+
+    color:
+        var(--category-color);
+
+    font-size:11px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+}
+
+
+#questionText{
+
+    font-size:24px;
+
+    line-height:1.6;
+
+    font-weight:600;
+
+    color:#ffffff;
+
+}
+
+
+/* =========================================================
+   ANSWERS
+========================================================= */
+
+.answers-container{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:14px;
+
+}
+
+
+.answer-card{
+
+    min-height:125px;
+
+    padding:15px;
+
+    border-radius:18px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+    background:
+        rgba(255,255,255,.055);
+
+    color:#ffffff;
+
+    cursor:pointer;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:12px;
+
+    font-family:inherit;
+
+    transition:.25s ease;
+
+}
+
+
+.answer-card:hover{
+
+    transform:
+        translateY(-5px);
+
+    background:
+        rgba(255,255,255,.11);
+
+}
+
+
+.answer-number{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.10);
+
+    font-weight:800;
+
+}
+
+
+.answer-text{
+
+    text-align:center;
+
+    font-size:12px;
+
+    font-weight:600;
+
+    line-height:1.35;
+
+}
+
+
+/* =========================================================
+   ANSWER SELECTED
+========================================================= */
+
+.answer-card.selected{
+
+    transform:
+        translateY(-4px);
+
+}
+
+
+.answer-card:nth-child(1).selected{
+
+    border-color:#ff4d5a;
+
+    background:
+        rgba(255,77,90,.18);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,77,90,.25);
+
+}
+
+
+.answer-card:nth-child(2).selected{
+
+    border-color:#ff9f43;
+
+    background:
+        rgba(255,159,67,.18);
+
+    box-shadow:
+        0 0 25px
+        rgba(255,159,67,.25);
+
+}
+
+
+.answer-card:nth-child(3).selected{
+
+    border-color:#aab2bd;
+
+    background:
+        rgba(170,178,189,.18);
+
+    box-shadow:
+        0 0 25px
+        rgba(170,178,189,.22);
+
+}
+
+
+.answer-card:nth-child(4).selected{
+
+    border-color:#4facfe;
+
+    background:
+        rgba(79,172,254,.18);
+
+    box-shadow:
+        0 0 25px
+        rgba(79,172,254,.25);
+
+}
+
+
+.answer-card:nth-child(5).selected{
+
+    border-color:#3ee58a;
+
+    background:
+        rgba(62,229,138,.18);
+
+    box-shadow:
+        0 0 25px
+        rgba(62,229,138,.25);
+
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.navigation{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-top:25px;
+
+}
+
+
+.nav-btn{
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px 25px;
+
+    font-family:inherit;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s ease;
+
+}
+
+
+.previous-btn{
+
+    color:
+        rgba(255,255,255,.78);
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
+}
+
+
+.previous-btn:hover:not(:disabled){
+
+    background:
+        rgba(255,255,255,.14);
+
+    transform:
+        translateX(-3px);
+
+}
+
+
+.next-btn{
+
+    color:#ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00a8ff,
+            #0066ff
+        );
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,140,255,.25);
+
+}
+
+
+.next-btn:hover{
+
+    transform:
+        translateX(3px);
+
+}
+
+
+.nav-btn:disabled{
+
+    opacity:.35;
+
+    cursor:not-allowed;
+
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message{
+
+    min-height:22px;
+
+    margin-top:15px;
+
+    text-align:center;
+
+    color:#ffb3b3;
+
+    font-size:13px;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:900px){
+
+    .answers-container{
+
+        grid-template-columns:
+            repeat(2,1fr);
+
     }
 
-];
+    .answer-card:last-child{
 
-
-let currentQuestion = 0;
-
-let answers = new Array(questions.length).fill(null);
-
-
-// DOM
-
-const sectionIcon =
-    document.getElementById("sectionIcon");
-
-const sectionName =
-    document.getElementById("sectionName");
-
-const questionLabel =
-    document.getElementById("questionLabel");
-
-const questionText =
-    document.getElementById("questionText");
-
-const progressBar =
-    document.getElementById("progressBar");
-
-const questionCounter =
-    document.getElementById("questionCounter");
-
-const stepText =
-    document.getElementById("stepText");
-
-const backButton =
-    document.getElementById("backButton");
-
-const nextButton =
-    document.getElementById("nextButton");
-
-
-// LIKERT BUTTONS
-
-const likertButtons =
-    document.querySelectorAll(".likert-option");
-
-
-likertButtons.forEach(button => {
-
-    button.addEventListener("click", function() {
-
-        const value =
-            Number(this.dataset.value);
-
-        answers[currentQuestion] = value;
-
-        likertButtons.forEach(btn => {
-            btn.classList.remove("selected");
-        });
-
-        this.classList.add("selected");
-
-    });
-
-});
-
-
-// LOAD QUESTION
-
-function loadQuestion() {
-
-    const q =
-        questions[currentQuestion];
-
-
-    // Section icon
-
-    sectionIcon.textContent =
-        q.icon;
-
-
-    // Section name
-
-    sectionName.textContent =
-        q.section;
-
-
-    // Question number
-
-    questionLabel.textContent =
-        "QUESTION " + (currentQuestion + 1);
-
-
-    // Question
-
-    questionText.textContent =
-        q.question;
-
-
-    // Progress
-
-    const progress =
-        ((currentQuestion + 1) /
-        questions.length) * 100;
-
-    progressBar.style.width =
-        progress + "%";
-
-
-    questionCounter.textContent =
-        (currentQuestion + 1) +
-        " / " +
-        questions.length +
-        " Questions";
-
-
-    stepText.textContent =
-        "STEP " +
-        (currentQuestion + 1) +
-        " OF " +
-        questions.length;
-
-
-    // Selected answer
-
-    likertButtons.forEach(button => {
-
-        button.classList.remove("selected");
-
-        if (
-            Number(button.dataset.value) ===
-            answers[currentQuestion]
-        ) {
-
-            button.classList.add("selected");
-
-        }
-
-    });
-
-
-    // Back button
-
-    if (currentQuestion === 0) {
-
-        backButton.style.visibility =
-            "hidden";
-
-    } else {
-
-        backButton.style.visibility =
-            "visible";
-
-    }
-
-
-    // Last question
-
-    if (
-        currentQuestion ===
-        questions.length - 1
-    ) {
-
-        nextButton.textContent =
-            "Finish ✓";
-
-    } else {
-
-        nextButton.textContent =
-            "Next →";
+        grid-column:
+            span 2;
 
     }
 
 }
 
 
-// NEXT
+@media(max-width:600px){
 
-function nextQuestion() {
+    body{
 
-    if (
-        answers[currentQuestion] === null
-    ) {
+        padding:20px 12px;
 
-        alert(
-            "Sila pilih satu jawapan terlebih dahulu."
+    }
+
+
+    .assessment-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+
+    .assessment-header h1{
+
+        font-size:25px;
+
+    }
+
+
+    .question-counter{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+
+    .question-wrapper{
+
+        padding:22px;
+
+        border-radius:22px;
+
+    }
+
+
+    .question-box{
+
+        padding:20px;
+
+    }
+
+
+    #questionText{
+
+        font-size:18px;
+
+        line-height:1.55;
+
+    }
+
+
+    .answers-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+    .answer-card:last-child{
+
+        grid-column:auto;
+
+    }
+
+
+    .answer-card{
+
+        min-height:72px;
+
+        flex-direction:row;
+
+        justify-content:flex-start;
+
+        padding:14px 18px;
+
+    }
+
+
+    .answer-text{
+
+        text-align:left;
+
+    }
+
+
+    .navigation{
+
+        gap:10px;
+
+    }
+
+
+    .nav-btn{
+
+        flex:1;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="assessment-container">
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="assessment-header">
+
+
+    <div>
+
+        <h1>
+            Learning Journey
+        </h1>
+
+        <p>
+            Discover Your Learning Preference
+        </p>
+
+    </div>
+
+
+    <div class="question-counter">
+
+        Question
+
+        <span id="currentQuestion">
+            1
+        </span>
+
+        of 30
+
+    </div>
+
+
+</header>
+
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div class="progress-section">
+
+
+    <div class="progress-info">
+
+        <span>
+            Your Progress
+        </span>
+
+        <span id="progressPercent">
+            3%
+        </span>
+
+    </div>
+
+
+    <div class="progress-bar">
+
+        <div
+            id="progressFill"
+            class="progress-fill">
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     QUESTION
+===================================================== -->
+
+<main
+    class="question-wrapper"
+    id="questionWrapper">
+
+
+    <!-- CATEGORY -->
+
+    <div class="category-section">
+
+
+        <div
+            class="category-icon"
+            id="categoryIcon">
+
+            <i class="bi bi-eye"></i>
+
+        </div>
+
+
+        <div>
+
+            <div
+                class="category-badge"
+                id="categoryName">
+
+                VISUAL
+
+            </div>
+
+
+            <p
+                class="category-description"
+                id="categoryDescription">
+
+                See • Observe • Imagine
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- QUESTION BOX -->
+
+    <div class="question-box">
+
+
+        <span class="question-label">
+
+            QUESTION
+
+            <span id="questionNumber">
+                01
+            </span>
+
+        </span>
+
+
+        <h2 id="questionText">
+
+            Saya mudah faham apabila pengajaran
+            diselitkan dengan tontonan video.
+
+        </h2>
+
+
+    </div>
+
+
+
+    <!-- ANSWERS -->
+
+    <div
+        class="answers-container"
+        id="answersContainer">
+
+    </div>
+
+
+
+</main>
+
+
+
+<!-- =====================================================
+     NAVIGATION
+===================================================== -->
+
+<div class="navigation">
+
+
+    <button
+        type="button"
+        id="previousBtn"
+        class="nav-btn previous-btn"
+        disabled>
+
+        ← Previous
+
+    </button>
+
+
+    <button
+        type="button"
+        id="nextBtn"
+        class="nav-btn next-btn">
+
+        Next →
+
+    </button>
+
+
+</div>
+
+
+
+<div
+    id="message"
+    class="message">
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+/* =========================================================
+   VASS LEARNING STYLE INSTRUMENT
+   TOTAL = 30 ITEMS
+
+   VISUAL       = 8
+   AUDIO        = 9
+   INTERPERSONAL= 7
+   INTRAPERSONAL= 6
+========================================================= */
+
+
+const questions = [
+
+
+/* =========================================================
+   VISUAL — Q1-Q8
+========================================================= */
+
+
+{
+    id:1,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya mudah faham apabila pengajaran diselitkan dengan tontonan video."
+},
+
+
+{
+    id:2,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Carta, rajah dan peta membantu saya memahami apa yang pensyarah sampaikan."
+},
+
+
+{
+    id:3,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya mahir dan gemar membina grafik dan carta dari nota kuliah."
+},
+
+
+{
+    id:4,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya dapat memahami dan mengikuti arahan dengan mudah di peta."
+},
+
+
+{
+    id:5,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya seronok pada paparan aktiviti yang mempunyai perincian visual."
+},
+
+
+{
+    id:6,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya belajar sesuatu dengan lebih baik sekiranya saya dapat melihatnya."
+},
+
+
+{
+    id:7,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya boleh menggambarkan sesuatu visual dengan dari fikiran saya."
+},
+
+
+{
+    id:8,
+    category:"visual",
+    name:"VISUAL",
+    icon:"bi-eye",
+    description:"See • Observe • Imagine",
+    text:"Saya lebih faham dengan melihat gambar berbentuk grafik daripada membaca penerangan."
+},
+
+
+
+/* =========================================================
+   AUDIO — Q9-Q17
+========================================================= */
+
+
+{
+    id:9,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya lebih suka belajar dengan mendengar kuliah daripada membaca nota."
+},
+
+
+{
+    id:10,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya memerlukan arahan lisan untuk sesuatu tugasan."
+},
+
+
+{
+    id:11,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya dapat memahami dengan jelas arahan walaupun saya tidak dapat melihatnya."
+},
+
+
+{
+    id:12,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya dapat mengenal pasti seseorang dengan suara mereka. (cth., di telefon)"
+},
+
+
+{
+    id:13,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya dapat mengingati sesuatu perkara dengan baik hanya melalui kuliah yang merangkumi maklumat, penjelasan dan perbincangan."
+},
+
+
+{
+    id:14,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya lebih suka mendengar ceramah atau ucapan yang baik daripada membaca tentang bahan yang sama dalam buku teks."
+},
+
+
+{
+    id:15,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya berjaya dalam mata pelajaran akademik hanya dengan mendengar rakaman kuliah."
+},
+
+
+{
+    id:16,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya lebih memahami arahan aktiviti secara lisan dari pensyarah daripada yang ditulis dalam portal."
+},
+
+
+{
+    id:17,
+    category:"audio",
+    name:"AUDIO",
+    icon:"bi-volume-up",
+    description:"Listen • Discuss • Remember",
+    text:"Saya merasakan kuliah yang disampikan oleh pensyarah lebih bermakna daripada buku rujukan yang saya baca."
+},
+
+
+
+/* =========================================================
+   INTERPERSONAL — Q18-Q24
+========================================================= */
+
+
+{
+    id:18,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya belajar dengan lebih baik semasa kuliah dalam talian daripada belajar sendiri."
+},
+
+
+{
+    id:19,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Perbincangan semasa kuliah dalam talian memberi saya lebih semangat."
+},
+
+
+{
+    id:20,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya seronok melaksanakan aktiviti berkumpulan dalam portal yang disediakan."
+},
+
+
+{
+    id:21,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya lebih banyak meluangkan masa belajar ketika bersama melaksanakan aktiviti berkumpulan."
+},
+
+
+{
+    id:22,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya seronok bekerja dengan dua atau tiga rakan sekelas."
+},
+
+
+{
+    id:23,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya memahami dengan lebih mudah sesuatu perkara apabila dilaksanakan secara perbincangan."
+},
+
+
+{
+    id:24,
+    category:"interpersonal",
+    name:"INTERPERSONAL [SOSIAL]",
+    icon:"bi-people",
+    description:"Collaborate • Discuss • Share",
+    text:"Saya seronok membincangkan idea pembelajaran saya dengan rakan-rakan."
+},
+
+
+
+/* =========================================================
+   INTRAPERSONAL — Q25-Q30
+========================================================= */
+
+
+{
+    id:25,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Saya lebih suka permainan dan aktiviti individu atau satu-satu."
+},
+
+
+{
+    id:26,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Apabila saya belajar sendiri, saya ingat sesuatu perkara dengan lebih baik."
+},
+
+
+{
+    id:27,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Saya suka menemui perkara sendiri daripada menjelaskan semuanya kepada saya."
+},
+
+
+{
+    id:28,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Apabila saya bekerja sendiri, saya belajar dengan lebih baik."
+},
+
+
+{
+    id:29,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Saya lebih suka mengusahakan projek sendiri."
+},
+
+
+{
+    id:30,
+    category:"intrapersonal",
+    name:"INTRAPERSONAL [SOLITARY]",
+    icon:"bi-person",
+    description:"Reflect • Explore • Learn",
+    text:"Saya lebih suka bekerja sendiri."
+}
+
+
+];
+
+
+/* =========================================================
+   VERIFY TOTAL
+========================================================= */
+
+console.log(
+    "Total Questions:",
+    questions.length
+);
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let current = 0;
+
+
+/*
+   undefined = belum jawab
+*/
+
+let answers =
+    new Array(
+        questions.length
+    ).fill(undefined);
+
+
+/* =========================================================
+   ELEMENTS
+========================================================= */
+
+const questionWrapper =
+    document.getElementById(
+        "questionWrapper"
+    );
+
+
+const categoryIcon =
+    document.getElementById(
+        "categoryIcon"
+    );
+
+
+const categoryName =
+    document.getElementById(
+        "categoryName"
+    );
+
+
+const categoryDescription =
+    document.getElementById(
+        "categoryDescription"
+    );
+
+
+const questionNumber =
+    document.getElementById(
+        "questionNumber"
+    );
+
+
+const questionText =
+    document.getElementById(
+        "questionText"
+    );
+
+
+const currentQuestion =
+    document.getElementById(
+        "currentQuestion"
+    );
+
+
+const progressFill =
+    document.getElementById(
+        "progressFill"
+    );
+
+
+const progressPercent =
+    document.getElementById(
+        "progressPercent"
+    );
+
+
+const answersContainer =
+    document.getElementById(
+        "answersContainer"
+    );
+
+
+const previousBtn =
+    document.getElementById(
+        "previousBtn"
+    );
+
+
+const nextBtn =
+    document.getElementById(
+        "nextBtn"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+/* =========================================================
+   CATEGORY STYLE
+========================================================= */
+
+const categoryStyles = {
+
+    visual:{
+        color:"#00c6ff",
+        glow:"rgba(0,198,255,.30)"
+    },
+
+    audio:{
+        color:"#a970ff",
+        glow:"rgba(169,112,255,.30)"
+    },
+
+    interpersonal:{
+        color:"#ff5ca8",
+        glow:"rgba(255,92,168,.30)"
+    },
+
+    intrapersonal:{
+        color:"#3ee58a",
+        glow:"rgba(62,229,138,.30)"
+    }
+
+};
+
+
+/* =========================================================
+   LIKERT
+========================================================= */
+
+const likert = [
+
+    {
+        value:1,
+        text:"Sangat Tidak Setuju"
+    },
+
+    {
+        value:2,
+        text:"Tidak Setuju"
+    },
+
+    {
+        value:3,
+        text:"Neutral"
+    },
+
+    {
+        value:4,
+        text:"Setuju"
+    },
+
+    {
+        value:5,
+        text:"Sangat Setuju"
+    }
+
+];
+
+
+/* =========================================================
+   LOAD QUESTION
+========================================================= */
+
+function loadQuestion(){
+
+    const q =
+        questions[current];
+
+
+    /* CATEGORY ICON */
+
+    categoryIcon.innerHTML =
+        `<i class="bi ${q.icon}"></i>`;
+
+
+    /* CATEGORY NAME */
+
+    categoryName.textContent =
+        q.name;
+
+
+    /* DESCRIPTION */
+
+    categoryDescription.textContent =
+        q.description;
+
+
+    /* QUESTION NUMBER */
+
+    questionNumber.textContent =
+        String(
+            q.id
+        ).padStart(
+            2,
+            "0"
         );
+
+
+    currentQuestion.textContent =
+        q.id;
+
+
+    /* QUESTION */
+
+    questionText.textContent =
+        q.text;
+
+
+    /* CATEGORY COLOUR */
+
+    const style =
+        categoryStyles[
+            q.category
+        ];
+
+
+    questionWrapper.style.setProperty(
+        "--category-color",
+        style.color
+    );
+
+
+    questionWrapper.style.setProperty(
+        "--category-glow",
+        style.glow
+    );
+
+
+    /* PROGRESS */
+
+    const progress =
+        (
+            (current + 1)
+            /
+            questions.length
+        ) * 100;
+
+
+    progressFill.style.width =
+        progress + "%";
+
+
+    progressPercent.textContent =
+        Math.round(progress)
+        + "%";
+
+
+    /* ANSWERS */
+
+    renderAnswers();
+
+
+    /* PREVIOUS */
+
+    previousBtn.disabled =
+        current === 0;
+
+
+    /* LAST BUTTON */
+
+    if(
+        current ===
+        questions.length - 1
+    ){
+
+        nextBtn.textContent =
+            "Finish ✓";
+
+    }else{
+
+        nextBtn.textContent =
+            "Next →";
+
+    }
+
+
+    message.textContent = "";
+
+}
+
+
+/* =========================================================
+   RENDER ANSWERS
+========================================================= */
+
+function renderAnswers(){
+
+    answersContainer.innerHTML = "";
+
+
+    likert.forEach(
+        function(option){
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+
+            button.type =
+                "button";
+
+
+            button.className =
+                "answer-card";
+
+
+            button.dataset.value =
+                option.value;
+
+
+            button.innerHTML = `
+
+                <span class="answer-number">
+
+                    ${option.value}
+
+                </span>
+
+                <span class="answer-text">
+
+                    ${option.text}
+
+                </span>
+
+            `;
+
+
+            /* SELECTED */
+
+            if(
+                answers[current]
+                ===
+                option.value
+            ){
+
+                button.classList.add(
+                    "selected"
+                );
+
+            }
+
+
+            /* CLICK */
+
+            button.addEventListener(
+                "click",
+                function(){
+
+                    answers[current] =
+                        option.value;
+
+
+                    localStorage.setItem(
+                        "vassAnswers",
+                        JSON.stringify(
+                            answers
+                        )
+                    );
+
+
+                    renderAnswers();
+
+
+                    message.textContent =
+                        "";
+
+                }
+            );
+
+
+            answersContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   NEXT
+========================================================= */
+
+nextBtn.addEventListener(
+    "click",
+    function(){
+
+        /* MUST ANSWER */
+
+        if(
+            answers[current]
+            ===
+            undefined
+        ){
+
+            message.textContent =
+                "Sila pilih satu jawapan terlebih dahulu.";
+
+            return;
+
+        }
+
+
+        /* FINISH */
+
+        if(
+            current ===
+            questions.length - 1
+        ){
+
+            finishAssessment();
+
+            return;
+
+        }
+
+
+        /* NEXT */
+
+        current++;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   PREVIOUS
+========================================================= */
+
+previousBtn.addEventListener(
+    "click",
+    function(){
+
+        if(
+            current === 0
+        ){
+
+            return;
+
+        }
+
+
+        current--;
+
+        loadQuestion();
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+);
+
+
+/* =========================================================
+   CALCULATE RAW SCORES
+========================================================= */
+
+function calculateScores(){
+
+    const raw = {
+
+        visual:0,
+
+        audio:0,
+
+        interpersonal:0,
+
+        intrapersonal:0
+
+    };
+
+
+    questions.forEach(
+        function(q,index){
+
+            const answer =
+                Number(
+                    answers[index]
+                ) || 0;
+
+
+            raw[q.category] +=
+                answer;
+
+        }
+    );
+
+
+    return raw;
+
+}
+
+
+/* =========================================================
+   CALCULATE PERCENTAGE
+=========================================================
+
+   Visual       = 8 × 5 = 40
+   Audio        = 9 × 5 = 45
+   Interpersonal= 7 × 5 = 35
+   Intrapersonal= 6 × 5 = 30
+
+========================================================= */
+
+function calculatePercentage(
+    raw
+){
+
+    return {
+
+        visual:
+            Math.round(
+                (
+                    raw.visual /
+                    40
+                ) * 100
+            ),
+
+        audio:
+            Math.round(
+                (
+                    raw.audio /
+                    45
+                ) * 100
+            ),
+
+        interpersonal:
+            Math.round(
+                (
+                    raw.interpersonal /
+                    35
+                ) * 100
+            ),
+
+        intrapersonal:
+            Math.round(
+                (
+                    raw.intrapersonal /
+                    30
+                ) * 100
+            )
+
+    };
+
+}
+
+
+/* =========================================================
+   FIND DOMINANT
+========================================================= */
+
+function findDominant(
+    scores
+){
+
+    const categories = [
+
+        "visual",
+
+        "audio",
+
+        "interpersonal",
+
+        "intrapersonal"
+
+    ];
+
+
+    let dominant =
+        categories[0];
+
+
+    categories.forEach(
+        function(category){
+
+            if(
+                scores[category]
+                >
+                scores[dominant]
+            ){
+
+                dominant =
+                    category;
+
+            }
+
+        }
+    );
+
+
+    return dominant;
+
+}
+
+
+/* =========================================================
+   FINISH
+========================================================= */
+
+function finishAssessment(){
+
+    /* CHECK ALL */
+
+    const incomplete =
+        answers.some(
+            function(answer){
+
+                return answer ===
+                    undefined;
+
+            }
+        );
+
+
+    if(incomplete){
+
+        message.textContent =
+            "Sila lengkapkan semua 30 soalan.";
 
         return;
 
     }
 
 
-    if (
-        currentQuestion <
-        questions.length - 1
-    ) {
+    /* RAW */
 
-        currentQuestion++;
-
-        loadQuestion();
-
-    } else {
-
-        finishAssessment();
-
-    }
-
-}
+    const raw =
+        calculateScores();
 
 
-// BACK
+    /* PERCENTAGE */
 
-function previousQuestion() {
-
-    if (currentQuestion > 0) {
-
-        currentQuestion--;
-
-        loadQuestion();
-
-    }
-
-}
+    const scores =
+        calculatePercentage(
+            raw
+        );
 
 
-// FINISH
+    /* DOMINANT */
 
-function finishAssessment() {
-
-    const visual =
-        answers[0] +
-        answers[1] +
-        answers[2] +
-        answers[3];
+    const dominant =
+        findDominant(
+            scores
+        );
 
 
-    const audio =
-        answers[4] +
-        answers[5] +
-        answers[6] +
-        answers[7];
+    /* RESULT */
+
+    const result = {
+
+        rawScores:{
+
+            visual:
+                raw.visual,
+
+            audio:
+                raw.audio,
+
+            interpersonal:
+                raw.interpersonal,
+
+            intrapersonal:
+                raw.intrapersonal
+
+        },
 
 
-    const interpersonal =
-        answers[8] +
-        answers[9] +
-        answers[10] +
-        answers[11];
+        scores:{
+
+            visual:
+                scores.visual,
+
+            audio:
+                scores.audio,
+
+            interpersonal:
+                scores.interpersonal,
+
+            intrapersonal:
+                scores.intrapersonal
+
+        },
 
 
-    const intrapersonal =
-        answers[12] +
-        answers[13] +
-        answers[14] +
-        answers[15];
+        dominantStyle:
+            dominant,
 
 
-    const scores = {
+        totalQuestions:
+            30,
 
-        visual: visual,
 
-        audio: audio,
-
-        interpersonal: interpersonal,
-
-        intrapersonal: intrapersonal
+        completedAt:
+            new Date().toISOString()
 
     };
 
 
+    /* SAVE RESULT */
+
     localStorage.setItem(
-        "vassScores",
-        JSON.stringify(scores)
+        "vassAssessmentResult",
+        JSON.stringify(
+            result
+        )
     );
 
 
-    const dominantStyle =
-        Object.keys(scores).reduce(
-            (a, b) =>
-            scores[a] > scores[b] ? a : b
-        );
+    localStorage.setItem(
+        "vassAnswers",
+        JSON.stringify(
+            answers
+        )
+    );
+
+
+    /* SAVE INDIVIDUAL SCORES */
+
+    localStorage.setItem(
+        "visualScore",
+        raw.visual
+    );
+
+
+    localStorage.setItem(
+        "audioScore",
+        raw.audio
+    );
+
+
+    localStorage.setItem(
+        "interpersonalScore",
+        raw.interpersonal
+    );
+
+
+    localStorage.setItem(
+        "intrapersonalScore",
+        raw.intrapersonal
+    );
+
+
+    localStorage.setItem(
+        "visualPercentage",
+        scores.visual
+    );
+
+
+    localStorage.setItem(
+        "audioPercentage",
+        scores.audio
+    );
+
+
+    localStorage.setItem(
+        "interpersonalPercentage",
+        scores.interpersonal
+    );
+
+
+    localStorage.setItem(
+        "intrapersonalPercentage",
+        scores.intrapersonal
+    );
 
 
     localStorage.setItem(
         "dominantStyle",
-        dominantStyle
+        dominant
     );
 
 
+    /* GO DASHBOARD */
+
     window.location.href =
-        "result.html";
+        "dashboard.html";
 
 }
 
 
-// START
+/* =========================================================
+   START
+========================================================= */
 
 loadQuestion();
 
 </script>
 
+
 </body>
+
 </html>
