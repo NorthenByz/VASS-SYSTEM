@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms">
 
 <head>
 
@@ -18,19 +18,20 @@
           href="https://fonts.gstatic.com"
           crossorigin>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
 
     <!-- Bootstrap -->
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
 
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="css/assessment.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Assessment CSS -->
+    <link rel="stylesheet"
+          href="css/assessment.css">
 
 </head>
 
@@ -42,36 +43,33 @@
      HEADER
 ===================================================== -->
 
-<header class="assessment-header">
+<header class="top-header">
 
-    <div class="header-inner">
+    <div class="brand">
 
-        <div class="brand">
+        <img src="assets/images/logo.png"
+             alt="VASS Logo"
+             class="header-logo">
 
-            <img
-                src="assets/images/logo.png"
-                alt="VASS Logo">
+        <div class="brand-text">
 
-            <div>
+            <div class="brand-title">
+                VASS
+            </div>
 
-                <div class="brand-title">
-                    VASS
-                </div>
-
-                <div class="brand-subtitle">
-                    Learning Analytics System
-                </div>
-
+            <div class="brand-subtitle">
+                Learning Analytics System
             </div>
 
         </div>
 
+    </div>
 
-        <div class="step-indicator">
 
-            STEP <span id="currentStep">1</span> OF 16
+    <div class="step-counter"
+         id="topStep">
 
-        </div>
+        STEP 1 OF 16
 
     </div>
 
@@ -86,29 +84,31 @@
 <main class="assessment-container">
 
 
-    <!-- Progress -->
+    <!-- PROGRESS -->
 
-    <div class="progress-wrapper">
+    <div class="progress-section">
 
         <div class="progress">
 
-            <div
-                class="progress-bar"
-                id="progressBar"
-                role="progressbar"
-                style="width: 6.25%;">
+            <div class="progress-bar"
+                 id="progressBar"
+                 role="progressbar"
+                 style="width: 6.25%;">
 
             </div>
 
         </div>
 
-        <div class="progress-text">
 
-            <span id="progressNumber">
-                1
+        <div class="progress-label">
+
+            <span id="questionNumber">
+                1 / 16
             </span>
 
-            / 16 Questions
+            <span>
+                Questions
+            </span>
 
         </div>
 
@@ -116,195 +116,181 @@
 
 
 
-    <!-- Assessment Card -->
+    <!-- =================================================
+         QUESTION CARD
+    ================================================== -->
 
-    <section class="assessment-card">
-
-
-        <!-- Question -->
-
-        <div class="question-section">
+    <section class="question-card">
 
 
-            <div class="question-label">
+        <!-- SECTION ICON -->
 
-                QUESTION
-                <span id="questionNumber">
+        <div class="section-icon"
+             id="sectionIcon">
+
+            👁️
+
+        </div>
+
+
+
+        <!-- QUESTION NUMBER -->
+
+        <div class="question-label"
+             id="questionLabel">
+
+            QUESTION 1
+
+        </div>
+
+
+
+        <!-- QUESTION -->
+
+        <h1 id="questionText">
+
+            Saya lebih mudah memahami sesuatu apabila
+            maklumat disampaikan melalui gambar atau visual.
+
+        </h1>
+
+
+
+        <!-- INSTRUCTION -->
+
+        <p class="instruction">
+
+            Pilih jawapan yang paling menggambarkan diri anda.
+
+        </p>
+
+
+
+        <!-- =================================================
+             LIKERT OPTIONS
+        ================================================== -->
+
+        <div class="likert-container"
+             id="likertContainer">
+
+
+            <!-- OPTION 1 -->
+
+            <button class="likert-option"
+                    data-value="1">
+
+                <div class="likert-number">
                     1
-                </span>
+                </div>
 
-            </div>
+                <div class="likert-text">
+                    Sangat Tidak Setuju
+                </div>
 
-
-            <h1 id="questionText">
-
-                Saya lebih mudah memahami sesuatu apabila maklumat dipersembahkan dalam bentuk gambar, rajah atau carta.
-
-            </h1>
+            </button>
 
 
-            <p class="instruction">
 
-                Pilih jawapan yang paling menggambarkan diri anda.
+            <!-- OPTION 2 -->
 
-            </p>
+            <button class="likert-option"
+                    data-value="2">
 
+                <div class="likert-number">
+                    2
+                </div>
+
+                <div class="likert-text">
+                    Tidak Setuju
+                </div>
+
+            </button>
+
+
+
+            <!-- OPTION 3 -->
+
+            <button class="likert-option"
+                    data-value="3">
+
+                <div class="likert-number">
+                    3
+                </div>
+
+                <div class="likert-text">
+                    Neutral
+                </div>
+
+            </button>
+
+
+
+            <!-- OPTION 4 -->
+
+            <button class="likert-option"
+                    data-value="4">
+
+                <div class="likert-number">
+                    4
+                </div>
+
+                <div class="likert-text">
+                    Setuju
+                </div>
+
+            </button>
+
+
+
+            <!-- OPTION 5 -->
+
+            <button class="likert-option"
+                    data-value="5">
+
+                <div class="likert-number">
+                    5
+                </div>
+
+                <div class="likert-text">
+                    Sangat Setuju
+                </div>
+
+            </button>
 
         </div>
 
 
 
         <!-- =================================================
-             LIKERT SCALE
-        ================================================= -->
-
-        <div class="likert-container">
-
-
-            <!-- 1 -->
-
-            <label class="likert-option">
-
-                <input
-                    type="radio"
-                    name="likert"
-                    value="1">
-
-                <span class="likert-circle">
-                    1
-                </span>
-
-                <span class="likert-text">
-                    Sangat Tidak Setuju
-                </span>
-
-            </label>
-
-
-
-            <!-- 2 -->
-
-            <label class="likert-option">
-
-                <input
-                    type="radio"
-                    name="likert"
-                    value="2">
-
-                <span class="likert-circle">
-                    2
-                </span>
-
-                <span class="likert-text">
-                    Tidak Setuju
-                </span>
-
-            </label>
-
-
-
-            <!-- 3 -->
-
-            <label class="likert-option">
-
-                <input
-                    type="radio"
-                    name="likert"
-                    value="3">
-
-                <span class="likert-circle">
-                    3
-                </span>
-
-                <span class="likert-text">
-                    Neutral
-                </span>
-
-            </label>
-
-
-
-            <!-- 4 -->
-
-            <label class="likert-option">
-
-                <input
-                    type="radio"
-                    name="likert"
-                    value="4">
-
-                <span class="likert-circle">
-                    4
-                </span>
-
-                <span class="likert-text">
-                    Setuju
-                </span>
-
-            </label>
-
-
-
-            <!-- 5 -->
-
-            <label class="likert-option">
-
-                <input
-                    type="radio"
-                    name="likert"
-                    value="5">
-
-                <span class="likert-circle">
-                    5
-                </span>
-
-                <span class="likert-text">
-                    Sangat Setuju
-                </span>
-
-            </label>
-
-
-        </div>
-
-
-
-        <!-- Warning -->
-
-        <div
-            id="warningMessage"
-            class="warning-message">
-
-            Sila pilih satu jawapan sebelum meneruskan.
-
-        </div>
-
-
-
-        <!-- Navigation -->
+             NAVIGATION
+        ================================================== -->
 
         <div class="navigation">
 
 
-            <button
-                type="button"
-                id="backButton"
-                class="btn-back"
-                onclick="previousQuestion()"
-                disabled>
+            <button id="backButton"
+                    class="nav-button back-button"
+                    type="button">
 
-                ← Back
+                <span>
+                    ←
+                </span>
+
+                Back
 
             </button>
 
 
-            <button
-                type="button"
-                id="nextButton"
-                class="btn-next"
-                onclick="nextQuestion()">
 
-                Next →
+            <button id="nextButton"
+                    class="nav-button next-button"
+                    type="button">
+
+                Next
+
+                <span>
+                    →
+                </span>
 
             </button>
 
@@ -313,16 +299,6 @@
 
 
     </section>
-
-
-
-    <!-- Footer -->
-
-    <footer>
-
-        VASS Learning Analytics System © 2026
-
-    </footer>
 
 
 </main>
@@ -351,95 +327,103 @@ const GOOGLE_SCRIPT_URL =
 
 const questions = [
 
-    /* ================= VISUAL ================= */
-
     {
-        text: "Saya lebih mudah memahami sesuatu apabila maklumat dipersembahkan dalam bentuk gambar, rajah atau carta.",
-        type: "visual"
+        type: "visual",
+        icon: "👁️",
+        text: "Saya lebih mudah memahami sesuatu apabila maklumat disampaikan melalui gambar atau visual."
     },
 
     {
-        text: "Saya suka menggunakan warna, simbol atau peta minda untuk membantu saya mengingati maklumat.",
-        type: "visual"
+        type: "visual",
+        icon: "👁️",
+        text: "Saya suka menggunakan warna, simbol atau peta minda untuk membantu saya mengingati maklumat."
     },
 
     {
-        text: "Saya lebih mudah memahami arahan apabila terdapat contoh visual yang jelas.",
-        type: "visual"
+        type: "visual",
+        icon: "👁️",
+        text: "Saya lebih suka melihat contoh atau demonstrasi sebelum melakukan sesuatu tugasan."
     },
 
     {
-        text: "Saya suka melihat demonstrasi, ilustrasi atau video apabila mempelajari sesuatu yang baharu.",
-        type: "visual"
+        type: "visual",
+        icon: "👁️",
+        text: "Saya gemar menggunakan carta, rajah atau grafik ketika belajar."
     },
 
 
-    /* ================= AUDIO ================= */
-
     {
-        text: "Saya lebih mudah memahami sesuatu apabila guru menerangkan sesuatu secara lisan.",
-        type: "audio"
+        type: "audio",
+        icon: "🎧",
+        text: "Saya lebih mudah memahami sesuatu apabila mendengar penerangan daripada guru."
     },
 
     {
-        text: "Saya suka mendengar penerangan atau perbincangan apabila mempelajari sesuatu.",
-        type: "audio"
+        type: "audio",
+        icon: "🎧",
+        text: "Saya suka berbincang tentang sesuatu topik untuk membantu saya memahaminya."
     },
 
     {
-        text: "Saya lebih mudah mengingati maklumat selepas mendengar penerangan tentangnya.",
-        type: "audio"
+        type: "audio",
+        icon: "🎧",
+        text: "Saya mudah mengingati maklumat yang saya dengar."
     },
 
     {
-        text: "Saya suka belajar melalui perbincangan dan soal jawab secara lisan.",
-        type: "audio"
+        type: "audio",
+        icon: "🎧",
+        text: "Saya suka belajar melalui penerangan lisan, rakaman audio atau video yang mempunyai penerangan suara."
     },
 
 
-    /* ================= INTERPERSONAL ================= */
-
     {
-        text: "Saya belajar dengan lebih baik apabila dapat berbincang dan bertukar idea dengan orang lain.",
-        type: "interpersonal"
+        type: "interpersonal",
+        icon: "🤝",
+        text: "Saya belajar dengan lebih baik apabila bekerja bersama rakan."
     },
 
     {
-        text: "Saya suka menyelesaikan tugasan bersama rakan dalam kumpulan.",
-        type: "interpersonal"
+        type: "interpersonal",
+        icon: "🤝",
+        text: "Saya suka berkongsi idea dan pendapat dengan orang lain ketika belajar."
     },
 
     {
-        text: "Perbincangan dengan rakan membantu saya memahami sesuatu topik dengan lebih mendalam.",
-        type: "interpersonal"
+        type: "interpersonal",
+        icon: "🤝",
+        text: "Saya lebih berminat menyertai aktiviti pembelajaran secara berkumpulan."
     },
 
     {
-        text: "Saya berasa lebih bermotivasi apabila belajar bersama orang lain.",
-        type: "interpersonal"
+        type: "interpersonal",
+        icon: "🤝",
+        text: "Saya suka membantu rakan dan belajar melalui kerjasama."
     },
 
 
-    /* ================= INTRAPERSONAL ================= */
-
     {
-        text: "Saya lebih suka belajar secara sendiri mengikut cara dan rentak pembelajaran saya.",
-        type: "intrapersonal"
+        type: "intrapersonal",
+        icon: "🧠",
+        text: "Saya lebih suka belajar secara bersendirian mengikut cara saya sendiri."
     },
 
     {
-        text: "Saya suka meluangkan masa untuk berfikir dan memahami sesuatu perkara secara mendalam.",
-        type: "intrapersonal"
+        type: "intrapersonal",
+        icon: "🧠",
+        text: "Saya suka membuat refleksi tentang perkara yang telah saya pelajari."
     },
 
     {
-        text: "Saya boleh menentukan sendiri strategi yang sesuai untuk membantu saya belajar.",
-        type: "intrapersonal"
+        type: "intrapersonal",
+        icon: "🧠",
+        text: "Saya mampu merancang sendiri cara dan masa untuk belajar."
     },
 
     {
-        text: "Saya suka membuat refleksi terhadap kekuatan dan kelemahan diri selepas belajar.",
-        type: "intrapersonal"
+        type: "intrapersonal",
+        icon: "🧠",
+        text: "Saya suka menetapkan matlamat pembelajaran untuk diri saya sendiri."
     }
 
 ];
@@ -452,7 +436,7 @@ const questions = [
 
 let currentQuestion = 0;
 
-let answers = new Array(questions.length).fill(null);
+let answers = [];
 
 
 
@@ -460,20 +444,23 @@ let answers = new Array(questions.length).fill(null);
    DOM ELEMENTS
 ===================================================== */
 
+const sectionIcon =
+    document.getElementById("sectionIcon");
+
+const questionLabel =
+    document.getElementById("questionLabel");
+
 const questionText =
     document.getElementById("questionText");
 
 const questionNumber =
     document.getElementById("questionNumber");
 
-const currentStep =
-    document.getElementById("currentStep");
+const topStep =
+    document.getElementById("topStep");
 
 const progressBar =
     document.getElementById("progressBar");
-
-const progressNumber =
-    document.getElementById("progressNumber");
 
 const backButton =
     document.getElementById("backButton");
@@ -481,8 +468,8 @@ const backButton =
 const nextButton =
     document.getElementById("nextButton");
 
-const warningMessage =
-    document.getElementById("warningMessage");
+const likertOptions =
+    document.querySelectorAll(".likert-option");
 
 
 
@@ -492,33 +479,70 @@ const warningMessage =
 
 function loadQuestion() {
 
-
     const question =
         questions[currentQuestion];
 
+
+    /* Icon */
+
+    sectionIcon.textContent =
+        question.icon;
+
+
+    /* Question number */
+
+    questionLabel.textContent =
+        `QUESTION ${currentQuestion + 1}`;
+
+
+    questionNumber.textContent =
+        `${currentQuestion + 1} / ${questions.length}`;
+
+
+    topStep.textContent =
+        `STEP ${currentQuestion + 1} OF ${questions.length}`;
+
+
+    /* Question text */
 
     questionText.textContent =
         question.text;
 
 
-    questionNumber.textContent =
-        currentQuestion + 1;
-
-
-    currentStep.textContent =
-        currentQuestion + 1;
-
-
-    progressNumber.textContent =
-        currentQuestion + 1;
-
+    /* Progress */
 
     const progress =
         ((currentQuestion + 1) / questions.length) * 100;
 
-
     progressBar.style.width =
-        progress + "%";
+        `${progress}%`;
+
+
+    /* Remove selected */
+
+    likertOptions.forEach(option => {
+
+        option.classList.remove("selected");
+
+    });
+
+
+    /* Restore previous answer */
+
+    if (answers[currentQuestion]) {
+
+        const selected =
+            document.querySelector(
+                `.likert-option[data-value="${answers[currentQuestion]}"]`
+            );
+
+        if (selected) {
+
+            selected.classList.add("selected");
+
+        }
+
+    }
 
 
     /* Back button */
@@ -538,119 +562,89 @@ function loadQuestion() {
 
     if (currentQuestion === questions.length - 1) {
 
-        nextButton.textContent =
-            "Finish ✓";
+        nextButton.innerHTML =
+            `Finish <span>✓</span>`;
 
     } else {
 
-        nextButton.textContent =
-            "Next →";
+        nextButton.innerHTML =
+            `Next <span>→</span>`;
 
     }
 
-
-    /* Clear warning */
-
-    warningMessage.style.display =
-        "none";
+}
 
 
-    /* Restore previous answer */
 
-    const radioButtons =
-        document.querySelectorAll(
-            'input[name="likert"]'
-        );
+/* =====================================================
+   LIKERT SELECTION
+===================================================== */
+
+likertOptions.forEach(option => {
+
+    option.addEventListener("click", function() {
 
 
-    radioButtons.forEach(function(radio) {
+        /* Remove existing */
 
-        radio.checked = false;
+        likertOptions.forEach(item => {
+
+            item.classList.remove("selected");
+
+        });
+
+
+        /* Select */
+
+        this.classList.add("selected");
+
+
+        /* Save */
+
+        answers[currentQuestion] =
+            Number(this.dataset.value);
+
 
     });
 
-
-    if (answers[currentQuestion] !== null) {
-
-        const selected =
-            document.querySelector(
-                'input[name="likert"][value="' +
-                answers[currentQuestion] +
-                '"]'
-            );
-
-        if (selected) {
-
-            selected.checked = true;
-
-        }
-
-    }
-
-}
+});
 
 
 
 /* =====================================================
-   SAVE CURRENT ANSWER
+   NEXT BUTTON
 ===================================================== */
 
-function saveCurrentAnswer() {
+nextButton.addEventListener("click", function() {
 
 
-    const selected =
-        document.querySelector(
-            'input[name="likert"]:checked'
+    /* Check answer */
+
+    if (!answers[currentQuestion]) {
+
+        alert(
+            "Sila pilih satu jawapan sebelum meneruskan."
         );
-
-
-    if (!selected) {
-
-        warningMessage.style.display =
-            "block";
-
-        return false;
-
-    }
-
-
-    answers[currentQuestion] =
-        Number(selected.value);
-
-
-    return true;
-
-}
-
-
-
-/* =====================================================
-   NEXT QUESTION
-===================================================== */
-
-function nextQuestion() {
-
-
-    if (!saveCurrentAnswer()) {
 
         return;
 
     }
 
 
-    if (
-        currentQuestion <
-        questions.length - 1
-    ) {
+    /* Next */
+
+    if (currentQuestion < questions.length - 1) {
 
         currentQuestion++;
 
         loadQuestion();
 
+
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
 
     } else {
 
@@ -658,15 +652,15 @@ function nextQuestion() {
 
     }
 
-}
+});
 
 
 
 /* =====================================================
-   PREVIOUS QUESTION
+   BACK BUTTON
 ===================================================== */
 
-function previousQuestion() {
+backButton.addEventListener("click", function() {
 
 
     if (currentQuestion > 0) {
@@ -675,6 +669,7 @@ function previousQuestion() {
 
         loadQuestion();
 
+
         window.scrollTo({
             top: 0,
             behavior: "smooth"
@@ -682,7 +677,7 @@ function previousQuestion() {
 
     }
 
-}
+});
 
 
 
@@ -706,55 +701,20 @@ function calculateScores() {
     };
 
 
-    questions.forEach(
-        function(question, index) {
+    questions.forEach((question, index) => {
 
-            const answer =
-                Number(answers[index]) || 0;
 
-            scores[question.type] +=
-                answer;
+        const answer =
+            answers[index] || 0;
 
-        }
-    );
+
+        scores[question.type] +=
+            answer;
+
+    });
 
 
     return scores;
-
-}
-
-
-
-/* =====================================================
-   CALCULATE PERCENTAGE
-===================================================== */
-
-function calculatePercentages(scores) {
-
-
-    return {
-
-        visual:
-            Math.round(
-                (scores.visual / 20) * 100
-            ),
-
-        audio:
-            Math.round(
-                (scores.audio / 20) * 100
-            ),
-
-        interpersonal:
-            Math.round(
-                (scores.interpersonal / 20) * 100
-            ),
-
-        intrapersonal:
-            Math.round(
-                (scores.intrapersonal / 20) * 100
-            )
-
-    };
 
 }
 
@@ -777,35 +737,33 @@ function findDominant(scores) {
 
     if (scores.audio > highest) {
 
-        dominant = "audio";
+        highest =
+            scores.audio;
 
-        highest = scores.audio;
+        dominant =
+            "audio";
 
     }
 
 
-    if (
-        scores.interpersonal >
-        highest
-    ) {
-
-        dominant = "interpersonal";
+    if (scores.interpersonal > highest) {
 
         highest =
             scores.interpersonal;
 
+        dominant =
+            "interpersonal";
+
     }
 
 
-    if (
-        scores.intrapersonal >
-        highest
-    ) {
-
-        dominant = "intrapersonal";
+    if (scores.intrapersonal > highest) {
 
         highest =
             scores.intrapersonal;
+
+        dominant =
+            "intrapersonal";
 
     }
 
@@ -823,40 +781,8 @@ function findDominant(scores) {
 async function finishAssessment() {
 
 
-    /* Check all answers */
-
-    const unanswered =
-        answers.findIndex(
-            answer => answer === null
-        );
-
-
-    if (unanswered !== -1) {
-
-        currentQuestion =
-            unanswered;
-
-        loadQuestion();
-
-        warningMessage.textContent =
-            "Sila jawab semua soalan sebelum menghantar assessment.";
-
-        warningMessage.style.display =
-            "block";
-
-        return;
-
-    }
-
-
-    /* Calculate */
-
     const scores =
         calculateScores();
-
-
-    const percentages =
-        calculatePercentages(scores);
 
 
     const dominantStyle =
@@ -866,28 +792,17 @@ async function finishAssessment() {
 
     /* Student information */
 
-    const studentName =
-        localStorage.getItem(
-            "studentName"
-        ) || "";
-
-
     const studentId =
-        localStorage.getItem(
-            "studentId"
-        ) || "";
+        localStorage.getItem("studentId") || "";
 
+    const studentName =
+        localStorage.getItem("studentName") || "";
 
-    const studentProgramme =
-        localStorage.getItem(
-            "studentProgramme"
-        ) || "";
+    const programme =
+        localStorage.getItem("studentProgramme") || "";
 
-
-    const studentGender =
-        localStorage.getItem(
-            "studentGender"
-        ) || "";
+    const gender =
+        localStorage.getItem("studentGender") || "";
 
 
 
@@ -895,55 +810,27 @@ async function finishAssessment() {
 
     const result = {
 
-        studentId:
-            studentId,
+        studentId: studentId,
 
-        name:
-            studentName,
+        name: studentName,
 
-        programme:
-            studentProgramme,
+        programme: programme,
 
-        gender:
-            studentGender,
+        gender: gender,
 
+        visual: scores.visual,
 
-        visual:
-            percentages.visual,
+        audio: scores.audio,
 
-        audio:
-            percentages.audio,
+        interpersonal: scores.interpersonal,
 
-        interpersonal:
-            percentages.interpersonal,
+        intrapersonal: scores.intrapersonal,
 
-        intrapersonal:
-            percentages.intrapersonal,
+        dominantStyle: dominantStyle,
 
+        answers: answers,
 
-        visualScore:
-            scores.visual,
-
-        audioScore:
-            scores.audio,
-
-        interpersonalScore:
-            scores.interpersonal,
-
-        intrapersonalScore:
-            scores.intrapersonal,
-
-
-        dominantStyle:
-            dominantStyle,
-
-
-        answers:
-            answers,
-
-
-        completedAt:
-            new Date().toISOString()
+        completedAt: new Date().toISOString()
 
     };
 
@@ -958,19 +845,19 @@ async function finishAssessment() {
 
 
 
-    /* Loading */
+    /* Disable button */
 
     nextButton.disabled = true;
 
-    backButton.disabled = true;
-
-    nextButton.textContent =
-        "Saving...";
+    nextButton.innerHTML =
+        `Saving... <span>⏳</span>`;
 
 
 
     try {
 
+
+        /* Send to Google Sheet */
 
         await fetch(
             GOOGLE_SCRIPT_URL,
@@ -981,51 +868,36 @@ async function finishAssessment() {
                 mode: "no-cors",
 
                 headers: {
-
-                    "Content-Type":
-                        "text/plain;charset=utf-8"
-
+                    "Content-Type": "text/plain;charset=utf-8"
                 },
 
-                body:
-                    JSON.stringify(result)
+                body: JSON.stringify(result)
 
             }
         );
 
 
         /*
-         * no-cors tidak membenarkan kita
-         * membaca response Google Apps Script,
-         * tetapi request tetap dihantar.
-         */
+        no-cors means browser cannot read
+        the server response, but the request
+        is sent to Apps Script.
+        */
 
 
-        setTimeout(
-            function() {
-
-                window.location.href =
-                    "result.html";
-
-            },
-            1000
-        );
+        window.location.href =
+            "result.html";
 
 
     } catch (error) {
 
 
-        console.error(
-            "Database error:",
-            error
+        console.error(error);
+
+
+        alert(
+            "Keputusan telah disimpan pada peranti. Sila teruskan."
         );
 
-
-        /*
-         * Result masih disimpan dalam
-         * localStorage walaupun database
-         * gagal.
-         */
 
         window.location.href =
             "result.html";
@@ -1037,14 +909,13 @@ async function finishAssessment() {
 
 
 /* =====================================================
-   START
+   INITIAL LOAD
 ===================================================== */
 
 loadQuestion();
 
 
 </script>
-
 
 
 </body>
