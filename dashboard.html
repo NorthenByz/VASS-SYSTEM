@@ -3,1645 +3,50 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard | VASS Learning Analytics</title>
+    <title>Dashboard | VASS Learning Analytics</title>
 
 
-<!-- GOOGLE FONT -->
+    <!-- GOOGLE FONT -->
 
-<link rel="preconnect"
-      href="https://fonts.googleapis.com">
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin>
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
 
-<!-- BOOTSTRAP ICONS -->
+    <!-- BOOTSTRAP -->
 
-<link rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+        rel="stylesheet">
 
 
-<!-- JSPDF -->
+    <!-- BOOTSTRAP ICONS -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
 
-<style>
+    <!-- ORIGINAL DASHBOARD CSS -->
 
-/* =====================================================
-   RESET
-===================================================== */
+    <link
+        rel="stylesheet"
+        href="css/dashboard.css">
 
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-
-    font-family: "Poppins", sans-serif;
-
-    color: #ffffff;
-
-    min-height: 100vh;
-
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            rgba(59,130,246,.30),
-            transparent 28%
-        ),
-
-        radial-gradient(
-            circle at 90% 80%,
-            rgba(124,58,237,.28),
-            transparent 30%
-        ),
-
-        linear-gradient(
-            135deg,
-            #06154f 0%,
-            #102b8c 48%,
-            #2563eb 100%
-        );
-
-    overflow-x: hidden;
-}
-
-
-/* =====================================================
-   BACKGROUND GLOW
-===================================================== */
-
-body::before {
-
-    content: "";
-
-    position: fixed;
-
-    width: 450px;
-    height: 450px;
-
-    top: -200px;
-    left: -160px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(59,130,246,.20);
-
-    filter: blur(110px);
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-
-body::after {
-
-    content: "";
-
-    position: fixed;
-
-    width: 450px;
-    height: 450px;
-
-    right: -170px;
-    bottom: -200px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(139,92,246,.20);
-
-    filter: blur(110px);
-
-    pointer-events: none;
-
-    z-index: 0;
-}
-
-
-/* =====================================================
-   MAIN
-===================================================== */
-
-.dashboard-container {
-
-    width: 100%;
-
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-    padding: 28px 24px 50px;
-
-    position: relative;
-
-    z-index: 1;
-}
-
-
-/* =====================================================
-   HEADER
-===================================================== */
-
-.dashboard-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    gap: 20px;
-
-    margin-bottom: 28px;
-}
-
-
-.logo-area {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-}
-
-
-.logo {
-
-    width: 52px;
-
-    height: 52px;
-
-    object-fit: contain;
-
-    filter:
-        drop-shadow(
-            0 8px 16px
-            rgba(0,0,0,.25)
-        );
-}
-
-
-.logo-area h3 {
-
-    margin: 0;
-
-    font-size: 18px;
-
-    font-weight: 700;
-
-    color: #ffffff;
-}
-
-
-.logo-area span {
-
-    display: block;
-
-    margin-top: 2px;
-
-    font-size: 10px;
-
-    color:
-        rgba(255,255,255,.55);
-}
-
-
-.user-area {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    padding: 8px 13px;
-
-    border-radius: 50px;
-
-    background:
-        rgba(255,255,255,.08);
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-}
-
-
-.user-avatar {
-
-    width: 34px;
-
-    height: 34px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.10);
-
-    font-size: 18px;
-}
-
-
-.user-area h6 {
-
-    margin: 0;
-
-    font-size: 9px;
-
-    font-weight: 500;
-
-    color:
-        rgba(255,255,255,.50);
-}
-
-
-.user-area span {
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.hero-dashboard {
-
-    display: grid;
-
-    grid-template-columns:
-        1.6fr .8fr;
-
-    gap: 25px;
-
-    padding: 42px;
-
-    border-radius: 30px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.14),
-            rgba(255,255,255,.055)
-        );
-
-    border:
-        1px solid
-        rgba(255,255,255,.17);
-
-    box-shadow:
-        0 30px 75px
-        rgba(0,0,0,.25),
-
-        inset 0 1px 0
-        rgba(255,255,255,.12);
-
-    backdrop-filter: blur(22px);
-
-    -webkit-backdrop-filter: blur(22px);
-
-    margin-bottom: 25px;
-}
-
-
-.hero-left {
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-}
-
-
-.hero-badge {
-
-    width: fit-content;
-
-    padding: 8px 14px;
-
-    border-radius: 50px;
-
-    background:
-        rgba(59,130,246,.16);
-
-    border:
-        1px solid
-        rgba(96,165,250,.25);
-
-    color:
-        rgba(255,255,255,.85);
-
-    font-size: 10px;
-
-    font-weight: 600;
-
-    margin-bottom: 18px;
-}
-
-
-.hero-left h1 {
-
-    margin: 0 0 8px;
-
-    font-size:
-        clamp(30px, 4vw, 48px);
-
-    line-height: 1.15;
-
-    font-weight: 700;
-
-    color: #ffffff;
-}
-
-
-.hero-left h2 {
-
-    margin: 0 0 16px;
-
-    font-size:
-        clamp(17px, 2vw, 23px);
-
-    font-weight: 500;
-
-    color:
-        rgba(255,255,255,.88);
-}
-
-
-.learning-style {
-
-    width: fit-content;
-
-    margin-bottom: 15px;
-
-    padding: 9px 17px;
-
-    border-radius: 50px;
-
-    background:
-        rgba(59,130,246,.20);
-
-    border:
-        1px solid
-        rgba(96,165,250,.35);
-
-    font-size: 15px;
-
-    font-weight: 700;
-
-    color: #ffffff;
-}
-
-
-.hero-left > p {
-
-    max-width: 650px;
-
-    margin: 0 0 25px;
-
-    color:
-        rgba(255,255,255,.66);
-
-    font-size: 13px;
-
-    line-height: 1.75;
-}
-
-
-/* =====================================================
-   HERO BUTTONS
-===================================================== */
-
-.hero-buttons {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    gap: 10px;
-}
-
-
-.hero-buttons button {
-
-    min-height: 44px;
-
-    padding:
-        10px 18px;
-
-    border-radius: 50px;
-
-    font-family:
-        "Poppins",
-        sans-serif;
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    transition:
-        all .25s ease;
-}
-
-
-.hero-buttons .btn-primary {
-
-    border: none;
-
-    background: #ffffff;
-
-    color: #1450b8;
-}
-
-
-.hero-buttons .btn-primary:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 28px
-        rgba(0,0,0,.22);
-}
-
-
-.hero-buttons .btn-outline-light {
-
-    border:
-        1px solid
-        rgba(255,255,255,.25);
-
-    color: #ffffff;
-
-    background:
-        rgba(255,255,255,.05);
-}
-
-
-.hero-buttons .btn-outline-light:hover {
-
-    background:
-        rgba(255,255,255,.12);
-
-    border-color:
-        rgba(255,255,255,.40);
-
-    color: #ffffff;
-
-    transform:
-        translateY(-2px);
-}
-
-
-/* =====================================================
-   SCORE
-===================================================== */
-
-.hero-right {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-}
-
-
-.score-card {
-
-    width: 100%;
-
-    max-width: 270px;
-
-    padding: 28px;
-
-    border-radius: 25px;
-
-    text-align: center;
-
-    background:
-        rgba(255,255,255,.075);
-
-    border:
-        1px solid
-        rgba(255,255,255,.13);
-}
-
-
-.score-circle {
-
-    width: 175px;
-
-    height: 175px;
-
-    margin: 0 auto 18px;
-
-    border-radius: 50%;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(37,99,235,.42),
-            rgba(37,99,235,.10)
-        );
-
-    border:
-        8px solid
-        rgba(96,165,250,.35);
-
-    box-shadow:
-        0 0 35px
-        rgba(59,130,246,.22);
-}
-
-
-.score-number {
-
-    font-size: 36px;
-
-    font-weight: 700;
-
-    line-height: 1;
-}
-
-
-.score-text {
-
-    margin-top: 7px;
-
-    font-size: 12px;
-
-    color:
-        rgba(255,255,255,.65);
-}
-
-
-.score-status {
-
-    font-size: 11px;
-
-    font-weight: 600;
-
-    color:
-        rgba(255,255,255,.78);
-}
-
-
-/* =====================================================
-   SUMMARY
-===================================================== */
-
-.summary-section {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 14px;
-
-    margin-bottom: 35px;
-}
-
-
-.summary-card {
-
-    padding: 22px 15px;
-
-    text-align: center;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.075);
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,.10);
-}
-
-
-.summary-card i {
-
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size: 22px;
-}
-
-
-.summary-card h4 {
-
-    margin: 0 0 4px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-.summary-card span {
-
-    font-size: 10px;
-
-    color:
-        rgba(255,255,255,.55);
-}
-
-
-/* =====================================================
-   STUDENT PROFILE
-===================================================== */
-
-.student-info-section {
-
-    margin-bottom: 35px;
-}
-
-
-.student-info-card {
-
-    padding: 25px 28px;
-
-    border-radius: 22px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.12);
-
-    backdrop-filter: blur(18px);
-
-    -webkit-backdrop-filter: blur(18px);
-}
-
-
-.student-info-heading {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 13px;
-
-    margin-bottom: 20px;
-}
-
-
-.student-info-icon {
-
-    width: 44px;
-
-    height: 44px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,255,255,.10);
-
-    font-size: 20px;
-}
-
-
-.student-info-heading span {
-
-    display: block;
-
-    font-size: 9px;
-
-    letter-spacing: 1.5px;
-
-    color:
-        rgba(255,255,255,.50);
-
-    font-weight: 600;
-}
-
-
-.student-info-heading h3 {
-
-    margin: 2px 0 0;
-
-    font-size: 17px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-.student-info-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 12px;
-}
-
-
-.student-detail {
-
-    padding: 15px;
-
-    border-radius: 14px;
-
-    background:
-        rgba(255,255,255,.055);
-
-    border:
-        1px solid
-        rgba(255,255,255,.07);
-}
-
-
-.student-detail span {
-
-    display: block;
-
-    margin-bottom: 5px;
-
-    font-size: 9px;
-
-    color:
-        rgba(255,255,255,.48);
-}
-
-
-.student-detail strong {
-
-    display: block;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-
-    overflow-wrap: anywhere;
-}
-
-
-/* =====================================================
-   SECTION TITLE
-===================================================== */
-
-.section-title {
-
-    margin: 0 0 20px;
-
-    font-size: 22px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-/* =====================================================
-   LEARNING PROFILE
-===================================================== */
-
-.profile-section {
-
-    margin-bottom: 38px;
-}
-
-
-.profile-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 15px;
-}
-
-
-.profile-card {
-
-    padding: 25px 20px;
-
-    border-radius: 22px;
-
-    text-align: center;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    transition:
-        all .25s ease;
-}
-
-
-.profile-card:hover {
-
-    transform:
-        translateY(-4px);
-
-    background:
-        rgba(255,255,255,.10);
-}
-
-
-.profile-card .emoji {
-
-    display: block;
-
-    margin-bottom: 10px;
-
-    font-size: 28px;
-}
-
-
-.profile-card h4 {
-
-    margin: 0 0 8px;
-
-    font-size: 13px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-.profile-card h2 {
-
-    margin: 0 0 14px;
-
-    font-size: 28px;
-
-    font-weight: 700;
-
-    color: #ffffff;
-}
-
-
-.mini-progress {
-
-    width: 100%;
-
-    height: 7px;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.10);
-}
-
-
-.mini-fill {
-
-    height: 100%;
-
-    width: 0;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #38bdf8,
-            #3b82f6
-        );
-
-    transition:
-        width .8s ease;
-}
-
-
-/* =====================================================
-   INSIGHTS
-===================================================== */
-
-.insight-section {
-
-    margin-bottom: 38px;
-}
-
-
-.insight-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 15px;
-}
-
-
-.insight-card {
-
-    padding: 25px;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-}
-
-
-.insight-card i {
-
-    font-size: 22px;
-
-    margin-bottom: 12px;
-
-    display: block;
-}
-
-
-.insight-card h4 {
-
-    margin: 0 0 9px;
-
-    font-size: 14px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-.insight-card p {
-
-    margin: 0;
-
-    color:
-        rgba(255,255,255,.62);
-
-    font-size: 11px;
-
-    line-height: 1.75;
-}
-
-
-.insight-card strong {
-
-    color: #ffffff;
-}
-
-
-/* =====================================================
-   RECOMMENDATIONS
-===================================================== */
-
-.recommendation-section {
-
-    margin-bottom: 40px;
-}
-
-
-.recommend-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 14px;
-}
-
-
-.recommend-card {
-
-    padding: 25px 15px;
-
-    text-align: center;
-
-    border-radius: 20px;
-
-    background:
-        rgba(255,255,255,.07);
-
-    border:
-        1px solid
-        rgba(255,255,255,.11);
-
-    transition:
-        all .25s ease;
-
-    font-size: 28px;
-}
-
-
-.recommend-card:hover {
-
-    transform:
-        translateY(-4px);
-
-    background:
-        rgba(255,255,255,.11);
-}
-
-
-.recommend-card h5 {
-
-    margin: 10px 0 0;
-
-    font-size: 12px;
-
-    font-weight: 600;
-
-    color: #ffffff;
-}
-
-
-/* =====================================================
-   FOOTER
-===================================================== */
-
-.dashboard-footer {
-
-    padding-top: 22px;
-
-    text-align: center;
-
-    border-top:
-        1px solid
-        rgba(255,255,255,.10);
-}
-
-
-.dashboard-footer p {
-
-    margin: 0;
-
-    color:
-        rgba(255,255,255,.42);
-
-    font-size: 10px;
-}
-
-
-/* =====================================================
-   TABLET
-===================================================== */
-
-@media (max-width: 900px) {
-
-    .hero-dashboard {
-
-        grid-template-columns: 1fr;
-
-        padding: 32px;
-    }
-
-
-    .hero-right {
-
-        justify-content: flex-start;
-    }
-
-
-    .score-card {
-
-        max-width: 100%;
-    }
-
-
-    .score-circle {
-
-        width: 145px;
-
-        height: 145px;
-    }
-
-
-    .profile-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .student-info-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-
-
-    .recommend-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-    }
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media (max-width: 600px) {
-
-    .dashboard-container {
-
-        padding:
-            16px 12px 30px;
-    }
-
-
-    /* HEADER */
-
-    .dashboard-header {
-
-        align-items: flex-start;
-
-        margin-bottom: 20px;
-    }
-
-
-    .logo {
-
-        width: 42px;
-
-        height: 42px;
-    }
-
-
-    .logo-area {
-
-        gap: 9px;
-    }
-
-
-    .logo-area h3 {
-
-        font-size: 14px;
-    }
-
-
-    .logo-area span {
-
-        font-size: 8px;
-    }
-
-
-    .user-area {
-
-        padding:
-            6px 9px;
-    }
-
-
-    .user-avatar {
-
-        width: 28px;
-
-        height: 28px;
-
-        font-size: 15px;
-    }
-
-
-    .user-area h6 {
-
-        font-size: 7px;
-    }
-
-
-    .user-area span {
-
-        font-size: 9px;
-
-        max-width: 90px;
-
-        overflow: hidden;
-
-        text-overflow: ellipsis;
-
-        white-space: nowrap;
-    }
-
-
-    /* HERO */
-
-    .hero-dashboard {
-
-        padding:
-            24px 18px;
-
-        gap: 22px;
-
-        border-radius: 24px;
-    }
-
-
-    .hero-badge {
-
-        font-size: 9px;
-
-        padding:
-            7px 11px;
-
-        margin-bottom: 14px;
-    }
-
-
-    .hero-left h1 {
-
-        font-size: 30px;
-    }
-
-
-    .hero-left h2 {
-
-        font-size: 16px;
-    }
-
-
-    .learning-style {
-
-        font-size: 12px;
-
-        padding:
-            8px 13px;
-    }
-
-
-    .hero-left > p {
-
-        font-size: 11px;
-
-        line-height: 1.7;
-    }
-
-
-    .hero-buttons {
-
-        flex-direction: column;
-    }
-
-
-    .hero-buttons button {
-
-        width: 100%;
-
-        font-size: 11px;
-    }
-
-
-    .score-card {
-
-        padding: 20px;
-    }
-
-
-    .score-circle {
-
-        width: 145px;
-
-        height: 145px;
-
-        border-width: 7px;
-    }
-
-
-    .score-number {
-
-        font-size: 30px;
-    }
-
-
-    /* SUMMARY */
-
-    .summary-section {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 9px;
-
-        margin-bottom: 28px;
-    }
-
-
-    .summary-card {
-
-        padding:
-            17px 10px;
-    }
-
-
-    .summary-card i {
-
-        font-size: 18px;
-
-        margin-bottom: 7px;
-    }
-
-
-    .summary-card h4 {
-
-        font-size: 11px;
-    }
-
-
-    .summary-card span {
-
-        font-size: 9px;
-    }
-
-
-    /* STUDENT */
-
-    .student-info-card {
-
-        padding:
-            20px 15px;
-
-        border-radius: 20px;
-    }
-
-
-    .student-info-heading {
-
-        margin-bottom: 15px;
-    }
-
-
-    .student-info-heading h3 {
-
-        font-size: 15px;
-    }
-
-
-    .student-info-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 8px;
-    }
-
-
-    .student-detail {
-
-        padding:
-            13px 14px;
-    }
-
-
-    .student-detail span {
-
-        font-size: 8px;
-    }
-
-
-    .student-detail strong {
-
-        font-size: 11px;
-    }
-
-
-    /* TITLES */
-
-    .section-title {
-
-        font-size: 18px;
-
-        margin-bottom: 15px;
-    }
-
-
-    /* PROFILE */
-
-    .profile-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 9px;
-    }
-
-
-    .profile-card {
-
-        padding:
-            18px 12px;
-
-        border-radius: 17px;
-    }
-
-
-    .profile-card .emoji {
-
-        font-size: 23px;
-
-        margin-bottom: 7px;
-    }
-
-
-    .profile-card h4 {
-
-        font-size: 11px;
-    }
-
-
-    .profile-card h2 {
-
-        font-size: 22px;
-
-        margin-bottom: 10px;
-    }
-
-
-    .mini-progress {
-
-        height: 6px;
-    }
-
-
-    /* INSIGHTS */
-
-    .insight-grid {
-
-        grid-template-columns: 1fr;
-
-        gap: 9px;
-    }
-
-
-    .insight-card {
-
-        padding:
-            19px 16px;
-
-        border-radius: 17px;
-    }
-
-
-    .insight-card i {
-
-        font-size: 19px;
-    }
-
-
-    .insight-card h4 {
-
-        font-size: 12px;
-    }
-
-
-    .insight-card p {
-
-        font-size: 10px;
-
-        line-height: 1.7;
-    }
-
-
-    /* RECOMMENDATIONS */
-
-    .recommend-grid {
-
-        grid-template-columns:
-            repeat(2, 1fr);
-
-        gap: 9px;
-    }
-
-
-    .recommend-card {
-
-        padding:
-            19px 10px;
-
-        font-size: 24px;
-
-        border-radius: 17px;
-    }
-
-
-    .recommend-card h5 {
-
-        font-size: 10px;
-    }
-
-
-    /* FOOTER */
-
-    .dashboard-footer p {
-
-        font-size: 9px;
-    }
-}
-
-
-/* =====================================================
-   VERY SMALL PHONE
-===================================================== */
-
-@media (max-width: 380px) {
-
-    .dashboard-container {
-
-        padding:
-            12px 9px 25px;
-    }
-
-
-    .logo-area h3 {
-
-        font-size: 12px;
-    }
-
-
-    .user-area span {
-
-        max-width: 65px;
-    }
-
-
-    .hero-left h1 {
-
-        font-size: 27px;
-    }
-
-
-    .hero-left h2 {
-
-        font-size: 14px;
-    }
-
-
-    .profile-card h2 {
-
-        font-size: 20px;
-    }
-
-}
-
-</style>
 
 </head>
 
@@ -1652,14 +57,15 @@ body::after {
 <div class="dashboard-container">
 
 
-<!-- =================================================
+<!-- =====================================================
      HEADER
-================================================= -->
+===================================================== -->
 
 <header class="dashboard-header">
 
 
     <div class="logo-area">
+
 
         <img
             src="assets/images/logo.png"
@@ -1679,10 +85,13 @@ body::after {
 
         </div>
 
+
     </div>
 
 
+
     <div class="user-area">
+
 
         <div class="user-avatar">
 
@@ -1703,15 +112,17 @@ body::after {
 
         </div>
 
+
     </div>
+
 
 </header>
 
 
 
-<!-- =================================================
+<!-- =====================================================
      HERO
-================================================= -->
+===================================================== -->
 
 <section class="hero-dashboard">
 
@@ -1751,8 +162,7 @@ body::after {
 
         <p id="dominantDescription">
 
-            Based on your responses, your strongest
-            learning preference is Visual Learning.
+            Your learning preference is being analysed.
 
         </p>
 
@@ -1761,23 +171,26 @@ body::after {
 
 
             <button
+                type="button"
                 class="btn btn-primary"
                 onclick="downloadReport()">
 
                 <i class="bi bi-file-earmark-arrow-down-fill"></i>
 
-                &nbsp; Download Report
+                Download Report
 
             </button>
 
 
+
             <button
+                type="button"
                 class="btn btn-outline-light"
                 onclick="retakeAssessment()">
 
                 <i class="bi bi-arrow-repeat"></i>
 
-                &nbsp; Retake Assessment
+                Retake Assessment
 
             </button>
 
@@ -1786,6 +199,7 @@ body::after {
 
 
     </div>
+
 
 
     <div class="hero-right">
@@ -1827,6 +241,7 @@ body::after {
 
         </div>
 
+
     </div>
 
 
@@ -1834,9 +249,9 @@ body::after {
 
 
 
-<!-- =================================================
-     SUMMARY
-================================================= -->
+<!-- =====================================================
+     QUICK SUMMARY
+===================================================== -->
 
 <section class="summary-section">
 
@@ -1856,6 +271,7 @@ body::after {
     </div>
 
 
+
     <div class="summary-card">
 
         <i class="bi bi-clock-fill"></i>
@@ -1865,10 +281,11 @@ body::after {
         </h4>
 
         <span>
-            8 Minutes
+            8–10 Minutes
         </span>
 
     </div>
+
 
 
     <div class="summary-card">
@@ -1886,6 +303,7 @@ body::after {
     </div>
 
 
+
     <div class="summary-card">
 
         <i class="bi bi-stars"></i>
@@ -1895,7 +313,7 @@ body::after {
         </h4>
 
         <span id="summaryDominant">
-            Visual
+            —
         </span>
 
     </div>
@@ -1905,96 +323,71 @@ body::after {
 
 
 
-<!-- =================================================
+<!-- =====================================================
      STUDENT PROFILE
-================================================= -->
+===================================================== -->
 
-<section class="student-info-section">
-
-
-    <div class="student-info-card">
+<section class="student-profile-section">
 
 
-        <div class="student-info-heading">
+    <h2 class="section-title">
+
+        👤 Student Profile
+
+    </h2>
 
 
-            <div class="student-info-icon">
-
-                <i class="bi bi-person-vcard-fill"></i>
-
-            </div>
+    <div class="student-profile-card">
 
 
-            <div>
+        <div class="student-detail">
 
-                <span>
-                    STUDENT PROFILE
-                </span>
+            <span>
+                Full Name
+            </span>
 
-                <h3>
-                    Your Information
-                </h3>
-
-            </div>
-
+            <strong id="profileStudentName">
+                —
+            </strong>
 
         </div>
 
 
-        <div class="student-info-grid">
+        <div class="student-detail">
+
+            <span>
+                Student ID
+            </span>
+
+            <strong id="profileStudentId">
+                —
+            </strong>
+
+        </div>
 
 
-            <div class="student-detail">
+        <div class="student-detail">
 
-                <span>
-                    Full Name
-                </span>
+            <span>
+                Programme / Class
+            </span>
 
-                <strong id="profileStudentName">
-                    Student
-                </strong>
+            <strong id="profileProgramme">
+                —
+            </strong>
 
-            </div>
-
-
-            <div class="student-detail">
-
-                <span>
-                    Student ID
-                </span>
-
-                <strong id="profileStudentId">
-                    —
-                </strong>
-
-            </div>
+        </div>
 
 
-            <div class="student-detail">
+        <div class="student-detail">
 
-                <span>
-                    Programme / Class
-                </span>
+            <span>
+                Gender
+            </span>
 
-                <strong id="profileProgramme">
-                    —
-                </strong>
-
-            </div>
-
-
-            <div class="student-detail">
-
-                <span>
-                    Gender
-                </span>
-
-                <strong id="profileGender">
-                    —
-                </strong>
-
-            </div>
-
+            <strong id="profileGender">
+                —
+            </strong>
 
         </div>
 
@@ -2006,9 +399,9 @@ body::after {
 
 
 
-<!-- =================================================
+<!-- =====================================================
      LEARNING PROFILE
-================================================= -->
+===================================================== -->
 
 <section class="profile-section">
 
@@ -2022,6 +415,8 @@ body::after {
 
     <div class="profile-grid">
 
+
+        <!-- VISUAL -->
 
         <div class="profile-card visual">
 
@@ -2051,6 +446,8 @@ body::after {
 
 
 
+        <!-- AUDIO -->
+
         <div class="profile-card auditory">
 
             <span class="emoji">
@@ -2079,6 +476,8 @@ body::after {
 
 
 
+        <!-- INTERPERSONAL -->
+
         <div class="profile-card read">
 
             <span class="emoji">
@@ -2106,6 +505,8 @@ body::after {
         </div>
 
 
+
+        <!-- INTRAPERSONAL -->
 
         <div class="profile-card kinesthetic">
 
@@ -2141,9 +542,9 @@ body::after {
 
 
 
-<!-- =================================================
-     INSIGHTS
-================================================= -->
+<!-- =====================================================
+     LEARNING INSIGHTS
+===================================================== -->
 
 <section class="insight-section">
 
@@ -2158,6 +559,8 @@ body::after {
     <div class="insight-grid">
 
 
+        <!-- STRENGTH -->
+
         <div class="insight-card">
 
             <i class="bi bi-lightbulb-fill"></i>
@@ -2167,11 +570,16 @@ body::after {
             </h4>
 
             <p id="strengthText">
+
                 Your learning profile is being analysed.
+
             </p>
 
         </div>
 
+
+
+        <!-- BEST METHOD -->
 
         <div class="insight-card">
 
@@ -2182,12 +590,17 @@ body::after {
             </h4>
 
             <p id="methodText">
+
                 Personalised learning recommendations
                 will appear here.
+
             </p>
 
         </div>
 
+
+
+        <!-- IMPROVEMENT -->
 
         <div class="insight-card">
 
@@ -2198,8 +611,10 @@ body::after {
             </h4>
 
             <p id="improvementText">
-                Explore other learning preferences
-                to support your learning.
+
+                Your improvement suggestion will
+                appear here.
+
             </p>
 
         </div>
@@ -2212,9 +627,9 @@ body::after {
 
 
 
-<!-- =================================================
+<!-- =====================================================
      RECOMMENDATIONS
-================================================= -->
+===================================================== -->
 
 <section class="recommendation-section">
 
@@ -2226,7 +641,9 @@ body::after {
     </h2>
 
 
-    <div class="recommend-grid">
+    <div
+        class="recommend-grid"
+        id="recommendationGrid">
 
 
         <div class="recommend-card">
@@ -2280,14 +697,16 @@ body::after {
 
 
 
-<!-- =================================================
+<!-- =====================================================
      FOOTER
-================================================= -->
+===================================================== -->
 
 <footer class="dashboard-footer">
 
     <p>
+
         © 2026 VASS Learning Analytics System
+
     </p>
 
 </footer>
@@ -2297,477 +716,900 @@ body::after {
 
 
 
-<!-- =================================================
-     DASHBOARD SCRIPT
-================================================= -->
+<!-- =====================================================
+     jsPDF
+===================================================== -->
+
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js">
+</script>
+
+
 
 <script>
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+/* =========================================================
+   VASS DASHBOARD
+========================================================= */
 
 
-        const savedResult =
-            localStorage.getItem(
-                "vassAssessmentResult"
-            );
+/* =========================================================
+   CATEGORY INFORMATION
+========================================================= */
 
+const categoryInfo = {
 
-        if (!savedResult) {
 
-            alert(
-                "No assessment result found."
-            );
+    visual: {
 
-            window.location.href =
-                "assessment.html";
+        name:
+            "Visual",
 
-            return;
-        }
+        title:
+            "🎥 VISUAL",
 
+        description:
+            "Your responses indicate a stronger preference for learning through visual information such as videos, graphics, diagrams, charts and visual representations.",
 
-        const result =
-            JSON.parse(savedResult);
+        strength:
+            "You may understand and remember information more effectively when concepts are presented visually.",
 
+        method:
+            "Use videos, diagrams, charts, mind maps, illustrations and other visual learning resources.",
 
-        const scores =
-            result.scores || {};
+        improvement:
+            "Try combining visual resources with discussion, listening and independent reflection to develop a more flexible learning approach.",
 
+        recommendations: [
 
-        /* =========================================
-           CATEGORY INFORMATION
-        ========================================= */
+            "🎥 Videos and demonstrations",
 
-        const categoryInfo = {
+            "📊 Charts and diagrams",
 
+            "🧠 Mind maps",
 
-            visual: {
+            "🖼️ Visual notes"
 
-                name: "Visual",
+        ]
 
-                title: "🎥 VISUAL",
+    },
 
-                description:
-                    "You show a stronger preference for learning through visual representations such as videos, graphics, diagrams and visual information.",
 
-                strength:
-                    "You may understand information more effectively when concepts are presented visually.",
+    audio: {
 
-                method:
-                    "Use videos, diagrams, charts, mind maps and other visual learning resources.",
+        name:
+            "Audio",
 
-                improvement:
-                    "Try combining visual materials with discussion and explanation to support a more flexible learning experience."
+        title:
+            "🎧 AUDIO",
 
-            },
+        description:
+            "Your responses indicate a stronger preference for learning through listening, verbal explanations, lectures and discussion.",
 
+        strength:
+            "You may benefit from hearing explanations and discussing ideas before applying them.",
 
-            audio: {
+        method:
+            "Use recorded lectures, verbal explanations, podcasts, discussions and read-aloud activities.",
 
-                name: "Audio",
+        improvement:
+            "Try supporting audio learning with visual notes, diagrams and independent reflection.",
 
-                title: "🎧 AUDIO",
+        recommendations: [
 
-                description:
-                    "You show a stronger preference for learning through listening, explanations, lectures and discussion.",
+            "🎧 Recorded lectures",
 
-                strength:
-                    "You may benefit from listening to explanations and discussing ideas.",
+            "🗣️ Verbal explanations",
 
-                method:
-                    "Use recorded lectures, verbal explanations, discussions and audio resources.",
+            "💬 Discussions",
 
-                improvement:
-                    "Try combining listening with visual materials such as diagrams, charts and notes."
+            "🎙️ Audio resources"
 
-            },
+        ]
 
+    },
 
-            interpersonal: {
 
-                name: "Interpersonal",
+    interpersonal: {
 
-                title: "👥 INTERPERSONAL",
+        name:
+            "Interpersonal",
 
-                description:
-                    "You show a stronger preference for learning through interaction, collaboration and discussion with others.",
+        title:
+            "👥 INTERPERSONAL",
 
-                strength:
-                    "You may learn effectively through collaboration and exchanging ideas with others.",
+        description:
+            "Your responses indicate a stronger preference for learning through interaction, collaboration and discussion with other people.",
 
-                method:
-                    "Use group discussions, collaborative activities, peer learning and teamwork.",
+        strength:
+            "You may learn effectively by exchanging ideas, discussing concepts and collaborating with others.",
 
-                improvement:
-                    "Try including individual reflection and self-directed activities alongside group learning."
+        method:
+            "Use group discussions, collaborative activities, peer learning, teamwork and study groups.",
 
-            },
+        improvement:
+            "Include some independent learning activities so that you can reflect on ideas before or after group discussion.",
 
+        recommendations: [
 
-            intrapersonal: {
+            "👥 Group discussions",
 
-                name: "Intrapersonal",
+            "🤝 Collaborative projects",
 
-                title: "🧠 INTRAPERSONAL",
+            "💬 Peer learning",
 
-                description:
-                    "You show a stronger preference for independent learning, reflection and self-directed exploration.",
+            "🧑‍🤝‍🧑 Study groups"
 
-                strength:
-                    "You may benefit from opportunities to explore and understand concepts independently.",
+        ]
 
-                method:
-                    "Use individual projects, self-study, reflection and self-directed learning activities.",
+    },
 
-                improvement:
-                    "Try combining independent study with discussion and collaborative activities."
 
-            }
+    intrapersonal: {
 
-        };
+        name:
+            "Intrapersonal",
 
+        title:
+            "🧠 INTRAPERSONAL",
 
-        /* =========================================
-           VALID SCORES
-        ========================================= */
+        description:
+            "Your responses indicate a stronger preference for independent learning, reflection and self-directed exploration.",
 
-        const validScores =
-            Object.entries(scores)
+        strength:
+            "You may learn effectively when you have time to explore ideas independently and reflect on your understanding.",
 
-                .filter(
-                    ([key, value]) =>
-                        categoryInfo[key] &&
-                        Number.isFinite(
-                            Number(value)
-                        )
-                )
+        method:
+            "Use self-study, individual projects, reflection activities, personal notes and self-directed learning.",
 
-                .map(
-                    ([key, value]) =>
-                        [
-                            key,
-                            Number(value)
-                        ]
-                );
+        improvement:
+            "Try adding discussion and collaborative learning activities to gain alternative perspectives from others.",
 
+        recommendations: [
 
-        if (
-            validScores.length === 0
-        ) {
+            "🧠 Self-study",
 
-            alert(
-                "Assessment scores are unavailable."
-            );
+            "📝 Reflection notes",
 
-            window.location.href =
-                "assessment.html";
+            "📚 Individual projects",
 
-            return;
-        }
+            "🎯 Self-directed activities"
 
-
-        /* =========================================
-           SORT
-        ========================================= */
-
-        validScores.sort(
-            (a, b) => b[1] - a[1]
-        );
-
-
-        const dominant =
-            validScores[0][0];
-
-
-        const dominantScore =
-            validScores[0][1];
-
-
-        const lowest =
-            validScores[
-                validScores.length - 1
-            ][0];
-
-
-        const lowestScore =
-            validScores[
-                validScores.length - 1
-            ][1];
-
-
-        const dominantInfo =
-            categoryInfo[dominant];
-
-
-        const lowestInfo =
-            categoryInfo[lowest];
-
-
-        /* =========================================
-           STUDENT NAME
-        ========================================= */
-
-        const studentName =
-            localStorage.getItem(
-                "studentName"
-            );
-
-
-        const studentNameElement =
-            document.getElementById(
-                "studentName"
-            );
-
-
-        if (
-            studentName &&
-            studentNameElement
-        ) {
-
-            studentNameElement.textContent =
-                studentName;
-
-        }
-
-
-        /* =========================================
-           STUDENT PROFILE
-        ========================================= */
-
-        const profileStudentName =
-            document.getElementById(
-                "profileStudentName"
-            );
-
-
-        const profileStudentId =
-            document.getElementById(
-                "profileStudentId"
-            );
-
-
-        const profileProgramme =
-            document.getElementById(
-                "profileProgramme"
-            );
-
-
-        const profileGender =
-            document.getElementById(
-                "profileGender"
-            );
-
-
-        const savedStudentId =
-            localStorage.getItem(
-                "studentId"
-            );
-
-
-        const savedProgramme =
-            localStorage.getItem(
-                "studentProgramme"
-            );
-
-
-        const savedGender =
-            localStorage.getItem(
-                "studentGender"
-            );
-
-
-        if (
-            profileStudentName &&
-            studentName
-        ) {
-
-            profileStudentName.textContent =
-                studentName;
-
-        }
-
-
-        if (
-            profileStudentId &&
-            savedStudentId
-        ) {
-
-            profileStudentId.textContent =
-                savedStudentId;
-
-        }
-
-
-        if (
-            profileProgramme &&
-            savedProgramme
-        ) {
-
-            profileProgramme.textContent =
-                savedProgramme;
-
-        }
-
-
-        if (
-            profileGender &&
-            savedGender
-        ) {
-
-            profileGender.textContent =
-                savedGender;
-
-        }
-
-
-        /* =========================================
-           HERO
-        ========================================= */
-
-        document.getElementById(
-            "dominantStyle"
-        ).textContent =
-            dominantInfo.title;
-
-
-        document.getElementById(
-            "dominantDescription"
-        ).textContent =
-            dominantInfo.description;
-
-
-        document.getElementById(
-            "dominantScore"
-        ).textContent =
-            dominantScore + "%";
-
-
-        document.getElementById(
-            "dominantScoreLabel"
-        ).textContent =
-            dominantInfo.name;
-
-
-        document.getElementById(
-            "summaryDominant"
-        ).textContent =
-            dominantInfo.name;
-
-
-        /* =========================================
-           SCORES
-        ========================================= */
-
-        updateScore(
-            "visual",
-            scores.visual
-        );
-
-
-        updateScore(
-            "audio",
-            scores.audio
-        );
-
-
-        updateScore(
-            "interpersonal",
-            scores.interpersonal
-        );
-
-
-        updateScore(
-            "intrapersonal",
-            scores.intrapersonal
-        );
-
-
-        function updateScore(
-            type,
-            value
-        ) {
-
-            const score =
-                Math.max(
-                    0,
-                    Math.min(
-                        100,
-                        Number(value) || 0
-                    )
-                );
-
-
-            const scoreElement =
-                document.getElementById(
-                    type + "Score"
-                );
-
-
-            const barElement =
-                document.getElementById(
-                    type + "Bar"
-                );
-
-
-            if (scoreElement) {
-
-                scoreElement.textContent =
-                    score + "%";
-
-            }
-
-
-            if (barElement) {
-
-                setTimeout(
-                    function () {
-
-                        barElement.style.width =
-                            score + "%";
-
-                    },
-                    150
-                );
-
-            }
-
-        }
-
-
-        /* =========================================
-           INSIGHTS
-        ========================================= */
-
-        document.getElementById(
-            "strengthText"
-        ).innerHTML =
-
-            `<strong>${dominantInfo.name} (${dominantScore}%)</strong><br>${dominantInfo.strength}`;
-
-
-        document.getElementById(
-            "methodText"
-        ).textContent =
-            dominantInfo.method;
-
-
-        document.getElementById(
-            "improvementText"
-        ).innerHTML =
-
-            `<strong>${lowestInfo.name} (${lowestScore}%)</strong><br>${lowestInfo.improvement}`;
-
+        ]
 
     }
-);
+
+};
 
 
-/* =================================================
+
+/* =========================================================
+   SAFE NUMBER
+========================================================= */
+
+function safeNumber(value){
+
+    const number =
+        Number(value);
+
+    if(
+        Number.isFinite(number)
+    ){
+
+        return number;
+
+    }
+
+    return 0;
+
+}
+
+
+
+/* =========================================================
+   GET RESULT
+========================================================= */
+
+function getAssessmentResult(){
+
+    const saved =
+        localStorage.getItem(
+            "vassAssessmentResult"
+        );
+
+
+    if(!saved){
+
+        return null;
+
+    }
+
+
+    try{
+
+        return JSON.parse(saved);
+
+    }catch(error){
+
+        console.error(
+            "Invalid VASS result:",
+            error
+        );
+
+        return null;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   GET SCORES
+========================================================= */
+
+function getScores(result){
+
+    const source =
+        result.scores || {};
+
+
+    return {
+
+        visual:
+            safeNumber(
+                source.visual
+            ),
+
+        audio:
+            safeNumber(
+                source.audio
+            ),
+
+        interpersonal:
+            safeNumber(
+                source.interpersonal
+            ),
+
+        intrapersonal:
+            safeNumber(
+                source.intrapersonal
+            )
+
+    };
+
+}
+
+
+
+/* =========================================================
+   FIND DOMINANT
+========================================================= */
+
+function findDominant(scores){
+
+    const categories = [
+
+        "visual",
+
+        "audio",
+
+        "interpersonal",
+
+        "intrapersonal"
+
+    ];
+
+
+    let dominant =
+        categories[0];
+
+
+    let highest =
+        scores[dominant];
+
+
+    categories.forEach(
+        function(category){
+
+            if(
+                scores[category] >
+                highest
+            ){
+
+                highest =
+                    scores[category];
+
+                dominant =
+                    category;
+
+            }
+
+        }
+    );
+
+
+    return dominant;
+
+}
+
+
+
+/* =========================================================
+   FIND LOWEST
+========================================================= */
+
+function findLowest(scores){
+
+    const categories = [
+
+        "visual",
+
+        "audio",
+
+        "interpersonal",
+
+        "intrapersonal"
+
+    ];
+
+
+    let lowest =
+        categories[0];
+
+
+    let lowestScore =
+        scores[lowest];
+
+
+    categories.forEach(
+        function(category){
+
+            if(
+                scores[category] <
+                lowestScore
+            ){
+
+                lowest =
+                    category;
+
+                lowestScore =
+                    scores[category];
+
+            }
+
+        }
+    );
+
+
+    return lowest;
+
+}
+
+
+
+/* =========================================================
+   UPDATE SCORE
+========================================================= */
+
+function updateScore(
+    type,
+    value
+){
+
+    const score =
+        Math.max(
+            0,
+            Math.min(
+                100,
+                safeNumber(value)
+            )
+        );
+
+
+    const scoreElement =
+        document.getElementById(
+            type + "Score"
+        );
+
+
+    const barElement =
+        document.getElementById(
+            type + "Bar"
+        );
+
+
+    if(scoreElement){
+
+        scoreElement.textContent =
+            Math.round(score) + "%";
+
+    }
+
+
+    if(barElement){
+
+        barElement.style.width =
+            score + "%";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UPDATE STUDENT INFORMATION
+========================================================= */
+
+function updateStudentInformation(){
+
+    const name =
+        localStorage.getItem(
+            "studentName"
+        ) || "Student";
+
+
+    const studentId =
+        localStorage.getItem(
+            "studentId"
+        ) || "—";
+
+
+    const programme =
+        localStorage.getItem(
+            "studentProgramme"
+        ) || "—";
+
+
+    const gender =
+        localStorage.getItem(
+            "studentGender"
+        ) || "—";
+
+
+    const studentName =
+        document.getElementById(
+            "studentName"
+        );
+
+
+    const profileStudentName =
+        document.getElementById(
+            "profileStudentName"
+        );
+
+
+    const profileStudentId =
+        document.getElementById(
+            "profileStudentId"
+        );
+
+
+    const profileProgramme =
+        document.getElementById(
+            "profileProgramme"
+        );
+
+
+    const profileGender =
+        document.getElementById(
+            "profileGender"
+        );
+
+
+    if(studentName){
+
+        studentName.textContent =
+            name;
+
+    }
+
+
+    if(profileStudentName){
+
+        profileStudentName.textContent =
+            name;
+
+    }
+
+
+    if(profileStudentId){
+
+        profileStudentId.textContent =
+            studentId;
+
+    }
+
+
+    if(profileProgramme){
+
+        profileProgramme.textContent =
+            programme;
+
+    }
+
+
+    if(profileGender){
+
+        profileGender.textContent =
+            gender;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UPDATE RECOMMENDATIONS
+========================================================= */
+
+function updateRecommendations(
+    dominantInfo
+){
+
+    const grid =
+        document.getElementById(
+            "recommendationGrid"
+        );
+
+
+    if(!grid){
+
+        return;
+
+    }
+
+
+    grid.innerHTML = "";
+
+
+    dominantInfo.recommendations.forEach(
+        function(item){
+
+            const card =
+                document.createElement(
+                    "div"
+                );
+
+
+            card.className =
+                "recommend-card";
+
+
+            const parts =
+                item.split(" ");
+
+
+            const icon =
+                parts.shift();
+
+
+            const title =
+                parts.join(" ");
+
+
+            card.innerHTML = `
+
+                <div
+                    style="
+                        font-size:32px;
+                        margin-bottom:8px;
+                    "
+                >
+
+                    ${icon}
+
+                </div>
+
+                <h5>
+
+                    ${title}
+
+                </h5>
+
+            `;
+
+
+            grid.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   LOAD DASHBOARD
+========================================================= */
+
+function loadDashboard(){
+
+    const result =
+        getAssessmentResult();
+
+
+    if(!result){
+
+        alert(
+            "No assessment result found. Please complete the assessment first."
+        );
+
+
+        window.location.href =
+            "assessment.html";
+
+
+        return;
+
+    }
+
+
+    const scores =
+        getScores(result);
+
+
+    const dominant =
+        findDominant(
+            scores
+        );
+
+
+    const lowest =
+        findLowest(
+            scores
+        );
+
+
+    const dominantScore =
+        scores[dominant];
+
+
+    const lowestScore =
+        scores[lowest];
+
+
+    const dominantInfo =
+        categoryInfo[dominant];
+
+
+    const lowestInfo =
+        categoryInfo[lowest];
+
+
+
+    /* STUDENT */
+
+    updateStudentInformation();
+
+
+
+    /* DOMINANT STYLE */
+
+    const dominantStyle =
+        document.getElementById(
+            "dominantStyle"
+        );
+
+
+    if(dominantStyle){
+
+        dominantStyle.textContent =
+            dominantInfo.title;
+
+    }
+
+
+    const dominantDescription =
+        document.getElementById(
+            "dominantDescription"
+        );
+
+
+    if(dominantDescription){
+
+        dominantDescription.textContent =
+            dominantInfo.description;
+
+    }
+
+
+
+    /* DOMINANT SCORE */
+
+    const dominantScoreElement =
+        document.getElementById(
+            "dominantScore"
+        );
+
+
+    if(dominantScoreElement){
+
+        dominantScoreElement.textContent =
+            Math.round(
+                dominantScore
+            ) + "%";
+
+    }
+
+
+    const dominantScoreLabel =
+        document.getElementById(
+            "dominantScoreLabel"
+        );
+
+
+    if(dominantScoreLabel){
+
+        dominantScoreLabel.textContent =
+            dominantInfo.name;
+
+    }
+
+
+
+    /* SUMMARY */
+
+    const summaryDominant =
+        document.getElementById(
+            "summaryDominant"
+        );
+
+
+    if(summaryDominant){
+
+        summaryDominant.textContent =
+            dominantInfo.name;
+
+    }
+
+
+
+    /* PROFILE */
+
+    updateScore(
+        "visual",
+        scores.visual
+    );
+
+
+    updateScore(
+        "audio",
+        scores.audio
+    );
+
+
+    updateScore(
+        "interpersonal",
+        scores.interpersonal
+    );
+
+
+    updateScore(
+        "intrapersonal",
+        scores.intrapersonal
+    );
+
+
+
+    /* STRENGTH */
+
+    const strengthText =
+        document.getElementById(
+            "strengthText"
+        );
+
+
+    if(strengthText){
+
+        strengthText.innerHTML =
+
+            "<strong>" +
+
+            dominantInfo.name +
+
+            " (" +
+
+            Math.round(
+                dominantScore
+            ) +
+
+            "%)</strong><br>" +
+
+            dominantInfo.strength;
+
+    }
+
+
+
+    /* METHOD */
+
+    const methodText =
+        document.getElementById(
+            "methodText"
+        );
+
+
+    if(methodText){
+
+        methodText.textContent =
+            dominantInfo.method;
+
+    }
+
+
+
+    /* IMPROVEMENT */
+
+    const improvementText =
+        document.getElementById(
+            "improvementText"
+        );
+
+
+    if(improvementText){
+
+        improvementText.innerHTML =
+
+            "<strong>" +
+
+            lowestInfo.name +
+
+            " (" +
+
+            Math.round(
+                lowestScore
+            ) +
+
+            "%)</strong><br>" +
+
+            lowestInfo.improvement;
+
+    }
+
+
+
+    /* RECOMMENDATIONS */
+
+    updateRecommendations(
+        dominantInfo
+    );
+
+
+
+    /* STORE FINAL DOMINANT */
+
+    localStorage.setItem(
+        "dominantStyle",
+        dominant
+    );
+
+}
+
+
+
+/* =========================================================
    RETAKE
-================================================= */
+========================================================= */
 
-function retakeAssessment() {
+function retakeAssessment(){
+
+    const confirmRetake =
+        confirm(
+            "Are you sure you want to retake the assessment?"
+        );
+
+
+    if(!confirmRetake){
+
+        return;
+
+    }
+
 
     localStorage.removeItem(
         "vassAnswers"
@@ -2779,53 +1621,85 @@ function retakeAssessment() {
     );
 
 
+    localStorage.removeItem(
+        "visualScore"
+    );
+
+
+    localStorage.removeItem(
+        "audioScore"
+    );
+
+
+    localStorage.removeItem(
+        "interpersonalScore"
+    );
+
+
+    localStorage.removeItem(
+        "intrapersonalScore"
+    );
+
+
+    localStorage.removeItem(
+        "dominantStyle"
+    );
+
+
     window.location.href =
         "assessment.html";
+
 }
 
 
-/* =================================================
-   DOWNLOAD PDF REPORT
-================================================= */
 
-async function downloadReport() {
+/* =========================================================
+   DOWNLOAD PDF
+========================================================= */
 
+async function downloadReport(){
 
-    if (
+    if(
         !window.jspdf ||
         !window.jspdf.jsPDF
-    ) {
+    ){
 
         alert(
             "PDF library is still loading. Please try again."
         );
 
         return;
+
     }
 
 
-    const savedResult =
-        localStorage.getItem(
-            "vassAssessmentResult"
-        );
+    const result =
+        getAssessmentResult();
 
 
-    if (!savedResult) {
+    if(!result){
 
         alert(
             "No assessment result found."
         );
 
         return;
+
     }
 
 
-    const result =
-        JSON.parse(savedResult);
-
-
     const scores =
-        result.scores || {};
+        getScores(result);
+
+
+    const dominant =
+        findDominant(
+            scores
+        );
+
+
+    const dominantInfo =
+        categoryInfo[dominant];
 
 
     const studentName =
@@ -2852,54 +1726,39 @@ async function downloadReport() {
         ) || "—";
 
 
-    const dominant =
-        result.dominantStyle ||
-        "visual";
-
-
-    const names = {
-
-        visual: "Visual",
-
-        audio: "Audio",
-
-        interpersonal: "Interpersonal",
-
-        intrapersonal: "Intrapersonal"
-
-    };
-
-
-    const dominantName =
-        names[dominant] ||
-        dominant;
-
-
     const {
         jsPDF
-    } = window.jspdf;
+    } =
+        window.jspdf;
 
 
     const doc =
         new jsPDF({
 
-            orientation: "portrait",
+            orientation:
+                "portrait",
 
-            unit: "mm",
+            unit:
+                "mm",
 
-            format: "a4"
+            format:
+                "a4"
 
         });
 
 
     const pageWidth =
-        doc.internal.pageSize
-            .getWidth();
+        doc.internal.pageSize.getWidth();
 
 
-    /* =========================================
+    const pageHeight =
+        doc.internal.pageSize.getHeight();
+
+
+
+    /* =====================================================
        HEADER
-    ========================================= */
+    ===================================================== */
 
     doc.setFillColor(
         20,
@@ -2930,7 +1789,9 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(22);
+    doc.setFontSize(
+        22
+    );
 
 
     doc.text(
@@ -2940,7 +1801,9 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(10);
+    doc.setFontSize(
+        10
+    );
 
 
     doc.setFont(
@@ -2963,12 +1826,14 @@ async function downloadReport() {
     );
 
 
-    let y = 48;
 
+    /* =====================================================
+       STUDENT
+    ===================================================== */
 
-    /* =========================================
-       STUDENT INFORMATION
-    ========================================= */
+    let y =
+        48;
+
 
     doc.setTextColor(
         25,
@@ -2983,7 +1848,9 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(15);
+    doc.setFontSize(
+        15
+    );
 
 
     doc.text(
@@ -2994,22 +1861,6 @@ async function downloadReport() {
 
 
     y += 9;
-
-
-    doc.setTextColor(
-        70,
-        70,
-        70
-    );
-
-
-    doc.setFont(
-        "helvetica",
-        "normal"
-    );
-
-
-    doc.setFontSize(10);
 
 
     const studentRows = [
@@ -3038,7 +1889,13 @@ async function downloadReport() {
 
 
     studentRows.forEach(
-        ([label, value]) => {
+        function(row){
+
+            doc.setTextColor(
+                70,
+                70,
+                70
+            );
 
 
             doc.setFont(
@@ -3047,8 +1904,13 @@ async function downloadReport() {
             );
 
 
+            doc.setFontSize(
+                10
+            );
+
+
             doc.text(
-                label + ":",
+                row[0] + ":",
                 20,
                 y
             );
@@ -3061,7 +1923,9 @@ async function downloadReport() {
 
 
             doc.text(
-                String(value),
+                String(
+                    row[1]
+                ),
                 65,
                 y
             );
@@ -3073,11 +1937,12 @@ async function downloadReport() {
     );
 
 
-    /* =========================================
-       DOMINANT
-    ========================================= */
 
-    y += 7;
+    /* =====================================================
+       DOMINANT
+    ===================================================== */
+
+    y += 8;
 
 
     doc.setFillColor(
@@ -3091,7 +1956,7 @@ async function downloadReport() {
         20,
         y,
         pageWidth - 40,
-        30,
+        32,
         4,
         4,
         "F"
@@ -3111,7 +1976,9 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(10);
+    doc.setFontSize(
+        9
+    );
 
 
     doc.text(
@@ -3121,17 +1988,21 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(19);
-
-
-    doc.text(
-        dominantName,
-        27,
-        y + 20
+    doc.setFontSize(
+        18
     );
 
 
-    doc.setFontSize(11);
+    doc.text(
+        dominantInfo.name,
+        27,
+        y + 21
+    );
+
+
+    doc.setFontSize(
+        12
+    );
 
 
     doc.setFont(
@@ -3141,20 +2012,21 @@ async function downloadReport() {
 
 
     doc.text(
-        String(
-            scores[dominant] ?? 0
+        Math.round(
+            scores[dominant]
         ) + "%",
         pageWidth - 45,
-        y + 19
+        y + 21
     );
 
 
-    y += 42;
+    y += 44;
 
 
-    /* =========================================
-       LEARNING PROFILE
-    ========================================= */
+
+    /* =====================================================
+       SCORES
+    ===================================================== */
 
     doc.setTextColor(
         25,
@@ -3169,11 +2041,13 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(15);
+    doc.setFontSize(
+        15
+    );
 
 
     doc.text(
-        "Learning Profile",
+        "Learning Profile Scores",
         20,
         y
     );
@@ -3182,37 +2056,43 @@ async function downloadReport() {
     y += 10;
 
 
-    const profileRows = [
+    const pdfScores = [
 
         [
             "Visual",
-            scores.visual ?? 0
+            scores.visual
         ],
 
         [
             "Audio",
-            scores.audio ?? 0
+            scores.audio
         ],
 
         [
             "Interpersonal",
-            scores.interpersonal ?? 0
+            scores.interpersonal
         ],
 
         [
             "Intrapersonal",
-            scores.intrapersonal ?? 0
+            scores.intrapersonal
         ]
 
     ];
 
 
-    profileRows.forEach(
-        ([label, score]) => {
+    pdfScores.forEach(
+        function(row){
+
+            doc.setFont(
+                "helvetica",
+                "bold"
+            );
 
 
-            const numericScore =
-                Number(score) || 0;
+            doc.setFontSize(
+                10
+            );
 
 
             doc.setTextColor(
@@ -3222,85 +2102,53 @@ async function downloadReport() {
             );
 
 
-            doc.setFont(
-                "helvetica",
-                "bold"
-            );
-
-
-            doc.setFontSize(10);
-
-
             doc.text(
-                label,
+                row[0],
                 20,
                 y
             );
 
 
-            doc.setFillColor(
-                225,
-                231,
-                245
-            );
-
-
-            doc.roundedRect(
-                55,
-                y - 4,
-                105,
-                5,
-                2,
-                2,
-                "F"
-            );
-
-
-            doc.setFillColor(
-                55,
-                105,
-                220
-            );
-
-
-            doc.roundedRect(
-                55,
-                y - 4,
-                105 *
-                    Math.min(
-                        numericScore,
-                        100
-                    ) / 100,
-                5,
-                2,
-                2,
-                "F"
-            );
-
-
-            doc.setTextColor(
-                40,
-                40,
-                40
+            doc.setFont(
+                "helvetica",
+                "normal"
             );
 
 
             doc.text(
-                numericScore + "%",
+                Math.round(
+                    row[1]
+                ) + "%",
                 170,
                 y
             );
 
 
-            y += 11;
+            doc.setDrawColor(
+                220,
+                225,
+                235
+            );
+
+
+            doc.line(
+                20,
+                y + 3,
+                pageWidth - 20,
+                y + 3
+            );
+
+
+            y += 10;
 
         }
     );
 
 
-    /* =========================================
+
+    /* =====================================================
        INSIGHTS
-    ========================================= */
+    ===================================================== */
 
     y += 8;
 
@@ -3318,11 +2166,13 @@ async function downloadReport() {
     );
 
 
-    doc.setFontSize(15);
+    doc.setFontSize(
+        15
+    );
 
 
     doc.text(
-        "Learning Insights",
+        "Learning Insight",
         20,
         y
     );
@@ -3331,89 +2181,18 @@ async function downloadReport() {
     y += 9;
 
 
-    const info = {
-
-        visual: {
-
-            strength:
-                "You may understand information more effectively when concepts are presented visually.",
-
-            method:
-                "Use videos, diagrams, charts, mind maps and other visual learning resources."
-
-        },
-
-        audio: {
-
-            strength:
-                "You may benefit from listening to explanations and discussing ideas.",
-
-            method:
-                "Use recorded lectures, verbal explanations, discussions and audio resources."
-
-        },
-
-        interpersonal: {
-
-            strength:
-                "You may learn effectively through collaboration and exchanging ideas with others.",
-
-            method:
-                "Use group discussions, collaborative activities, peer learning and teamwork."
-
-        },
-
-        intrapersonal: {
-
-            strength:
-                "You may benefit from opportunities to explore and understand concepts independently.",
-
-            method:
-                "Use individual projects, self-study, reflection and self-directed learning activities."
-
-        }
-
-    };
-
-
-    const dominantInfo =
-        info[dominant] ||
-        info.visual;
-
-
-    doc.setFont(
-        "helvetica",
-        "bold"
-    );
-
-
-    doc.setFontSize(10);
-
-
-    doc.setTextColor(
-        50,
-        50,
-        50
-    );
-
-
-    doc.text(
-        "Strength",
-        20,
-        y
-    );
-
-
-    y += 6;
-
-
     doc.setFont(
         "helvetica",
         "normal"
     );
 
 
-    const strengthLines =
+    doc.setFontSize(
+        10
+    );
+
+
+    const insightLines =
         doc.splitTextToSize(
             dominantInfo.strength,
             pageWidth - 40
@@ -3421,15 +2200,16 @@ async function downloadReport() {
 
 
     doc.text(
-        strengthLines,
+        insightLines,
         20,
         y
     );
 
 
     y +=
-        strengthLines.length * 5
-        + 5;
+        insightLines.length *
+        5 +
+        8;
 
 
     doc.setFont(
@@ -3439,7 +2219,7 @@ async function downloadReport() {
 
 
     doc.text(
-        "Best Learning Method",
+        "Recommended Learning Method",
         20,
         y
     );
@@ -3468,26 +2248,20 @@ async function downloadReport() {
     );
 
 
-    /* =========================================
+    y +=
+        methodLines.length *
+        5 +
+        10;
+
+
+
+    /* =====================================================
        FOOTER
-    ========================================= */
+    ===================================================== */
 
-    doc.setDrawColor(
-        210,
-        215,
-        225
+    doc.setFontSize(
+        8
     );
-
-
-    doc.line(
-        20,
-        280,
-        pageWidth - 20,
-        280
-    );
-
-
-    doc.setFontSize(8);
 
 
     doc.setTextColor(
@@ -3498,30 +2272,50 @@ async function downloadReport() {
 
 
     doc.text(
-        "© 2026 VASS Learning System | Developed for Academic Research",
-        20,
-        287
+        "VASS Learning Analytics System © 2026",
+        pageWidth / 2,
+        pageHeight - 12,
+        {
+            align:
+                "center"
+        }
     );
 
 
-    /* =========================================
+    /* =====================================================
        SAVE
-    ========================================= */
+    ===================================================== */
 
     const safeName =
-        studentName.replace(
-            /[^a-z0-9]/gi,
-            "_"
-        );
+        studentName
+            .replace(
+                /[^a-z0-9]/gi,
+                "_"
+            );
 
 
     doc.save(
-        "VASS_Learning_Report_" +
+        "VASS_Report_" +
         safeName +
         ".pdf"
     );
 
 }
+
+
+
+/* =========================================================
+   START
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        loadDashboard();
+
+    }
+);
 
 </script>
 
