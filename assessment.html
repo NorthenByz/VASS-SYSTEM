@@ -2002,184 +2002,107 @@ function findDominant(
    FINISH
 ========================================================= */
 
-function finishAssessment(){
+const VASS_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-    /* CHECK ALL */
+function getStoredValue(keys) {
+    for (const key of keys) {
+        const value = localStorage.getItem(key);
+        if (value !== null && value.trim() !== "") return value;
+    }
+    return "";
+}
 
-    const incomplete =
-        answers.some(
-            function(answer){
+async function finishAssessment() {
+    const incomplete = answers.some(answer => answer === undefined);
 
-                return answer ===
-                    undefined;
-
-            }
-        );
-
-
-    if(incomplete){
-
-        message.textContent =
-            "Sila lengkapkan semua 30 soalan.";
-
+    if (incomplete) {
+        message.textContent = "Sila lengkapkan semua 30 soalan.";
         return;
-
     }
 
+    // Prevent double submission while the request is being sent.
+    nextBtn.disabled = true;
+    nextBtn.textContent = "Saving...";
 
-    /* RAW */
+    try {
+        const raw = calculateScores();
+        const scores = calculatePercentage(raw);
+        const dominant = findDominant(scores);
 
-    const raw =
-        calculateScores();
+        const result = {
+            rawScores: { ...raw },
+            scores: { ...scores },
+            dominantStyle: dominant,
+            totalQuestions: 30,
+            completedAt: new Date().toISOString()
+        };
 
+        // Keep the existing VASS localStorage behaviour.
+        localStorage.setItem("vassAssessmentResult", JSON.stringify(result));
+        localStorage.setItem("vassAnswers", JSON.stringify(answers));
+        localStorage.setItem("visualScore", String(raw.visual));
+        localStorage.setItem("audioScore", String(raw.audio));
+        localStorage.setItem("interpersonalScore", String(raw.interpersonal));
+        localStorage.setItem("intrapersonalScore", String(raw.intrapersonal));
+        localStorage.setItem("visualPercentage", String(scores.visual));
+        localStorage.setItem("audioPercentage", String(scores.audio));
+        localStorage.setItem("interpersonalPercentage", String(scores.interpersonal));
+        localStorage.setItem("intrapersonalPercentage", String(scores.intrapersonal));
+        localStorage.setItem("dominantStyle", dominant);
 
-    /* PERCENTAGE */
+        // Read student information using common possible storage-key names.
+        // Match these keys with student-info.html if your app uses different names.
+        const payload = {
+            studentId: getStoredValue(["studentId", "studentID", "student_id", "vassStudentId"]),
+            name: getStoredValue(["studentName", "name", "student_name", "vassStudentName"]),
+            programme: getStoredValue(["programme", "program", "studentProgramme", "studentProgram"]),
+            gender: getStoredValue(["gender", "studentGender", "student_gender"]),
+            visual: scores.visual,
+            audio: scores.audio,
+            interpersonal: scores.interpersonal,
+            intrapersonal: scores.intrapersonal,
+            dominantStyle: dominant,
+            completedAt: result.completedAt
+        };
 
-    const scores =
-        calculatePercentage(
-            raw
-        );
+        // Do not silently send a row without the required student identity.
+        if (!payload.studentId || !payload.name) {
+            throw new Error(
+                "Maklumat Student ID atau nama tidak dijumpai dalam localStorage. " +
+                "Semak nama key dalam student-info.html."
+            );
+        }
 
+        if (!VASS_SCRIPT_URL.startsWith("https://script.google.com/")) {
+            throw new Error("Masukkan URL Google Apps Script Web App sebenar pada VASS_SCRIPT_URL.");
+        }
 
-    /* DOMINANT */
+        // Apps Script web apps commonly accept this simple request.
+        // no-cors means the browser cannot read the server response; verify the row in Sheets.
+        await fetch(VASS_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "text/plain;charset=utf-8" },
+            body: JSON.stringify(payload)
+        });
 
-    const dominant =
-        findDominant(
-            scores
-        );
+        message.style.color = "#3ee58a";
+        message.textContent =
+            "Permintaan dihantar. Semak Google Sheets untuk mengesahkan rekod.";
 
+        // Give the browser a moment to dispatch the request before navigating.
+        setTimeout(() => {
+            window.location.href = "dashboard.html";
+        }, 700);
 
-    /* RESULT */
-
-    const result = {
-
-        rawScores:{
-
-            visual:
-                raw.visual,
-
-            audio:
-                raw.audio,
-
-            interpersonal:
-                raw.interpersonal,
-
-            intrapersonal:
-                raw.intrapersonal
-
-        },
-
-
-        scores:{
-
-            visual:
-                scores.visual,
-
-            audio:
-                scores.audio,
-
-            interpersonal:
-                scores.interpersonal,
-
-            intrapersonal:
-                scores.intrapersonal
-
-        },
-
-
-        dominantStyle:
-            dominant,
-
-
-        totalQuestions:
-            30,
-
-
-        completedAt:
-            new Date().toISOString()
-
-    };
-
-
-    /* SAVE RESULT */
-
-    localStorage.setItem(
-        "vassAssessmentResult",
-        JSON.stringify(
-            result
-        )
-    );
-
-
-    localStorage.setItem(
-        "vassAnswers",
-        JSON.stringify(
-            answers
-        )
-    );
-
-
-    /* SAVE INDIVIDUAL SCORES */
-
-    localStorage.setItem(
-        "visualScore",
-        raw.visual
-    );
-
-
-    localStorage.setItem(
-        "audioScore",
-        raw.audio
-    );
-
-
-    localStorage.setItem(
-        "interpersonalScore",
-        raw.interpersonal
-    );
-
-
-    localStorage.setItem(
-        "intrapersonalScore",
-        raw.intrapersonal
-    );
-
-
-    localStorage.setItem(
-        "visualPercentage",
-        scores.visual
-    );
-
-
-    localStorage.setItem(
-        "audioPercentage",
-        scores.audio
-    );
-
-
-    localStorage.setItem(
-        "interpersonalPercentage",
-        scores.interpersonal
-    );
-
-
-    localStorage.setItem(
-        "intrapersonalPercentage",
-        scores.intrapersonal
-    );
-
-
-    localStorage.setItem(
-        "dominantStyle",
-        dominant
-    );
-
-
-    /* GO DASHBOARD */
-
-    window.location.href =
-        "dashboard.html";
-
+    } catch (error) {
+        console.error("VASS submission error:", error);
+        message.style.color = "#ffb3b3";
+        message.textContent = error.message ||
+            "Penghantaran gagal. Sila semak tetapan Google Sheets.";
+        nextBtn.disabled = false;
+        nextBtn.textContent = "Finish ✓";
+    }
 }
 
 
